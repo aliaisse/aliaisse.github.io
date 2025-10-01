@@ -1,4 +1,3 @@
-# Ali A. Isse
 *Ph.D. Student, Security Studies & International Relations , Princeton University*  
 *Email:* ai9431@Princeton.edu · *Link:* (https://macmillan.yale.edu/nuclear-security/person/mehdi-isse)---
 
