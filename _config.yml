@@ -1,7 +1,10 @@
 theme: jekyll-theme-slatetitle: "Ali A. Isse"
 description: "Ph.D. student · International Relations · Coercion & Counterproliferation"
-theme: minima   
+theme: minima   # keep the default for now
+author:
   name: "Ali A. Isse"
   email: your.name@uni.edu
 github_username: issemehdi
+
+# If you added a headshot:
 logo: /assets/headshot.jpg
