@@ -1,7 +1,6 @@
 # Ali A. Isse
 *Ph.D. Student, Security Studies & International Relations , Princeton University*  
-*Email:* ai9431@Princeton.edu · *Link:* [
-](https://macmillan.yale.edu/nuclear-security/person/mehdi-isse)---
+*Email:* ai9431@Princeton.edu · *Link:* (https://macmillan.yale.edu/nuclear-security/person/mehdi-isse)---
 
 ## Research Focus
 I study coercive statecraft and counterproliferation. My dissertation examines how states choose between sustaining diplomacy, opting for preventive force, or adopting strategic restraint when confronting an advancing nuclear program.
