@@ -1,9 +1,8 @@
 title: "Ali A. Isse"
 theme: minima
 
-# Show these pages as the top navigation menu (in this order)
 header_pages:
-  - about.md
-  - research.md
-  - teaching.md
-  - cv.md
+  - About.md
+  - Research.md
+  - Teaching.md
+  - CV.md
