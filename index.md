@@ -8,7 +8,7 @@ layout: default
 # Ali A. Isse
 
 *Ph.D. Student, Security Studies & International Relations — [Princeton University]*  
-*Email:* ai9431@Princeton.edu · *GitHub:* [github.com/aliaisse](https://github.com/aliaisse) · *LinkedIn:* https://linkedin.com/in/YOURID
+*Email:* ai9431@Princeton.edu · *LinkedIn:* https://linkedin.com/in/YOURID
 
 ---
 
