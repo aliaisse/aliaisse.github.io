@@ -1,3 +1,9 @@
 title: "Ali A. Isse"
-description: "Personal site"
 theme: minima
+
+# Show these pages as the top navigation menu (in this order)
+header_pages:
+  - about.md
+  - research.md
+  - teaching.md
+  - cv.md
