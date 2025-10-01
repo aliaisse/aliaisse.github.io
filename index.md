@@ -1,9 +1,5 @@
 Ali A Isse
 
----
-title: "Home"
-layout: default
----
 
 # Ali A. Isse
 
