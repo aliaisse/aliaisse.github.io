@@ -62,7 +62,6 @@ layout: default
     <h3>Links &amp; Profiles</h3>
 
   
-    </div>
 
     <!-- external profiles as horizontal buttons with small icons -->
     <div class="btn-row">
