@@ -13,6 +13,23 @@ layout: default
 .hero .tagline{margin:.25rem 0;color:#555}
 .site-footer .p-name { display: none !important; }
 .site-footer .copyright { display: none !important; }
+/* Hide duplicate name in Minima footer (covers common variants) */
+.site-footer .p-name,
+.site-footer .h-card .p-name,
+.site-footer .contact-list .p-name,
+.site-footer .footer-col-1 .p-name { display: none !important; }
+.site-footer .copyright { display: none !important; }
+/* Make your big header name blue (the one we created in index.md) */
+.hero .name { color: #1e40af; }
+
+/* Make the site menu links (Research · Talks · Teaching · CV) blue */
+.site-header .site-nav .page-link { color: #1e40af !important; }
+.site-header .site-nav .page-link:hover { text-decoration: underline; }
+
+/* (Optional) make the small site title in the top-left blue too */
+.site-header .site-title,
+.site-header .site-title:link,
+.site-header .site-title:visited { color: #1e40af !important; }
   
 /* second row: content left, sidebar right */
 .grid{display:grid;grid-template-columns:1fr 260px;gap:1.5rem;margin-top:.5rem}
