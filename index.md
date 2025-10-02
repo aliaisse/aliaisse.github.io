@@ -6,7 +6,10 @@ layout: default
 <style>
   :root{ --header-h: 64px; }
 
-  /* sticky header */
+  /* hide Minima's default footer entirely */
+  .site-footer{ display:none !important; }
+
+  /* sticky, centered header with cap icon */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -19,7 +22,7 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: center; /* center header content */
+    justify-content: center;
     align-items: center;
     gap: .6rem;
   }
@@ -29,17 +32,17 @@ layout: default
     display:flex; align-items:center; gap:.4rem;
   }
   .site-header .site-title::before{
-    content:"🎓"; /* graduation cap emoji */
+    content:"🎓";
     font-size: 1.2rem;
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
   html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 8px); }
 
-  /* hero section */
+  /* hero */
   .hero{ text-align:center; max-width: 760px; margin: 0 auto; }
   .hero img{
-    width:160px; height:160px;   /* zoomed out from 140 */
+    width:160px; height:160px;
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.1);
     object-fit:cover;
@@ -86,6 +89,15 @@ layout: default
     margin-top:1.5rem;
   }
   .orcid-btn:hover{ background:#1558b0; }
+
+  /* custom footer */
+  .custom-footer{
+    max-width:760px;
+    margin:32px auto 40px;
+    text-align:center;
+    color:#6b7280;
+    font-size:.9rem;
+  }
 </style>
 
 <div class="hero">
@@ -127,4 +139,9 @@ layout: default
       <a class="orcid-btn" href="https://orcid.org/YOUR-ORCID">Link to ORCID Profile</a>
     </p>
   </div>
+</div>
+
+<!-- custom minimal footer -->
+<div class="custom-footer">
+  @2025 aaisse · Last updated: October 2, 2025
 </div>
