@@ -6,7 +6,7 @@ layout: default
 <style>
   :root{ --header-h: 64px; }
 
-  /* sticky header (unchanged) */
+  /* sticky header */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -19,24 +19,31 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
+    justify-content: center; /* center header content */
     align-items: center;
+    gap: .6rem;
   }
+  .site-header .site-title{
+    font-weight: 700;
+    font-size: 1.1rem;
+    display:flex; align-items:center; gap:.4rem;
+  }
+  .site-header .site-title::before{
+    content:"🎓"; /* graduation cap emoji */
+    font-size: 1.2rem;
+  }
+
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
   html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 8px); }
 
-  /* center column */
-  .hero{
-    text-align:center;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  /* ↓ lower the photo slightly */
+  /* hero section */
+  .hero{ text-align:center; max-width: 760px; margin: 0 auto; }
   .hero img{
-    width:140px; height:140px;
+    width:160px; height:160px;   /* zoomed out from 140 */
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.1);
     object-fit:cover;
-    margin-top: 14px;     /* move the photo down a touch */
+    margin-top: 18px;
   }
 
   /* horizontal button row */
@@ -59,13 +66,26 @@ layout: default
   .btn:hover{ background:#f6f8ff; border-color:#1a73e8; color:#1a73e8; }
   .btn svg{ width:16px; height:16px; }
 
-  /* welcome text: justify paragraphs, keep H1 centered */
+  /* welcome text */
   .welcome{ text-align:left; margin: 0 auto; max-width: 760px; }
   .welcome h1{ text-align:center; font-size:1.9rem; margin:1rem 0; }
   .welcome p{
     line-height:1.7; margin:.9rem 0; color:#333;
-    text-align: justify; text-justify: inter-word; hyphens: auto;
+    text-align: justify; text-justify: inter-word; hyphens:auto;
   }
+
+  /* ORCID button */
+  .orcid-btn{
+    display:inline-block;
+    background:#1a73e8;
+    color:#fff !important;
+    padding:.6rem 1.2rem;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:600;
+    margin-top:1.5rem;
+  }
+  .orcid-btn:hover{ background:#1558b0; }
 </style>
 
 <div class="hero">
@@ -75,8 +95,7 @@ layout: default
     <a class="btn" href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a>
     <a class="btn" href="https://twitter.com/IsseMehdi">Twitter</a>
     <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/">LinkedIn</a>
-    <!-- Email button shows icon + address text -->
-    <a class="btn" href="mailto:YOUR.EMAIL@UNI.EDU" rel="me">
+    <a class="btn" href="mailto:ai9431@princeton.edu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <rect x="3" y="5" width="18" height="14" rx="2"></rect>
         <path d="M3 7l9 6 9-6"></path>
@@ -102,6 +121,10 @@ layout: default
 
     <p>
       I earned my BA in Political Science from the University of Texas San Antonio, an MS in City and Regional Planning from The Ohio State University, an MA in Political Science (International Relations) from the University of Chicago, and an MA in Public Affairs from Princeton University.
+    </p>
+
+    <p style="text-align:center;">
+      <a class="orcid-btn" href="https://orcid.org/YOUR-ORCID">Link to ORCID Profile</a>
     </p>
   </div>
 </div>
