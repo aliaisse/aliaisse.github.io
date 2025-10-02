@@ -126,7 +126,7 @@ My research builds on a multidisciplinary appraoch that integrates international
 My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can both reduce the risks of nuclear use and strengthen extended deterrence commitments for non-nuclear allies. Beyond my academic research, I pursue avocations such as running, cycling, and diving, and I have a long history with soccer—both as a player and as a volunteer coach for recreational sports. <br><br>
 
 <p> 
-I earned my BA in Political Science from the University of Texas at San Antonio, an MS in City and Regional Planning from The Ohio State University’s College of Engineering (with a minor in Public Policy and Management from the John Glenn College), an MA in Political Science with a concentration in International Relations from the University of Chicago, and an MA in Public Affairs from Princeton University. <br><br>
+I earned my BA in Political Science from the University of Texas San Antonio, an MS in City and Regional Planning from The Ohio State University’s College of Engineering (with a minor in Public Policy and Management from the John Glenn College), an MA in Political Science with a concentration in International Relations from the University of Chicago, and an MA in Public Affairs from Princeton University. <br><br>
   
  
  
