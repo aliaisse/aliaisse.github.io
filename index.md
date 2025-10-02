@@ -50,10 +50,6 @@ layout: default
 
   <aside class="card follow">
     <h3>Follow me</h3>
-    <a href="/CV/">CV</a>
-    <a href="/Research/">Research</a>
-    <a href="/Teaching/">Teaching</a>
-    <a href="/Talks/">Talks</a>
     <hr>
     <a href="mailto:YOUR.EMAIL@UNI.EDU">Email</a>
     <a href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a>
@@ -62,8 +58,4 @@ layout: default
     <a href="https://x.com/YOURHANDLE">X (Twitter)</a>
   </aside>
 </div>
-    <div class="col-photo">
-      <img src="{{ '/assets/headshot.jpg' | relative_url }}" alt="Ali A. Isse" width="180">
-    </div>
-  </div>
-</div>
+   
