@@ -25,7 +25,8 @@ layout: default
 /* Make the site menu links (Research · Talks · Teaching · CV) blue */
 .site-header .site-nav .page-link { color: #1e40af !important; }
 .site-header .site-nav .page-link:hover { text-decoration: underline; }
-
+/* Remove Minima footer entirely */
+.site-footer { display: none !important; }
 /* (Optional) make the small site title in the top-left blue too */
 .site-header .site-title,
 .site-header .site-title:link,
