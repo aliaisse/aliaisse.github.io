@@ -10,8 +10,9 @@ layout: default
     --brand-dark: #5c0000;
     --card-bg: #ffffff;
 
-    /* Header “midnight teal / deep teal blue” */
-    --header-teal: #004E59;
+    /* Header color: dark charcoal (swap to #000 for true black if you prefer) */
+    --header-dark: #111827;  /* Tailwind "gray-900"-ish */
+    /* --header-dark: #000000; */
   }
 
   /* global background */
@@ -20,13 +21,13 @@ layout: default
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* sticky header — teal bg */
+  /* sticky header — dark charcoal bg */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
     height: var(--header-h);
     z-index: 9999;
-    background: var(--header-teal) !important;
+    background: var(--header-dark) !important;
     border-bottom: 1px solid rgba(0,0,0,.25);
   }
   .site-header .wrapper{
@@ -37,9 +38,9 @@ layout: default
     gap: .6rem;
   }
 
-  /* NAME: bold maroon, all caps */
+  /* NAME: white on charcoal for max contrast (all caps, bold) */
   .site-header .site-title{
-    color: var(--brand) !important;
+    color: #ffffff !important;        /* change to var(--brand) for maroon text if you want */
     font-weight: 900;
     font-size: 1.05rem;
     display:flex; align-items:center; gap:.5rem;
@@ -93,7 +94,7 @@ layout: default
   /* hero */
   .hero{ text-align:center; }
   .hero img{
-    width:160px; height:160px;
+    width:160px; height:160px;       /* shows full face */
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.12);
     object-fit:cover;
@@ -192,7 +193,7 @@ layout: default
       </p>
 
       <p>
-        I hold MA in Public Affairs from Princeton University, an MA in Political Science from the University of Chicago as a Maroon Scholar, an MS in City and Regional Planning with Highest Distinction from The Ohio State University, and a BA in Political Science from the University of Texas San Antonio where I participated in Model United Stations and other distinguished academic programs. For more information about my research, teaching, or sercive, please do not hesitate to contact me.
+        I hold MA in Public Affairs from Princeton University, an MA in Political Science from the University of Chicago as a Maroon Scholar, an MS in City and Regional Planning with <em>Distinction<em> from The Ohio State University, and a BA in Political Science from the University of Texas San Antonio where I participated in Model United Stations and other distinguished academic programs. For more information about my research, teaching, or service, please do not hesitate to contact me
       </p>
 
       <p style="text-align:center;">
