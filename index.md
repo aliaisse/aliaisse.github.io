@@ -118,11 +118,17 @@ layout: default
     <h1>About me</h1>
     <p>
 I am a PhD Candidate in Security Studies, International Relations and Strategies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. My research examines how states navigate the challenges of coercive statecraft and counterproliferation within the broader framework of grand strategy, with a particular focus on the conditions under which nuclear powers employ strategies of deterrence, assurance, and reversal to shape the behavior of adversaries and allies.
+</p>
 
+<p> 
 I also hold MA in Public Affairs from Princeton University, an MA in Political Science/International Relations concentration from the University of Chicago, and an MS in City & Regional Planning from The Ohio State University's College of engineering (with minor minor in Public Policy and Management from John Glenn College). I earned my BA in Political Science from the University of Texas San Antonio. 
+</p>
 
+<p> 
 My research addresses pressing challenging of global security in the nucelear era. My work builds on this multidisciplinary foundation by integrating international realtions theory, security studies, formal modelling, computational socail science, and qualitative historical analysis. However, nuclear politics transcends disciplinary boundaries, requiring insights from political science, strategic studies, international law, and planning. In my dissertation I use mixed methods, drawing on archival analysis, case studies, game-theoretic methods, and statistical analysis to study coercion, deterence, and crisis bargaining in international security. 
+</p>
 
+<p>
 My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can both reduce the risks of nuclear use and strengthen extended deterrence commitments for non-nuclear allies. Beyond my academic research, I pursue avocations such as running, cycling, and diving, and I have a long history with soccer—both as a player and as a volunteer coach for recreational sports.
 
     </p>
