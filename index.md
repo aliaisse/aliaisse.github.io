@@ -12,6 +12,7 @@ layout: default
 .hero .name{font-size:2rem;font-weight:700;margin:0}
 .hero .tagline{margin:.25rem 0;color:#555}
 .site-footer .p-name { display: none !important; }
+.site-footer .copyright { display: none !important; }
   
 /* second row: content left, sidebar right */
 .grid{display:grid;grid-template-columns:1fr 260px;gap:1.5rem;margin-top:.5rem}
