@@ -162,7 +162,6 @@ layout: default
     <img src="{{ '/assets/headshot.jpg' | relative_url }}" alt="Ali A. Isse">
 
     <div class="link-row">
-      <a class="btn" href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a>
       <a class="btn" href="https://twitter.com/IsseMehdi">Twitter</a>
       <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/">LinkedIn</a>
       <a class="btn" href="mailto:ai9431@princeton.edu">
