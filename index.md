@@ -22,7 +22,7 @@ layout: default
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* sticky, centered header with cap icon — now deep teal w/ white text */
+  /* sticky header — teal bg, white text, NAME left / MENU right */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -34,28 +34,45 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;   /* name left, menu right */
     align-items: center;
     gap: .6rem;
   }
   .site-header .site-title{
-    font-weight: 800;
-    font-size: 1.1rem;
-    display:flex; align-items:center; gap:.4rem;
-    color:#fff !important;                 /* name in white */
+    color:#fff !important;
+    font-weight: 900;
+    font-size: 1.05rem;
+    display:flex; align-items:center; gap:.5rem;
+    text-transform: uppercase;         /* ALL CAPS */
+    letter-spacing: .06em;
   }
   .site-header .site-title::before{
     content:"🎓";
     font-size: 1.2rem;
   }
+
+  /* menu links on the right */
   .site-header .site-nav .page-link{
-    color:#fff !important;                 /* menu in white */
+    color:#fff !important;
     text-decoration:none;
-    font-weight:700;
+    font-weight: 800;
+    text-transform: uppercase;         /* ALL CAPS */
+    letter-spacing: .06em;
+    margin-left: 14px;
+    padding-bottom: 4px;               /* space for hover underline */
+    border-bottom: 2px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
   }
   .site-header .site-nav .page-link:hover,
   .site-header .site-nav .page-link:focus{
     color: var(--header-link-hover) !important;
+    border-bottom-color: var(--brand); /* maroon accent on hover */
+  }
+
+  /* mobile tweaks */
+  @media (max-width: 640px){
+    .site-header .site-title{ font-size: .98rem; letter-spacing: .04em; }
+    .site-header .site-nav .page-link{ margin-left: 10px; letter-spacing:.04em; }
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
@@ -81,7 +98,7 @@ layout: default
     margin-top: 6px;
   }
 
-  /* horizontal maroon buttons (solid boxes) */
+  /* solid maroon buttons */
   .link-row{
     display:flex; flex-wrap:wrap;
     justify-content:center;
@@ -109,6 +126,8 @@ layout: default
     margin:1rem 0;
     color: var(--brand);
     font-weight: 800;                 /* bold heading */
+    text-transform: uppercase;        /* matches the menu style */
+    letter-spacing:.04em;
   }
   .welcome p{
     line-height:1.7; margin:.9rem 0; color:#222;
@@ -159,7 +178,7 @@ layout: default
       <h1>Welcome!</h1>
 
       <p>
-        I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
+        I am Mehdi (Ali Isse), a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
       </p>
 
       <p>
