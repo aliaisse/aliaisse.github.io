@@ -3,35 +3,35 @@ title: "Home"
 layout: default
 ---
 
-<!-- Princeton/SPIA theme: fonts -->
+<!-- Princeton theme: fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700;800;900&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
     --header-h: 64px;
 
-    /* Princeton brand */
-    --brand: #E87722;      /* Princeton Orange (PMS 158) */
-    --brand-dark: #C9631D; /* darker hover of orange */
-    --ink: #111111;        /* body text */
+    /* Princeton brand (Orange, not yellow) */
+    --brand: #E87722;      /* Princeton Orange */
+    --brand-dark: #C9631D; /* darker hover */
+    --ink: #111111;
     --card-bg: #ffffff;
 
-    /* Header + footer: black */
+    /* Header + footer: true black */
     --header-black: #000000;
     --footer-black: #000000;
   }
 
-  /* global background (Princeton sites are predominantly white) */
+  /* Page basics */
   body{
     background: #ffffff;
     color: var(--ink);
     font: 16px/1.65 "Crimson Text", Georgia, "Times New Roman", Times, serif;
   }
 
-  /* hide Minima's default footer */
+  /* Hide Minima footer */
   .site-footer{ display:none !important; }
 
-  /* ===== Sticky header — black bg, SPIA logo left, name left pill, menu right ===== */
+  /* ===== Sticky header — black bar ===== */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -43,62 +43,52 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* NAME left / MENU right */
     align-items: center;
     gap: 12px;
   }
 
-  /* left cluster: SPIA logo + name pill */
-  .brand-wrap{
-    display:flex; align-items:center; gap:10px;
-  }
-  .spia-logo{
-    height: 28px; width:auto;
-    display:block;
-  }
+  /* ===== NAME (left): text-only in Princeton Orange ===== */
   .site-header .site-title{
-    display:flex; align-items:center; gap:.5rem;
+    color: var(--brand) !important;
+    font-weight: 900;
+    font-size: 1.18rem;              /* a bit larger than menu */
     text-transform: uppercase;
     letter-spacing: .06em;
-    font-weight: 900;
-    font-size: 1.18rem;             /* a bit larger than menu */
-    background: var(--brand);
-    color:#fff !important;
-    padding: 6px 12px;
-    border-radius: 999px;
     margin: 0;
+    padding: 0;
+    background: transparent;         /* ensure no pill */
+    border-radius: 0;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
-  .site-header .site-title::before{
-    content:"🎓";
-    font-size: 1.2rem;
-  }
+  /* remove any icon that might precede the title */
+  .site-header .site-title::before{ content: none !important; }
 
-  /* right: menu as Princeton-orange pills */
+  /* ===== MENU (right): text-only in Princeton Orange ===== */
   .site-header .site-nav .page-link{
-    display:inline-block;
-    background: var(--brand);
-    color:#ffffff !important;
-    text-decoration:none;
+    color: var(--brand) !important;
+    text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .06em;
-    margin-left: 10px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    transition: background .2s ease, transform .1s ease;
+    margin-left: 16px;
+    padding: 0 0 3px 0;              /* room for underline */
+    border-bottom: 2px solid transparent;
+    transition: border-color .2s ease, color .2s ease;
+    background: transparent;         /* ensure no pill */
+    border-radius: 0;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .site-header .site-nav .page-link:hover,
   .site-header .site-nav .page-link:focus{
-    background: var(--brand-dark);
-    transform: translateY(-1px);
+    color: var(--brand) !important;           /* keep orange */
+    border-bottom-color: var(--brand-dark);   /* subtle darker-orange underline */
   }
 
-  /* mobile tweaks */
+  /* Mobile tweaks */
   @media (max-width: 640px){
-    .site-header .site-title{ font-size: 1.06rem; letter-spacing: .04em; padding:6px 10px; }
-    .site-header .site-nav .page-link{ margin-left: 8px; padding: 6px 9px; letter-spacing:.04em; }
+    .site-header .site-title{ font-size: 1.06rem; letter-spacing: .04em; }
+    .site-header .site-nav .page-link{ margin-left: 12px; letter-spacing:.04em; }
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
@@ -114,7 +104,7 @@ layout: default
     padding: 28px 28px 34px;
   }
 
-  /* hero */
+  /* Hero */
   .hero{ text-align:center; }
   .hero img{
     width:160px; height:160px;       /* shows full face */
@@ -124,37 +114,25 @@ layout: default
     margin-top: 6px;
   }
 
-  /* solid Princeton-orange buttons */
+  /* Princeton-orange buttons */
   .link-row{
-    display:flex; flex-wrap:wrap;
-    justify-content:center;
-    gap:.6rem;
-    margin:1rem 0 2rem;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:.6rem; margin:1rem 0 2rem;
   }
   .btn{
-    padding:.55rem 1rem;
-    border-radius:8px;
-    font-size:.92rem;
-    text-decoration:none;
-    display:inline-flex; align-items:center; gap:.5rem;
-    border: none;
-    background: var(--brand);
-    color:#fff !important;
+    padding:.55rem 1rem; border-radius:8px; font-size:.92rem;
+    text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+    border: none; background: var(--brand); color:#fff !important;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .btn:hover{ background: var(--brand-dark); }
   .btn svg{ width:16px; height:16px; }
 
-  /* welcome text */
+  /* Welcome text */
   .welcome{ text-align:left; margin: 0 auto; max-width: 760px; }
   .welcome h1{
-    text-align:center;
-    font-size:2rem;
-    margin:1rem 0;
-    color: var(--brand);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing:.04em;
+    text-align:center; font-size:2rem; margin:1rem 0;
+    color: var(--brand); font-weight: 800; text-transform: uppercase; letter-spacing:.04em;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .welcome p{
@@ -164,27 +142,16 @@ layout: default
 
   /* ORCID button */
   .orcid-btn{
-    display:inline-block;
-    background: var(--brand);
-    color:#fff !important;
-    padding:.7rem 1.25rem;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:700;
-    margin-top:1.2rem;
+    display:inline-block; background: var(--brand); color:#fff !important;
+    padding:.7rem 1.25rem; border-radius:8px; text-decoration:none; font-weight:700; margin-top:1.2rem;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .orcid-btn:hover{ background: var(--brand-dark); }
 
-  /* ===== Custom footer — black bar ===== */
+  /* ===== Custom footer — black bar with Princeton-orange text ===== */
   .custom-footer{
-    width:100%;
-    background: var(--footer-black);
-    color:#ffffff;
-    text-align:center;
-    padding: 12px 10px;
-    margin: 18px 0 0;
-    font-size:.9rem;
+    width:100%; background: var(--footer-black); color: var(--brand);
+    text-align:center; padding: 12px 10px; margin: 18px 0 0; font-size:.9rem;
     border-top: 1px solid rgba(255,255,255,.08);
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
@@ -241,27 +208,3 @@ layout: default
 <div class="custom-footer">
   @2025 aaisse · Last updated: October 2, 2025
 </div>
-
-<!-- Header left cluster (logo + name) -->
-<script>
-  // Wrap existing title with logo for layout without editing the theme layout file:
-  (function(){
-    const wrapper = document.querySelector('.site-header .wrapper');
-    if(!wrapper) return;
-    const title = wrapper.querySelector('.site-title');
-    if(!title) return;
-
-    const brandWrap = document.createElement('div');
-    brandWrap.className = 'brand-wrap';
-
-    // Add SPIA logo (place your file at /assets/spia-logo.svg)
-    const logo = document.createElement('img');
-    logo.className = 'spia-logo';
-    logo.alt = 'Princeton SPIA';
-    logo.src = "{{ '/assets/spia-logo.svg' | relative_url }}";
-
-    wrapper.insertBefore(brandWrap, title);
-    brandWrap.appendChild(logo);
-    brandWrap.appendChild(title);
-  })();
-</script>
