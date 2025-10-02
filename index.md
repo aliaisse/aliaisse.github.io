@@ -10,9 +10,9 @@ layout: default
     --brand-dark: #5c0000;
     --card-bg: #ffffff;
 
-    /* Header color: dark charcoal (swap to #000 for true black if you prefer) */
-    --header-dark: #111827;  /* Tailwind "gray-900"-ish */
-    /* --header-dark: #000000; */
+    /* Header + footer: real black */
+    --header-black: #000000;
+    --footer-black: #000000;
   }
 
   /* global background */
@@ -21,38 +21,41 @@ layout: default
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* sticky header — dark charcoal bg */
+  /* ===== Sticky header — black bg ===== */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
     height: var(--header-h);
     z-index: 9999;
-    background: var(--header-dark) !important;
-    border-bottom: 1px solid rgba(0,0,0,.25);
+    background: var(--header-black) !important;
+    border-bottom: 1px solid rgba(255,255,255,.08);
   }
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: space-between;   /* NAME left / MENU right */
+    justify-content: space-between;      /* NAME left / MENU right */
     align-items: center;
     gap: .6rem;
   }
 
-  /* NAME: white on charcoal for max contrast (all caps, bold) */
+  /* ===== NAME (left): maroon pill, white text, bigger ===== */
   .site-header .site-title{
-    color: #ffffff !important;        /* change to var(--brand) for maroon text if you want */
-    font-weight: 900;
-    font-size: 1.05rem;
     display:flex; align-items:center; gap:.5rem;
     text-transform: uppercase;
     letter-spacing: .06em;
+    font-weight: 900;
+    font-size: 1.18rem;                  /* slightly larger than menu */
+    background: var(--brand);
+    color:#fff !important;
+    padding: 6px 12px;
+    border-radius: 999px;
   }
   .site-header .site-title::before{
     content:"🎓";
     font-size: 1.2rem;
   }
 
-  /* MENU: maroon pill background, white text, all caps */
+  /* ===== MENU (right): maroon pills, all caps ===== */
   .site-header .site-nav .page-link{
     display:inline-block;
     background: var(--brand);
@@ -74,14 +77,14 @@ layout: default
 
   /* mobile tweaks */
   @media (max-width: 640px){
-    .site-header .site-title{ font-size: .98rem; letter-spacing: .04em; }
+    .site-header .site-title{ font-size: 1.06rem; letter-spacing: .04em; padding:6px 10px; }
     .site-header .site-nav .page-link{ margin-left: 8px; padding: 6px 9px; letter-spacing:.04em; }
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
   html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 8px); }
 
-  /* white content card on maroon background */
+  /* ===== White content card on maroon background ===== */
   .card{
     max-width: 820px;
     margin: 24px auto 0;
@@ -150,13 +153,16 @@ layout: default
   }
   .orcid-btn:hover{ background: var(--brand-dark); }
 
-  /* custom footer */
+  /* ===== Custom footer — black bar ===== */
   .custom-footer{
-    max-width:820px;
-    margin:18px auto 34px;
+    width:100%;
+    background: var(--footer-black);
+    color:#ffffff;
     text-align:center;
-    color:#f7eaea;
+    padding: 12px 10px;
+    margin: 18px 0 0;                 /* sit flush at bottom spacing */
     font-size:.9rem;
+    border-top: 1px solid rgba(255,255,255,.08);
   }
 </style>
 
@@ -178,10 +184,10 @@ layout: default
     </div>
 
     <div class="welcome">
-      <h1>Welcome to my website!</h1>
+      <h1>Welcome!</h1>
 
       <p>
-        I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
+        I am Mehdi! (Ali Isse) a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
       </p>
 
       <p>
@@ -192,9 +198,9 @@ layout: default
         My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies.
       </p>
 
-      <p>
-        I hold MA in Public Affairs from Princeton University, an MA in Political Science from the University of Chicago as a Maroon Scholar, an MS in City and Regional Planning with <em>Distinction<em> from The Ohio State University, and a BA in Political Science from the University of Texas San Antonio where I participated in Model United Stations and other distinguished academic programs. For more information about my research, teaching, or service, please do not hesitate to contact me
-      </p>
+     <p> I hold an MA in Public Affairs from Princeton University; an MA in Political Science from the University of Chicago as a Maroon Scholar; an MS in City and Regional Planning with <em>Distinction</em> from The Ohio State University; and a BA in Political Science from the University of Texas San Antonio, where I participated in Model United Nations and other distinguished academic programs.</p>
+     
+     <p> For more information about my research, teaching, or service, please do not hesitate to contact me.</p>
 
       <p style="text-align:center;">
         <a class="orcid-btn" href="https://orcid.org/YOUR-ORCID">Link to ORCID Profile</a>
@@ -203,7 +209,7 @@ layout: default
   </div>
 </div>
 
-<!-- custom minimal footer -->
+<!-- custom black footer -->
 <div class="custom-footer">
   @2025 aaisse · Last updated: October 2, 2025
 </div>
