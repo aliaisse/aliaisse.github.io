@@ -136,6 +136,5 @@ My work contributes to understanding the strategic, political, and normative dim
       <li>Sep 2025 — Presented <em>Windows & Latitude</em> at [Conference].</li>
     </ul>
     -->
-  </main>
-</div>
+ 
 
