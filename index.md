@@ -12,8 +12,6 @@ layout: default
 
     /* Header “midnight teal / deep teal blue” */
     --header-teal: #004E59;
-    --header-teal-dark: #003A42;
-    --header-link-hover: #E5F3F4;   /* very light teal for hover text */
   }
 
   /* global background */
@@ -22,7 +20,7 @@ layout: default
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* sticky header — teal bg, white text, NAME left / MENU right */
+  /* sticky header — teal bg */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -34,16 +32,18 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: space-between;   /* name left, menu right */
+    justify-content: space-between;   /* NAME left / MENU right */
     align-items: center;
     gap: .6rem;
   }
+
+  /* NAME: bold maroon, all caps */
   .site-header .site-title{
-    color:#fff !important;
+    color: var(--brand) !important;
     font-weight: 900;
     font-size: 1.05rem;
     display:flex; align-items:center; gap:.5rem;
-    text-transform: uppercase;         /* ALL CAPS */
+    text-transform: uppercase;
     letter-spacing: .06em;
   }
   .site-header .site-title::before{
@@ -51,28 +51,30 @@ layout: default
     font-size: 1.2rem;
   }
 
-  /* menu links on the right */
+  /* MENU: maroon pill background, white text, all caps */
   .site-header .site-nav .page-link{
-    color:#fff !important;
+    display:inline-block;
+    background: var(--brand);
+    color:#ffffff !important;
     text-decoration:none;
     font-weight: 800;
-    text-transform: uppercase;         /* ALL CAPS */
+    text-transform: uppercase;
     letter-spacing: .06em;
-    margin-left: 14px;
-    padding-bottom: 4px;               /* space for hover underline */
-    border-bottom: 2px solid transparent;
-    transition: color .2s ease, border-color .2s ease;
+    margin-left: 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background .2s ease, transform .1s ease;
   }
   .site-header .site-nav .page-link:hover,
   .site-header .site-nav .page-link:focus{
-    color: var(--header-link-hover) !important;
-    border-bottom-color: var(--brand); /* maroon accent on hover */
+    background: var(--brand-dark);
+    transform: translateY(-1px);
   }
 
   /* mobile tweaks */
   @media (max-width: 640px){
     .site-header .site-title{ font-size: .98rem; letter-spacing: .04em; }
-    .site-header .site-nav .page-link{ margin-left: 10px; letter-spacing:.04em; }
+    .site-header .site-nav .page-link{ margin-left: 8px; padding: 6px 9px; letter-spacing:.04em; }
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
@@ -91,7 +93,7 @@ layout: default
   /* hero */
   .hero{ text-align:center; }
   .hero img{
-    width:160px; height:160px;       /* zoomed out to show full face */
+    width:160px; height:160px;
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.12);
     object-fit:cover;
@@ -125,8 +127,8 @@ layout: default
     font-size:2rem;
     margin:1rem 0;
     color: var(--brand);
-    font-weight: 800;                 /* bold heading */
-    text-transform: uppercase;        /* matches the menu style */
+    font-weight: 800;
+    text-transform: uppercase;
     letter-spacing:.04em;
   }
   .welcome p{
@@ -175,10 +177,10 @@ layout: default
     </div>
 
     <div class="welcome">
-      <h1>Welcome!</h1>
+      <h1>Welcome to my website!</h1>
 
       <p>
-        I am Mehdi (Ali Isse), a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
+        I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
       </p>
 
       <p>
@@ -190,7 +192,7 @@ layout: default
       </p>
 
       <p>
-        I earned my BA in Political Science from the University of Texas San Antonio, an MS in City and Regional Planning from The Ohio State University, an MA in Political Science (International Relations) from The University of Chicago, and an MA in Public Affairs from Princeton University.
+        I hold MA in Public Affairs from Princeton University, an MA in Political Science from the University of Chicago as a Maroon Scholar, an MS in City and Regional Planning with Highest Distinction from The Ohio State University, and a BA in Political Science from the University of Texas San Antonio where I participated in Model United Stations and other distinguished academic programs. For more information about my research, teaching, or sercive, please do not hesitate to contact me.
       </p>
 
       <p style="text-align:center;">
