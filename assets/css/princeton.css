@@ -1,0 +1,93 @@
+:root{
+  --header-h: 64px;
+
+  /* Princeton Orange (not yellow) */
+  --brand: #E87722;
+  --brand-dark: #C9631D;
+
+  --ink: #111111;
+  --black: #000000;
+}
+
+/* Base typography (body serif, headings sans) */
+body{
+  color: var(--ink);
+  font: 16px/1.65 "Crimson Text", Georgia, "Times New Roman", Times, serif;
+}
+h1, h2, h3{
+  font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+  color: var(--brand);
+  font-weight: 800;
+}
+h1{
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+/* Sticky black header across all pages */
+.site-header{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 9999;
+  background: var(--black) !important;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.site-header .wrapper{
+  min-height: var(--header-h);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+/* Title & menu in Princeton orange (text-only) */
+.site-title{
+  color: var(--brand) !important;
+  font-weight: 900;
+  font-size: 1.18rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0;
+}
+.site-title::before{ content: none !important; }
+
+.site-nav .page-link{
+  color: var(--brand) !important;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-left: 16px;
+  padding-bottom: 3px;               /* underline room */
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s ease, color .2s ease;
+}
+.site-nav .page-link:hover,
+.site-nav .page-link:focus{
+  border-bottom-color: var(--brand-dark);
+}
+
+/* Keep content from hiding under sticky header */
+.page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
+html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 8px); }
+
+/* Black footer styled to match */
+.site-footer{
+  background: var(--black);
+  color: var(--brand);
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.site-footer a{ color: var(--brand); }
+.site-footer .wrapper{ padding-top: 12px; padding-bottom: 12px; }
+
+/* Links inside content */
+a{ color: var(--brand); }
+a:hover{ color: var(--brand-dark); }
+
+/* Optional: make tables and blockquotes match the theme a bit */
+blockquote{
+  border-left: 4px solid var(--brand);
+  padding-left: 12px;
+  color: #333;
+}
+table th{ background: #fff1e8; } /* subtle orange tint */
