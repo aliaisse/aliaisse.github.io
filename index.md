@@ -72,7 +72,7 @@ layout: default
       <a class="linkbtn" href="https://x.com/IsseMehdi">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H15l-3.1 4.2L8.1 2H2l7.1 9.1L2.3 22H6l3.9-5.3L14.1 22H22l-7.6-9.8L21.7 2h-2.8zm-4.1 16.6-4.4-5.7-4.6 6.1h-.3l5.8-7.7L6.1 3.4h2.8l4.1 5.3 4.2-5.3h.3l-5.5 7.3 5.5 7.6h-2.7z"/></svg>
         X (Twitter)
-      </a>      </a>
+     </a>
       <a class="linkbtn" href="https://scholar.google.com/citations?user=YOURID">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 6-9 6-9-6 9-6z"/><path d="M7 13v5l5 3 5-3v-5"/></svg>
         Google Scholar
