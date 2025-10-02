@@ -54,27 +54,6 @@ layout: default
       Princeton, New Jersey
     </div>
 
-    <div class="section-title">Quick links</div>
-    <nav class="linklist">
-      <a class="linkbtn" href="/CV/">
-        <!-- document icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
-        CV
-      </a>
-      <a class="linkbtn" href="/Research/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 6-9 6-9-6 9-6z"/><path d="M7 13v5l5 3 5-3v-5"/></svg>
-        Research
-      </a>
-      <a class="linkbtn" href="/Teaching/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22v-7a8 8 0 0 1 16 0v7"/><path d="M12 2v5"/></svg>
-        Teaching
-      </a>
-      <a class="linkbtn" href="/Talks/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/></svg>
-        Talks
-      </a>
-    </nav>
-
     <div class="section-title">Links &amp; profiles</div>
     <nav class="linklist">
       <a class="linkbtn" href="mailto:ai9431@princeton.edu">
