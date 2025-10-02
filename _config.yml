@@ -2,7 +2,7 @@ title: "Ali A. Isse"
 theme: minima
 
 header_pages:
-  - About.md
   - Research.md
+  - Talks.md
   - Teaching.md
   - CV.md
