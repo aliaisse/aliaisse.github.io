@@ -186,7 +186,7 @@ layout: default
       </p>
 
       <p>
-        I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my cmprehensive exams with <em> Highest Distinction</em>; and a B.A. in Political Science from the University of Texas San Antonio, where I participated in Model United Nations and other distinguished academic programs.
+        I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my comprehensive exams with <em> Highest Distinction</em>; and a B.A. in Political Science from the University of Texas San Antonio. 
       </p>
 
       <p>
