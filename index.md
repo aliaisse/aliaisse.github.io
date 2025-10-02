@@ -6,9 +6,14 @@ layout: default
 <style>
   :root{
     --header-h: 64px;
-    --brand: #800000;     /* UChicago maroon */
+    --brand: #800000;        /* UChicago maroon */
     --brand-dark: #5c0000;
     --card-bg: #ffffff;
+
+    /* Header “midnight teal / deep teal blue” */
+    --header-teal: #004E59;
+    --header-teal-dark: #003A42;
+    --header-link-hover: #E5F3F4;   /* very light teal for hover text */
   }
 
   /* global background */
@@ -17,15 +22,14 @@ layout: default
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* sticky, centered header with cap icon */
+  /* sticky, centered header with cap icon — now deep teal w/ white text */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
     height: var(--header-h);
     z-index: 9999;
-    background: #ffffffcc !important;
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,.35);
+    background: var(--header-teal) !important;
+    border-bottom: 1px solid rgba(0,0,0,.25);
   }
   .site-header .wrapper{
     min-height: var(--header-h);
@@ -35,23 +39,23 @@ layout: default
     gap: .6rem;
   }
   .site-header .site-title{
-    font-weight: 800;               /* bolder name */
+    font-weight: 800;
     font-size: 1.1rem;
     display:flex; align-items:center; gap:.4rem;
-    color: var(--brand) !important;
+    color:#fff !important;                 /* name in white */
   }
   .site-header .site-title::before{
     content:"🎓";
     font-size: 1.2rem;
   }
-  .site-header .site-nav .page-link {
-    color: var(--brand) !important;
-    text-decoration: none;
-    font-weight: 700;               /* bold menu */
+  .site-header .site-nav .page-link{
+    color:#fff !important;                 /* menu in white */
+    text-decoration:none;
+    font-weight:700;
   }
   .site-header .site-nav .page-link:hover,
-  .site-header .site-nav .page-link:focus {
-    color: var(--brand-dark) !important;
+  .site-header .site-nav .page-link:focus{
+    color: var(--header-link-hover) !important;
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
@@ -70,14 +74,14 @@ layout: default
   /* hero */
   .hero{ text-align:center; }
   .hero img{
-    width:160px; height:160px;       /* zoomed out */
+    width:160px; height:160px;       /* zoomed out to show full face */
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.12);
     object-fit:cover;
     margin-top: 6px;
   }
 
-  /* horizontal button row — solid maroon boxes */
+  /* horizontal maroon buttons (solid boxes) */
   .link-row{
     display:flex; flex-wrap:wrap;
     justify-content:center;
@@ -111,7 +115,7 @@ layout: default
     text-align: justify; text-justify: inter-word; hyphens:auto;
   }
 
-  /* ORCID button (same maroon style, a bit wider) */
+  /* ORCID button */
   .orcid-btn{
     display:inline-block;
     background: var(--brand);
@@ -152,7 +156,7 @@ layout: default
     </div>
 
     <div class="welcome">
-      <h1>Welcome to my website!</h1>
+      <h1>Welcome!</h1>
 
       <p>
         I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
@@ -167,7 +171,7 @@ layout: default
       </p>
 
       <p>
-        I earned my BA in Political Science from the University of Texas San Antonio, an MS in City and Regional Planning from The Ohio State University, an MA in Political Science (International Relations) from the University of Chicago, and an MA in Public Affairs from Princeton University.
+        I earned my BA in Political Science from the University of Texas San Antonio, an MS in City and Regional Planning from The Ohio State University, an MA in Political Science (International Relations) from The University of Chicago, and an MA in Public Affairs from Princeton University.
       </p>
 
       <p style="text-align:center;">
