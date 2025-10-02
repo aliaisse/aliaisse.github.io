@@ -61,7 +61,6 @@ layout: default
     border-radius: 0;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
-  /* remove any icon that might precede the title */
   .site-header .site-title::before{ content: none !important; }
 
   /* ===== MENU (right): text-only in Princeton Orange ===== */
@@ -75,7 +74,7 @@ layout: default
     padding: 0 0 3px 0;              /* room for underline */
     border-bottom: 2px solid transparent;
     transition: border-color .2s ease, color .2s ease;
-    background: transparent;         /* ensure no pill */
+    background: transparent;
     border-radius: 0;
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
@@ -114,10 +113,20 @@ layout: default
     margin-top: 6px;
   }
 
+  /* NEW: tagline under photo, each on its own line */
+  .tagline{
+    margin: 10px auto 18px;
+    color:#444;
+    line-height: 1.35;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    max-width: 760px;
+  }
+
   /* Princeton-orange buttons */
   .link-row{
     display:flex; flex-wrap:wrap; justify-content:center;
-    gap:.6rem; margin:1rem 0 2rem;
+    gap:.6rem; margin:1rem 0 0;  /* now at bottom of intro */
   }
   .btn{
     padding:.55rem 1rem; border-radius:8px; font-size:.92rem;
@@ -140,14 +149,6 @@ layout: default
     text-align: justify; text-justify: inter-word; hyphens:auto;
   }
 
-  /* ORCID button */
-  .orcid-btn{
-    display:inline-block; background: var(--brand); color:#fff !important;
-    padding:.7rem 1.25rem; border-radius:8px; text-decoration:none; font-weight:700; margin-top:1.2rem;
-    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-  }
-  .orcid-btn:hover{ background: var(--brand-dark); }
-
   /* ===== Custom footer — black bar with Princeton-orange text ===== */
   .custom-footer{
     width:100%; background: var(--footer-black); color: var(--brand);
@@ -155,22 +156,18 @@ layout: default
     border-top: 1px solid rgba(255,255,255,.08);
     font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
+  .custom-footer .affils{ margin-bottom: 4px; }
 </style>
 
 <div class="card">
   <div class="hero">
     <img src="{{ '/assets/headshot.jpg' | relative_url }}" alt="Ali A. Isse">
 
-    <div class="link-row">
-      <a class="btn" href="https://twitter.com/IsseMehdi">Twitter</a>
-      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/">LinkedIn</a>
-      <a class="btn" href="mailto:ai9431@princeton.edu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-          <path d="M3 7l9 6 9-6"></path>
-        </svg>
-        <span>ai9431@princeton.edu</span>
-      </a>
+    <!-- Tagline (each on a separate line) -->
+    <div class="tagline">
+      <div>Ph.D. Candidate in Security Studies</div>
+      <div>School of Public &amp; International Affair, Princeton University</div>
+      <div>Robertson Hall Princeton NJ</div>
     </div>
 
     <div class="welcome">
@@ -196,14 +193,26 @@ layout: default
         For more information about my research, teaching, or service, please do not hesitate to contact me.
       </p>
 
-      <p style="text-align:center;">
-        <a class="orcid-btn" href="https://orcid.org/YOUR-ORCID">Link to ORCID Profile</a>
-      </p>
+      <!-- MOVED: links row to the bottom, in one line -->
+      <div class="link-row">
+        <a class="btn" href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a>
+        <a class="btn" href="https://twitter.com/IsseMehdi">Twitter</a>
+        <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/">LinkedIn</a>
+        <a class="btn" href="mailto:ai9431@princeton.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
+          </svg>
+          <span>ai9431@princeton.edu</span>
+        </a>
+        <a class="btn" href="https://orcid.org/YOUR-ORCID">ORCID Profile</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- custom black footer -->
 <div class="custom-footer">
-  @2025 aaisse · Last updated: October 2, 2025
+  <div class="affils">@Princeton · @UChicago · @OhioState · @UT San Antonio</div>
+  <div>@2025 aaisse · Last updated: October 2, 2025</div>
 </div>
