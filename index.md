@@ -164,11 +164,12 @@ layout: default
     <img src="{{ '/assets/headshot.jpg' | relative_url }}" alt="Ali A. Isse">
 
     <!-- Tagline (each on a separate line) -->
-    <div class="tagline">
-      <div>Ph.D. Candidate in Security Studies</div>
-      <div>School of Public &amp; International Affairs, Princeton University</div>
-      <div>Robertson Hall, Princeton, NJ</div>
-    </div>
+   <!-- Tagline (each on a separate line) -->
+<div class="tagline" style="color:#E87722">
+  <div>Ph.D. Candidate in Security Studies</div>
+  <div>School of Public &amp; International Affairs, Princeton University</div>
+  <div>Robertson Hall, Princeton, NJ</div>
+</div>
 
     <div class="welcome">
       <h1>Welcome!</h1>
