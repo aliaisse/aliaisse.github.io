@@ -54,8 +54,7 @@ layout: default
       Princeton, New Jersey.
     </div>
 
-
-    <div class="section-title">Links &amp; profiles</div>
+    <a class="section-title">Links &amp; profiles</div>
     <nav class="linklist">
       <a class="linkbtn" href="mailto:ai9431@princeton.edu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M22 6l-10 7L2 6"/></svg>
@@ -79,7 +78,8 @@ layout: default
       </a>
       <a class="linkbtn" href="https://orcid.org/YOUR-ORCID">
         <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity=".15"></circle><rect x="9" y="7" width="2" height="10" rx="1"></rect><path d="M14 9a3 3 0 1 1 0 6h-1V9h1z"></path></svg>
-        ORCID
+        ORCID 
+        </a>
   
     </nav>
   </aside>
