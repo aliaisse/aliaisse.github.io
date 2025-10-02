@@ -3,25 +3,35 @@ title: "Home"
 layout: default
 ---
 
+<!-- Princeton/SPIA theme: fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700;800;900&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --header-h: 64px;
-    --brand: #800000;        /* UChicago maroon */
-    --brand-dark: #5c0000;
+
+    /* Princeton brand */
+    --brand: #E87722;      /* Princeton Orange (PMS 158) */
+    --brand-dark: #C9631D; /* darker hover of orange */
+    --ink: #111111;        /* body text */
     --card-bg: #ffffff;
 
-    /* Header + footer: real black */
+    /* Header + footer: black */
     --header-black: #000000;
     --footer-black: #000000;
   }
 
-  /* global background */
-  body{ background: var(--brand); }
+  /* global background (Princeton sites are predominantly white) */
+  body{
+    background: #ffffff;
+    color: var(--ink);
+    font: 16px/1.65 "Crimson Text", Georgia, "Times New Roman", Times, serif;
+  }
 
   /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
-  /* ===== Sticky header — black bg ===== */
+  /* ===== Sticky header — black bg, SPIA logo left, name left pill, menu right ===== */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -33,29 +43,38 @@ layout: default
   .site-header .wrapper{
     min-height: var(--header-h);
     display: flex;
-    justify-content: space-between;      /* NAME left / MENU right */
+    justify-content: space-between;
     align-items: center;
-    gap: .6rem;
+    gap: 12px;
   }
 
-  /* ===== NAME (left): maroon pill, white text, bigger ===== */
+  /* left cluster: SPIA logo + name pill */
+  .brand-wrap{
+    display:flex; align-items:center; gap:10px;
+  }
+  .spia-logo{
+    height: 28px; width:auto;
+    display:block;
+  }
   .site-header .site-title{
     display:flex; align-items:center; gap:.5rem;
     text-transform: uppercase;
     letter-spacing: .06em;
     font-weight: 900;
-    font-size: 1.18rem;                  /* slightly larger than menu */
+    font-size: 1.18rem;             /* a bit larger than menu */
     background: var(--brand);
     color:#fff !important;
     padding: 6px 12px;
     border-radius: 999px;
+    margin: 0;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .site-header .site-title::before{
     content:"🎓";
     font-size: 1.2rem;
   }
 
-  /* ===== MENU (right): maroon pills, all caps ===== */
+  /* right: menu as Princeton-orange pills */
   .site-header .site-nav .page-link{
     display:inline-block;
     background: var(--brand);
@@ -68,6 +87,7 @@ layout: default
     padding: 6px 10px;
     border-radius: 999px;
     transition: background .2s ease, transform .1s ease;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .site-header .site-nav .page-link:hover,
   .site-header .site-nav .page-link:focus{
@@ -84,13 +104,13 @@ layout: default
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
   html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 8px); }
 
-  /* ===== White content card on maroon background ===== */
+  /* ===== White content card ===== */
   .card{
     max-width: 820px;
     margin: 24px auto 0;
     background: var(--card-bg);
     border-radius: 14px;
-    box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    box-shadow: 0 10px 28px rgba(0,0,0,.14);
     padding: 28px 28px 34px;
   }
 
@@ -104,7 +124,7 @@ layout: default
     margin-top: 6px;
   }
 
-  /* solid maroon buttons */
+  /* solid Princeton-orange buttons */
   .link-row{
     display:flex; flex-wrap:wrap;
     justify-content:center;
@@ -120,6 +140,7 @@ layout: default
     border: none;
     background: var(--brand);
     color:#fff !important;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .btn:hover{ background: var(--brand-dark); }
   .btn svg{ width:16px; height:16px; }
@@ -134,9 +155,10 @@ layout: default
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing:.04em;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .welcome p{
-    line-height:1.7; margin:.9rem 0; color:#222;
+    line-height:1.75; margin:.9rem 0; color:#222;
     text-align: justify; text-justify: inter-word; hyphens:auto;
   }
 
@@ -150,6 +172,7 @@ layout: default
     text-decoration:none;
     font-weight:700;
     margin-top:1.2rem;
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
   .orcid-btn:hover{ background: var(--brand-dark); }
 
@@ -160,9 +183,10 @@ layout: default
     color:#ffffff;
     text-align:center;
     padding: 12px 10px;
-    margin: 18px 0 0;                 /* sit flush at bottom spacing */
+    margin: 18px 0 0;
     font-size:.9rem;
     border-top: 1px solid rgba(255,255,255,.08);
+    font-family: "Libre Franklin", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
   }
 </style>
 
@@ -198,9 +222,13 @@ layout: default
         My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies.
       </p>
 
-     <p> I hold an MA in Public Affairs from Princeton University; an MA in Political Science from the University of Chicago as a Maroon Scholar; an MS in City and Regional Planning with <em>Distinction</em> from The Ohio State University; and a BA in Political Science from the University of Texas San Antonio, where I participated in Model United Nations and other distinguished academic programs.</p>
-     
-     <p> For more information about my research, teaching, or service, please do not hesitate to contact me.</p>
+      <p>
+        I hold an MA in Public Affairs from Princeton University; an MA in Political Science from the University of Chicago as a Maroon Scholar; an MS in City and Regional Planning with <em>Distinction</em> from The Ohio State University; and a BA in Political Science from the University of Texas San Antonio, where I participated in Model United Nations and other distinguished academic programs.
+      </p>
+
+      <p>
+        For more information about my research, teaching, or service, please do not hesitate to contact me.
+      </p>
 
       <p style="text-align:center;">
         <a class="orcid-btn" href="https://orcid.org/YOUR-ORCID">Link to ORCID Profile</a>
@@ -213,3 +241,27 @@ layout: default
 <div class="custom-footer">
   @2025 aaisse · Last updated: October 2, 2025
 </div>
+
+<!-- Header left cluster (logo + name) -->
+<script>
+  // Wrap existing title with logo for layout without editing the theme layout file:
+  (function(){
+    const wrapper = document.querySelector('.site-header .wrapper');
+    if(!wrapper) return;
+    const title = wrapper.querySelector('.site-title');
+    if(!title) return;
+
+    const brandWrap = document.createElement('div');
+    brandWrap.className = 'brand-wrap';
+
+    // Add SPIA logo (place your file at /assets/spia-logo.svg)
+    const logo = document.createElement('img');
+    logo.className = 'spia-logo';
+    logo.alt = 'Princeton SPIA';
+    logo.src = "{{ '/assets/spia-logo.svg' | relative_url }}";
+
+    wrapper.insertBefore(brandWrap, title);
+    brandWrap.appendChild(logo);
+    brandWrap.appendChild(title);
+  })();
+</script>
