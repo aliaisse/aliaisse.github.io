@@ -37,8 +37,7 @@ layout: default
       <h2>About me</h2>
       <p>I study coercive statecraft and counterproliferation. My dissertation examines how states choose between sustaining diplomacy, opting for preventive force, or adopting strategic restraint when confronting an advancing nuclear program.</p>
 
-      <p>Short bio here (1–3 sentences): program, methods, and what you’re working on now.</p>
-    </div>
+     
     <div class="col-photo">
       <img src="/assets/headshot.jpg" alt="Ali A. Isse headshot">
     </div>
