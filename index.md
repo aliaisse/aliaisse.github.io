@@ -166,8 +166,8 @@ layout: default
     <!-- Tagline (each on a separate line) -->
     <div class="tagline">
       <div>Ph.D. Candidate in Security Studies</div>
-      <div>School of Public &amp; International Affair, Princeton University</div>
-      <div>Robertson Hall Princeton NJ</div>
+      <div>School of Public &amp; International Affairs, Princeton University</div>
+      <div>Robertson Hall, Princeton, NJ</div>
     </div>
 
     <div class="welcome">
