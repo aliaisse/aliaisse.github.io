@@ -40,7 +40,7 @@ layout: default
   <div class="text">
     <h1 class="name">Ali A. Isse</h1>
     <p class="tagline">
-      Ph.D. Candidate, School of <strong>Public & International Affairs</strong>, <strong>[Princeton University]</strong> — [Princeton, New Jersey]
+      Ph.D. Candidate, School of <strong>Public & International Affairs</strong>, <strong>Princeton University</strong>. Princeton, New Jersey
     </p>
   </div>
 </div>
@@ -61,12 +61,7 @@ layout: default
   <aside class="card">
     <h3>Links &amp; Profiles</h3>
 
-    <!-- quick internal links (optional) -->
-    <div class="btn-row" style="margin-bottom:.5rem">
-      <a class="btn" href="/CV/">CV</a>
-      <a class="btn" href="/Research/">Research</a>
-      <a class="btn" href="/Teaching/">Teaching</a>
-      <a class="btn" href="/Talks/">Talks</a>
+  
     </div>
 
     <!-- external profiles as horizontal buttons with small icons -->
