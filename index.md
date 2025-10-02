@@ -99,13 +99,13 @@ layout: default
         </svg>
       </a>
       <!-- linkedin -->
-      <a class="icon" href="https://www.linkedin.com/in/YOURID" aria-label="LinkedIn" title="LinkedIn">
+      <a class="icon" href="https://www.linkedin.com/in/mehdi-i-28a95683/" aria-label="LinkedIn" title="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM10 9h4v2.2c.56-1.06 1.98-2.2 4.09-2.2 3.27 0 3.91 2.05 3.91 4.72V21h-4v-6.1c0-1.45-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/>
         </svg>
       </a>
       <!-- x / twitter -->
-      <a class="icon" href="https://x.com/YOURHANDLE" aria-label="X (Twitter)" title="X (Twitter)">
+      <a class="icon" href="https://x.com/IsseMehdi" aria-label="X (Twitter)" title="X (Twitter)">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M18.9 2H15l-3.1 4.2L8.1 2H2l7.1 9.1L2.3 22H6l3.9-5.3L14.1 22H22l-7.6-9.8L21.7 2h-2.8zm-4.1 16.6-4.4-5.7-4.6 6.1h-.3l5.8-7.7L6.1 3.4h2.8l4.1 5.3 4.2-5.3h.3l-5.5 7.3 5.5 7.6h-2.7z"/>
         </svg>
@@ -121,11 +121,7 @@ layout: default
       between sustaining diplomacy, selecting preventive force, or adopting strategic restraint when facing
       an advancing nuclear program.
     </p>
-    <p>
-      Add a short bio here (methods, current projects, affiliations). You can expand this area with a
-      brief research summary or a small “News” list.
-    </p>
-
+   
     <!-- optional section examples -->
     <!--
     <h2>News</h2>
