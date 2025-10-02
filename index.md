@@ -11,7 +11,8 @@ layout: default
 .hero .text{flex:1;min-width:260px}
 .hero .name{font-size:2rem;font-weight:700;margin:0}
 .hero .tagline{margin:.25rem 0;color:#555}
-
+.site-footer .p-name { display: none !important; }
+  
 /* second row: content left, sidebar right */
 .grid{display:grid;grid-template-columns:1fr 260px;gap:1.5rem;margin-top:.5rem}
 .card{border:1px solid #e5e5e5;border-radius:10px;padding:1rem}
@@ -40,7 +41,7 @@ layout: default
   <div class="text">
     <h1 class="name">Ali A. Isse</h1>
     <p class="tagline">
-      Ph.D. Candidate, School of <strong>Public & International Affairs</strong>, <strong>Princeton University</strong>. Princeton, New Jersey
+      Ph.D. Candidate, <strong>School of Public & International Affairs</strong>, <strong>Princeton University</strong>. Princeton, New Jersey
     </p>
   </div>
 </div>
