@@ -102,7 +102,6 @@ layout: default
         X (Twitter)
       </a>
     </nav>
-  </aside>
 
   <!-- ========== RIGHT: page content ========== -->
   <main class="content">
@@ -115,4 +114,3 @@ layout: default
    
   </main>
 
-</div>
