@@ -18,7 +18,7 @@ layout: default
 
 <div class="hero">
   <div class="header-name">Ali A. Isse</div>
-  <div class="meta">Doctoral Candidate, Department of [YOUR DEPARTMENT], [YOUR UNIVERSITY] — [CITY, STATE]</div>
+  <div class="meta">PhD Candidate, School of Public and International Affairs, Princeton University — PRINCETON, NJ </div>
 
   <div class="link-row">
   <a href="/CV/">CV</a>
