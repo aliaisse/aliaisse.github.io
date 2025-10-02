@@ -120,13 +120,13 @@ layout: default
 I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science). My research examines how states navigate the challenges of coercive statecraft and counterproliferation within the broader framework of grand strategy, with a particular focus on how and under what conditions nuclear states employ strategies of deterrence, assurance, and reversal to shape the behavior of adversaries and allies<br><br>
 
 <p> 
-My research builds on a multidisciplinary appraoch that integrating international relations theory, security studies, formal modeling, computational socail science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods, drawing on archival research, qualitative case studies, game-theoretic approaches, and statistical analysis to study coercion, deterence, and crisis bargaining in international security. <br><br>
+My research builds on a multidisciplinary appraoch that integrates international relations theory, security studies, formal modeling, computational socail science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods, drawing on archival research, qualitative case studies, game-theoretic approaches, and statistical analysis to study coercion, deterence, and crisis bargaining in international security. <br><br>
 
 <p>
 My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can both reduce the risks of nuclear use and strengthen extended deterrence commitments for non-nuclear allies. Beyond my academic research, I pursue avocations such as running, cycling, and diving, and I have a long history with soccer—both as a player and as a volunteer coach for recreational sports. <br><br>
 
 <p> 
-I hold MA in Public Affairs from Princeton University, an MA in Political Science with a concentration in International Relations from the University of Chicago, and an MS in City & Regional Planning from The Ohio State University's College of engineering (with minor minor in Public Policy and Management from the John Glenn College of public affairs). I earned my BA in Political Science from the University of Texas San Antonio. <br><br>
+I earned my BA in Political Science from the University of Texas at San Antonio, an MS in City and Regional Planning from The Ohio State University’s College of Engineering (with a minor in Public Policy and Management from the John Glenn College), an MA in Political Science with a concentration in International Relations from the University of Chicago, and an MA in Public Affairs from Princeton University. <br><br>
   
  
  
