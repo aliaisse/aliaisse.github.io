@@ -91,3 +91,29 @@ blockquote{
   color: #333;
 }
 table th{ background: #fff1e8; } /* subtle orange tint */
+
+/* --- fix stray white square near the menu --- */
+.nav-trigger{
+  /* keep it functional for the label toggle, but invisible */
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+/* hamburger label: hide on desktop, keep for phones */
+@media (min-width: 641px){
+  label[for="nav-trigger"]{ display: none !important; }
+}
+/* make sure the label has no default box styles */
+label[for="nav-trigger"]{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* --- small mobile polish: a bit more header height & padding --- */
+@media (max-width: 640px){
+  :root{ --header-h: 72px; }              /* was 64px */
+  .site-header .wrapper{ padding: 0 12px; }
+}
