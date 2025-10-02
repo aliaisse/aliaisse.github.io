@@ -117,7 +117,7 @@ layout: default
   <main class="content">
     <h1>About me</h1>
     <p>
-I am a PhD Candidate in Security Studies, International Relations and Strategies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. My research examines how states navigate the challenges of coercive statecraft and counterproliferation within the broader framework of grand strategy, with a particular focus on the conditions under which nuclear powers employ strategies of deterrence, assurance, and reversal to shape the behavior of adversaries and allies.<br><br>
+I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science). My research examines how states navigate the challenges of coercive statecraft and counterproliferation within the broader framework of grand strategy, with a particular focus on how and under what conditions nuclear states employ strategies of deterrence, assurance, and reversal to shape the behavior of adversaries and allies<br><br>
 
 <p> 
 I hold MA in Public Affairs from Princeton University, an MA in Political Science/International Relations concentration from the University of Chicago, and an MS in City & Regional Planning from The Ohio State University's College of engineering (with minor minor in Public Policy and Management from John Glenn College). I earned my BA in Political Science from the University of Texas San Antonio. <br><br>
