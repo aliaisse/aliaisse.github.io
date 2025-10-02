@@ -213,6 +213,6 @@ layout: default
 
 <!-- custom black footer -->
 <div class="custom-footer">
-  <div class="affils">@Princeton · @UChicago · @OhioState · @UT San Antonio</div>
-  <div>@2025 aaisse · Last updated: October 2, 2025</div>
+  <div> @2025 Mehdi Isse | Ph.D. Candidate, Princeton University<div>
+  <div>Last updated: October 2, 2025</div>
 </div>
