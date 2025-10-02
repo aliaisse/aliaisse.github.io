@@ -39,7 +39,7 @@ layout: default
 
      
     <div class="col-photo">
-      <img src="{{ 'headshot.jpg' | relative_url }}" alt="Ali A. Isse" width="180">
+      <img src="{{ 'assests/assets/assets/headshot.jpg' | relative_url }}" alt="Ali A. Isse" width="180">
     </div>
   </div>
 </div>
