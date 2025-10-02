@@ -6,7 +6,7 @@ layout: default
 <style>
   :root{ --header-h: 64px; }
 
-  /* sticky header */
+  /* sticky header (unchanged) */
   .site-header{
     position: fixed !important;
     top: 0; left: 0; right: 0;
@@ -22,20 +22,21 @@ layout: default
     align-items: center;
   }
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
-
   html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 8px); }
 
-  /* center container */
+  /* center column */
   .hero{
     text-align:center;
-    max-width:700px;
-    margin:0 auto;
+    max-width: 760px;
+    margin: 0 auto;
   }
+  /* ↓ lower the photo slightly */
   .hero img{
     width:140px; height:140px;
     border-radius:50%;
     box-shadow:0 2px 10px rgba(0,0,0,.1);
     object-fit:cover;
+    margin-top: 14px;     /* move the photo down a touch */
   }
 
   /* horizontal button row */
@@ -53,12 +54,18 @@ layout: default
     text-decoration:none;
     color:#333;
     background:#fff;
+    display:inline-flex; align-items:center; gap:.45rem;
   }
   .btn:hover{ background:#f6f8ff; border-color:#1a73e8; color:#1a73e8; }
+  .btn svg{ width:16px; height:16px; }
 
-  /* welcome text */
-  .welcome h1{ font-size:1.8rem; margin:1rem 0; }
-  .welcome p{ line-height:1.6; margin:.75rem 0; color:#333; }
+  /* welcome text: justify paragraphs, keep H1 centered */
+  .welcome{ text-align:left; margin: 0 auto; max-width: 760px; }
+  .welcome h1{ text-align:center; font-size:1.9rem; margin:1rem 0; }
+  .welcome p{
+    line-height:1.7; margin:.9rem 0; color:#333;
+    text-align: justify; text-justify: inter-word; hyphens: auto;
+  }
 </style>
 
 <div class="hero">
@@ -68,11 +75,19 @@ layout: default
     <a class="btn" href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a>
     <a class="btn" href="https://twitter.com/IsseMehdi">Twitter</a>
     <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/">LinkedIn</a>
-    <a class="btn" href="mailto:YOUR.EMAIL@UNI.EDU">Email</a>
+    <!-- Email button shows icon + address text -->
+    <a class="btn" href="mailto:YOUR.EMAIL@UNI.EDU" rel="me">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3 7l9 6 9-6"></path>
+      </svg>
+      <span>ai9431@princeton.edu</span>
+    </a>
   </div>
 
   <div class="welcome">
     <h1>Welcome to my website!</h1>
+
     <p>
       I am a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).
     </p>
