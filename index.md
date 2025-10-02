@@ -4,9 +4,13 @@ layout: default
 ---
 
 <style>
-  :root{ --header-h: 64px; }
+  :root{
+    --header-h: 64px;
+    --brand: #800000; /* Maroon (UChicago) */
+    --brand-dark: #5c0000;
+  }
 
-  /* hide Minima's default footer entirely */
+  /* hide Minima's default footer */
   .site-footer{ display:none !important; }
 
   /* sticky, centered header with cap icon */
@@ -30,10 +34,19 @@ layout: default
     font-weight: 700;
     font-size: 1.1rem;
     display:flex; align-items:center; gap:.4rem;
+    color: var(--brand) !important;
   }
   .site-header .site-title::before{
     content:"🎓";
     font-size: 1.2rem;
+  }
+  .site-header .site-nav .page-link {
+    color: var(--brand) !important;
+    text-decoration: none;
+  }
+  .site-header .site-nav .page-link:hover,
+  .site-header .site-nav .page-link:focus {
+    color: var(--brand-dark) !important;
   }
 
   .page-content{ padding-top: calc(var(--header-h) + 24px) !important; }
@@ -57,21 +70,29 @@ layout: default
     margin:1rem 0 2rem;
   }
   .btn{
-    border:1px solid #ccc;
+    border:1px solid var(--brand);
     padding:.45rem .9rem;
     border-radius:6px;
     font-size:.9rem;
     text-decoration:none;
-    color:#333;
+    color:var(--brand);
     background:#fff;
     display:inline-flex; align-items:center; gap:.45rem;
   }
-  .btn:hover{ background:#f6f8ff; border-color:#1a73e8; color:#1a73e8; }
+  .btn:hover{
+    background: var(--brand);
+    color: #fff !important;
+  }
   .btn svg{ width:16px; height:16px; }
 
   /* welcome text */
   .welcome{ text-align:left; margin: 0 auto; max-width: 760px; }
-  .welcome h1{ text-align:center; font-size:1.9rem; margin:1rem 0; }
+  .welcome h1{
+    text-align:center;
+    font-size:1.9rem;
+    margin:1rem 0;
+    color: var(--brand);
+  }
   .welcome p{
     line-height:1.7; margin:.9rem 0; color:#333;
     text-align: justify; text-justify: inter-word; hyphens:auto;
@@ -80,7 +101,7 @@ layout: default
   /* ORCID button */
   .orcid-btn{
     display:inline-block;
-    background:#1a73e8;
+    background: var(--brand);
     color:#fff !important;
     padding:.6rem 1.2rem;
     border-radius:6px;
@@ -88,7 +109,7 @@ layout: default
     font-weight:600;
     margin-top:1.5rem;
   }
-  .orcid-btn:hover{ background:#1558b0; }
+  .orcid-btn:hover{ background: var(--brand-dark); }
 
   /* custom footer */
   .custom-footer{
