@@ -204,7 +204,7 @@ layout: default
           </svg>
           <span>ai9431@princeton.edu</span>
         </a>
-        <a class="btn" href="https://orcid.org/YOUR-ORCID">ORCID Profile</a>
+        <a class="btn" href="https://orcid.org/0009-0009-0548-6234">ORCID Profile</a>
       </div>
     </div>
   </div>
