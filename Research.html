@@ -7,19 +7,36 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/Research.html" class="active">Research</a>
-        <a href="/Teaching.html">Teaching</a>
-        <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-        <button id="themeToggle" class="icon-link" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
-        <button id="searchBtn"  class="icon-link" aria-label="Search"       title="Search"></button>
-      </nav>
-    </div>
-  </header>
+ 
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Left: name -->
+    <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
+
+    <!-- Right: menu -->
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+
+      <!-- DARK MODE TOGGLE (visible even before JS) -->
+      <button id="themeToggle" class="icon-link" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <!-- initial MOON icon; JS will swap to SUN when dark -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- SEARCH ICON (static for now) -->
+      <button id="searchBtn" class="icon-link" aria-label="Search" title="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 14 15.5l.27.28v.79L20 21.5 21.5 20l-6-6zM6.5 11a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
 
   <main class="container layout">
     <aside class="profile">
