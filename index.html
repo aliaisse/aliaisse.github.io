@@ -4,39 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ali ‘Mehdi’ Isse</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Global CSS (root-absolute path!) -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-  <!-- Top Nav -->
-<header class="site-header">
-  <div class="container header-inner">
-    <!-- Left: name -->
-    <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
 
-    <!-- Right: menu -->
-    <nav class="nav">
-      <a href="/" class="active">Home</a>
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+  <!-- HEADER: brand left, menu right, empty toggle/search for JS -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
+      <nav class="nav">
+        <a href="/" class="active">Home</a>
+        <a href="/Research.html">Research</a>
+        <a href="/Teaching.html">Teaching</a>
+        <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+        <button id="themeToggle" class="icon-link" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+        <button id="searchBtn"  class="icon-link" aria-label="Search"       title="Search"></button>
+      </nav>
+    </div>
+  </header>
 
-      <!-- keep buttons EMPTY so JS inserts icons -->
-      <button id="themeToggle" class="icon-link" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
-      <button id="searchBtn"  class="icon-link" aria-label="Search"       title="Search"></button>
-    </nav>
-  </div>
-</header>
-  <!-- Main layout: left profile / center content / right TOC -->
+  <!-- MAIN -->
   <main class="container layout">
     <!-- Left column -->
     <aside class="profile">
-      <img src="images/profile.jpg" alt="Ali ‘Mehdi’ Isse headshot" class="avatar" />
+      <img src="/images/profile.jpg" alt="Ali ‘Mehdi’ Isse headshot" class="avatar" />
       <h1 class="name">Ali ‘Mehdi’<br/>Isse</h1>
       <div class="buttons">
         <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
         <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="mailto:YOUR_EMAIL@princeton.edu">Email</a>
-        <a class="btn" href="CV.md">CV</a>
+        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
       </div>
     </aside>
 
@@ -61,14 +60,14 @@
       </p>
     </section>
 
-    <!-- Right TOC -->
+    <!-- Right TOC (hide via CSS if you don't want it) -->
     <aside class="toc">
       <div class="toc-title">On this page</div>
       <nav id="tocList"></nav>
     </aside>
   </main>
 
-  <!-- Use your current JS location -->
-  <script src="assets/script.js"></script>
+  <!-- Global JS (root-absolute path!) -->
+  <script src="/assets/script.js"></script>
 </body>
 </html>
