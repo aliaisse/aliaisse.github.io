@@ -178,44 +178,48 @@ a { color: var(--link); }
   .profile { position: static; }
   .avatar { max-width: 420px; }
 }
-/* ===== Tiny header switch (looks like the other site) ===== */
+
+/* ===== Header toggle (filled knob, subtle track) ===== */
 .theme-switch {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 18px;
+  width: 36px;
+  height: 20px;
   position: relative;
-  margin-left: .35rem;
+  margin-left: .4rem;
   cursor: pointer;
 }
 .theme-switch input { display: none; } /* hide the checkbox */
 
 .switch-slider {
-  width: 34px; height: 18px;
+  width: 36px; height: 20px;
   border-radius: 999px;
-  border: 2px solid rgba(229,231,235,.75);   /* outline track */
-  background: transparent;                   /* header color shows through */
+  border: 1.5px solid rgba(255,255,255,.55);
+  background: rgba(255,255,255,.12);     /* faint fill so it isn't empty */
   position: relative;
   box-sizing: border-box;
+  transition: background .18s ease-in-out, border-color .18s ease-in-out;
 }
 .switch-slider::before {
   content: "";
   position: absolute;
-  top: 50%; left: 3px;
-  width: 12px; height: 12px;
+  top: 50%; left: 2.5px;
+  width: 14px; height: 14px;
   transform: translateY(-50%);
   border-radius: 50%;
-  border: 2px solid rgba(229,231,235,.9);    /* outlined thumb */
-  background: transparent;
-  transition: transform .18s ease-in-out;
+  background: #ffffff;                   /* SOLID filled knob */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15); /* thin outline for contrast */
+  transition: transform .18s ease-in-out, background .18s ease-in-out;
 }
 
-/* move thumb to the right when checked (dark) */
+/* Checked (dark mode): move knob right, slightly stronger track */
+.theme-switch input:checked + .switch-slider {
+  background: rgba(255,255,255,.2);
+}
 .theme-switch input:checked + .switch-slider::before {
-  transform: translate(15px, -50%);
+  transform: translate(18px, -50%);
 }
 
-/* keep colors readable on dark headers */
-[data-theme="dark"] .switch-slider { border-color: rgba(229,231,235,.75); }
-[data-theme="dark"] .switch-slider::before { border-color: rgba(229,231,235,.9); }
+/* Keep it readable in dark theme too */
+[data-theme="dark"] .switch-slider { border-color: rgba(255,255,255,.6); }
