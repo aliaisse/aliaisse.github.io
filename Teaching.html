@@ -7,19 +7,24 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Ali ‘Mehdi’ Isse</a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a class="active" href="research.html">Research</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="cv.pdf" target="_blank" rel="noopener">CV</a>
-      </nav>
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">☾</button>
-    </div>
-    <link rel="stylesheet" href="/assets/css/style.css">
-  </header>
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Left: name -->
+    <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
+
+    <!-- Right: menu -->
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+
+      <!-- keep buttons EMPTY so JS inserts icons -->
+      <button id="themeToggle" class="icon-link" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+      <button id="searchBtn"  class="icon-link" aria-label="Search"       title="Search"></button>
+    </nav>
+  </div>
+</header>
 
   <main class="container layout">
     <aside class="profile">
