@@ -41,3 +41,17 @@
   );
   document.querySelectorAll('.content h2, .content h3').forEach(h => obs.observe(h));
 })();
+
+// swap the toggle icon moon/sun when theme changes
+(function(){
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  const setIcon = () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.innerHTML = dark
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zm9-10v2h3v-2h-3zM6.76 19.16l-1.8 1.79 1.79 1.79 1.8-1.79-1.79-1.79zM17.24 4.84l1.8-1.79 1.79 1.79-1.79 1.79-1.8-1.79zM12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  };
+  setIcon();
+  btn.addEventListener('click', setIcon);
+})();
