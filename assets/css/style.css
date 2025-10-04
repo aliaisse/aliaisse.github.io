@@ -1,4 +1,3 @@
-
 /* =========================
    Global theme variables
    ========================= */
@@ -25,7 +24,7 @@
   --card: #111827;
   --border: #1f2937;
 
-  /* Optional: keep header same in dark, or tweak if you like */
+  /* Header in dark mode (tweak if desired) */
   --header-bg: #111827;
   --header-text: #e5e7eb;
   --header-muted: #cbd5e1;
@@ -61,7 +60,7 @@ a { color: var(--link); }
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* pushes brand left, nav right */
+  justify-content: space-between; /* brand left, nav right */
   gap: 1rem;
   padding: 0.75rem 1rem;
 }
@@ -69,6 +68,8 @@ a { color: var(--link); }
   font-weight: 700;
   text-decoration: none;
   color: var(--header-text);
+  white-space: nowrap;   /* keep name on one line */
+  flex-shrink: 0;        /* don’t squish when nav is long */
 }
 
 /* Top nav links */
@@ -116,7 +117,12 @@ a { color: var(--link); }
   display: block;
   box-shadow: 0 2px 6px rgba(0,0,0,.05);
 }
-.name { font-size: 2rem; line-height: 1.1; margin: 1rem 0 0.75rem; }
+.name {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 1rem 0 0.75rem;
+  white-space: nowrap;   /* keep H1 on one line (wraps on very small screens) */
+}
 
 .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .btn {
