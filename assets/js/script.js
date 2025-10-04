@@ -1,60 +1,54 @@
-// ===== Theme switch (works on every page) + simple TOC =====
+// ===== Theme switch (sets BOTH html[data-theme] and body.dark) + TOC =====
 (function () {
   const STORAGE_KEY = 'pref-theme';
-  const root = document.documentElement;
+  const html = document.documentElement;
+  const body = document.body;
 
   // Find the switch in the header
-  const switchInput =
-    document.getElementById('themeSwitch') ||
-    document.querySelector('.theme-switch input');
+  const sw = document.getElementById('themeSwitch') || document.querySelector('.theme-switch input');
 
-  // --- Helpers
-  function applyTheme(mode /* 'dark' | 'light' */) {
-    if (mode === 'dark') {
-      root.setAttribute('data-theme', 'dark');
+  // Helpers
+  function setDark(on) {
+    if (on) {
+      html.setAttribute('data-theme', 'dark');
+      body.classList.add('dark');
       try { localStorage.setItem(STORAGE_KEY, 'dark'); } catch {}
-      if (switchInput) switchInput.checked = true;
+      if (sw) sw.checked = true;
     } else {
-      root.removeAttribute('data-theme');
+      html.removeAttribute('data-theme');
+      body.classList.remove('dark');
       try { localStorage.setItem(STORAGE_KEY, 'light'); } catch {}
-      if (switchInput) switchInput.checked = false;
+      if (sw) sw.checked = false;
     }
   }
-
-  function systemPrefers() {
-    return (window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
-           ? 'dark' : 'light';
+  function systemPrefersDark() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
-  // --- Initial theme (saved > system)
+  // Initial state: saved > system
   let saved = null;
   try { saved = localStorage.getItem(STORAGE_KEY); } catch {}
-  if (saved === 'dark' || saved === 'light') {
-    applyTheme(saved);
-  } else {
-    applyTheme(systemPrefers());
+  if (saved === 'dark') setDark(true);
+  else if (saved === 'light') setDark(false);
+  else setDark(systemPrefersDark());
+
+  // Wire the switch
+  if (sw) {
+    sw.checked = html.getAttribute('data-theme') === 'dark' || body.classList.contains('dark');
+    sw.addEventListener('change', () => setDark(sw.checked));
   }
 
-  // --- Keep UI checkbox in sync on load
-  if (switchInput) {
-    switchInput.checked = root.getAttribute('data-theme') === 'dark';
-    switchInput.addEventListener('change', () => {
-      applyTheme(switchInput.checked ? 'dark' : 'light');
-    });
-  }
-
-  // --- Follow system changes ONLY if user hasn't explicitly chosen
+  // Follow system changes ONLY if user hasn't chosen
   try {
     const mm = window.matchMedia('(prefers-color-scheme: dark)');
     if (mm && (saved !== 'dark' && saved !== 'light')) {
-      const handler = e => applyTheme(e.matches ? 'dark' : 'light');
+      const handler = e => setDark(e.matches);
       mm.addEventListener?.('change', handler);
       mm.addListener?.(handler); // Safari fallback
     }
   } catch {}
 
-  // --- Build right-side TOC (if present)
+  // Right-side TOC
   const toc = document.getElementById('tocList');
   if (toc) {
     const headers = document.querySelectorAll('.content h2, .content h3');
