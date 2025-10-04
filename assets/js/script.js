@@ -1,49 +1,39 @@
-// ===== All-pages script: theme toggle + icons + simple TOC =====
+// Real toggle switch: remembers choice across pages and sessions
 document.addEventListener('DOMContentLoaded', () => {
   const KEY  = 'pref-theme';
   const root = document.documentElement;
+  const sw   = document.getElementById('themeSwitch');
 
-  // --- Apply saved theme (or system default on first visit)
-  try {
-    const saved = localStorage.getItem(KEY);
-    if (saved === 'dark') root.setAttribute('data-theme', 'dark');
-    else if (saved === 'light') root.removeAttribute('data-theme');
-    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      root.setAttribute('data-theme', 'dark');
-    }
-  } catch (_) {}
+  // Apply saved theme (or system default on first visit)
+  const saved = (() => {
+    try { return localStorage.getItem(KEY); } catch { return null; }
+  })();
 
-  // --- Toggle icon swapping (moon <-> sun)
-  const toggleBtn = document.getElementById('themeToggle');
-  function setToggleIcon() {
-    if (!toggleBtn) return;
-    const dark = root.getAttribute('data-theme') === 'dark';
-    toggleBtn.innerHTML = dark
-      // SUN icon when in dark mode (user can click to go light)
-      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zm9-10v2h3v-2h-3zM6.76 19.16l-1.8 1.79 1.79 1.79 1.8-1.79-1.79-1.79zM17.24 4.84l1.8-1.79 1.79 1.79-1.79 1.79-1.8-1.79zM12 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14z"/></svg>'
-      // MOON icon when in light mode (user can click to go dark)
-      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  if (saved === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    if (sw) sw.checked = true;
+  } else if (saved === 'light') {
+    root.removeAttribute('data-theme');
+    if (sw) sw.checked = false;
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    root.setAttribute('data-theme', 'dark');
+    if (sw) sw.checked = true;
   }
-  setToggleIcon();
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const dark = root.getAttribute('data-theme') === 'dark';
-      if (dark) {
-        root.removeAttribute('data-theme');          // go light
-        try { localStorage.setItem(KEY, 'light'); } catch (_) {}
+  // Toggle handler
+  if (sw) {
+    sw.addEventListener('change', () => {
+      if (sw.checked) {
+        root.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem(KEY, 'dark'); } catch {}
       } else {
-        root.setAttribute('data-theme', 'dark');     // go dark
-        try { localStorage.setItem(KEY, 'dark'); } catch (_) {}
+        root.removeAttribute('data-theme');
+        try { localStorage.setItem(KEY, 'light'); } catch {}
       }
-      setToggleIcon();
     });
   }
 
-  // --- Search icon is already inline in HTML; nothing else needed.
-  // (You can later wire #searchBtn to open a modal/search UI.)
-
-  // --- Build a simple TOC from h2/h3 in .content (if present)
+  // Build simple TOC (keeps your right-side "On this page")
   const toc = document.getElementById('tocList');
   if (toc) {
     const headers = document.querySelectorAll('.content h2, .content h3');
