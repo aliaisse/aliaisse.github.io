@@ -17,7 +17,7 @@
 }
 
 /* Apply dark variables if EITHER <html data-theme="dark"> OR <body class="dark"> */
-[data-theme="dark"], body.dark {
+:root[data-theme="dark"], body.dark {
   --bg: #0f172a;
   --text: #e5e7eb;
   --muted: #a1a1aa;
