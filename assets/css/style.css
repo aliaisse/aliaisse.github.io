@@ -1,6 +1,38 @@
 /* =========================
    Global theme variables
    ========================= */
+/* ===== Theme variables ===== */
+:root {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --link: #2563eb;
+}
+
+:root[data-theme="dark"], body.dark {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --link: #93c5fd;
+}
+
+/* Apply variables */
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+a { color: var(--link); }
+
+/* Header + toggle (your existing styles are fine; these are minimal) */
+.site-header { position: sticky; top: 0; z-index: 20; }
+.theme-switch { display:inline-flex; align-items:center; width:36px; height:20px; cursor:pointer; }
+.theme-switch input { display:none; }
+.switch-slider {
+  width:36px; height:20px; border-radius:999px; border:1.5px solid rgba(255,255,255,.55);
+  background: rgba(0,0,0,.12); position:relative;
+}
+.switch-slider::before {
+  content:""; position:absolute; top:50%; left:2.5px; width:14px; height:14px;
+  transform:translateY(-50%); border-radius:50%; background:#fff; transition:transform .18s;
+}
+.theme-switch input:checked + .switch-slider::before { transform: translate(18px, -50%); }
+
 :root {
   /* Page colors */
   --bg: #ffffff;
