@@ -1,51 +1,55 @@
-<script>
-(function () {
+(() => {
   const STORAGE_KEY = 'pref-theme';
 
-  function setDark(on) {
-    const html = document.documentElement;
+  // Apply theme to the page + persist
+  function setTheme(mode) {
+    const root = document.documentElement;
     const body = document.body;
-    if (on) {
-      html.setAttribute('data-theme', 'dark');
+    const dark = mode === 'dark';
+    if (dark) {
+      root.setAttribute('data-theme', 'dark');
       body.classList.add('dark');
-      try { localStorage.setItem(STORAGE_KEY, 'dark'); } catch(e){}
     } else {
-      html.removeAttribute('data-theme');
+      root.removeAttribute('data-theme');
       body.classList.remove('dark');
-      try { localStorage.setItem(STORAGE_KEY, 'light'); } catch(e){}
     }
+    try { localStorage.setItem(STORAGE_KEY, dark ? 'dark' : 'light'); } catch {}
   }
 
-  function systemPrefersDark() {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // Decide initial theme: saved > system
+  function initialTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch {}
+    if (saved === 'dark' || saved === 'light') return saved;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ? 'dark' : 'light';
   }
 
   function init() {
     const sw = document.getElementById('themeSwitch') || document.querySelector('.theme-switch input');
 
-    // initial state: saved > system
-    let saved = null;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch(e){}
-    if (saved === 'dark') setDark(true);
-    else if (saved === 'light') setDark(false);
-    else setDark(systemPrefersDark());
+    // set initial
+    setTheme(initialTheme());
 
+    // wire the switch
     if (sw) {
-      sw.checked =
+      const isDark =
         document.documentElement.getAttribute('data-theme') === 'dark' ||
         document.body.classList.contains('dark');
-      sw.addEventListener('change', () => setDark(sw.checked));
+      sw.checked = isDark;
+      sw.addEventListener('change', () => setTheme(sw.checked ? 'dark' : 'light'));
     }
 
-    // follow system changes only if user hasn't chosen
+    // follow system ONLY if user hasn't picked
     try {
+      const saved = localStorage.getItem(STORAGE_KEY);
       const mm = window.matchMedia('(prefers-color-scheme: dark)');
       if (mm && (saved !== 'dark' && saved !== 'light')) {
-        const handler = e => setDark(e.matches);
+        const handler = e => setTheme(e.matches ? 'dark' : 'light');
         mm.addEventListener?.('change', handler);
         mm.addListener?.(handler); // Safari fallback
       }
-    } catch(e){}
+    } catch {}
   }
 
   if (document.readyState === 'loading') {
@@ -54,4 +58,3 @@
     init();
   }
 })();
-</script>
