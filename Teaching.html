@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Ali A. Isse</title>
-
-  <!-- CSS + JS from root -->
+  <title>Teaching — Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
+  <style>
+    .course{margin:0 0 .9rem}
+    .title{color:#0A2A66;font-weight:700}
+    .meta{color:var(--muted)}
+    .desc{margin:.2rem 0 0 0}
+    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
+    .tiny a:hover{text-decoration:underline}
+  </style>
 </head>
 <body>
 
@@ -15,10 +21,10 @@
   <div class="container header-inner">
     <a class="brand" href="/">Ali A. Isse</a>
     <nav class="nav">
-      <a href="/" class="active">Home</a>
+      <a href="/">Home</a>
       <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-   <a href="/CV.html">CV</a>
+      <a href="/Teaching.html" class="active">Teaching</a>
+      <a href="/CV.html">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -32,16 +38,41 @@
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
-      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
-      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-    <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>    
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
     </div>
   </aside>
 
   <section class="content">
-    <h2>Welcome</h2>
-    <p>Brief intro here.</p>
+    <h2>Teaching</h2>
+
+    <div class="course">
+      <span class="title">International Organizations (Undergraduate)</span> — Princeton University,
+      <span class="meta">Spring 2025 · ~400 students</span>
+      <div class="desc">Discussion sections, office hours, assessment; design, politics, and performance of IOs.</div>
+      <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
+    </div>
+
+    <div class="course">
+      <span class="title">Introduction to Research Design (Undergraduate)</span> — Princeton University,
+      <span class="meta">Fall 2024 · ~75 students</span>
+      <div class="desc">Weekly sections, office hours, grading; causal inference, measurement, research transparency; lecture support as needed.</div>
+      <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
+    </div>
+
+    <div class="course">
+      <span class="title">Mathematics for Social Science (Summer Math Camp)</span> — University of Chicago,
+      <span class="meta">2021</span>
+      <div class="desc">Calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.</div>
+      <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
+    </div>
+
+    <div class="course">
+      <span class="title">Analyzing the City (Undergraduate)</span> — The Ohio State University,
+      <span class="meta">Fall 2017</span>
+      <div class="desc">Quantitative & spatial analysis of urban systems (ArcGIS, Excel, Stata).</div>
+      <div class="tiny"><a href="/files/syllabi/Analyzing_the_City.pdf" target="_blank" rel="noopener">syllabus</a></div>
+    </div>
   </section>
 
   <aside class="toc">
@@ -49,6 +80,5 @@
     <nav id="tocList"></nav>
   </aside>
 </main>
-
 </body>
 </html>
