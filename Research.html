@@ -1,24 +1,32 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Research — Ali ‘Mehdi’ Isse</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <title>Research — Ali A. Isse</title>
+
+  <!-- Base path so relative links work on GitHub Pages under /issemehdi -->
+  <base href="/issemehdi/">
+
+  <!-- CSS + dark variables -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Dark-mode logic (loads after DOM with defer) -->
+  <script src="assets/script.js" defer></script>
 </head>
-   <script src="/assets/script.js"></script>
 <body>
-  
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">Ali ‘Mehdi’ Isse</a>
+    <a class="brand" href="index.html">Ali A. Isse</a>
     <nav class="nav">
-      <a href="/" class="active">Home</a>
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a href="index.html">Home</a>
+      <a href="Research.html" class="active">Research</a>
+      <a href="Teaching.html">Teaching</a>
+      <a href="cv.pdf" target="_blank" rel="noopener">CV</a>
 
-      <!-- real dark/light toggle -->
+      <!-- Dark / light toggle -->
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -27,27 +35,44 @@
   </div>
 </header>
 
-  <main class="container layout">
-    <aside class="profile">
-      <img src="/images/profile.jpg" alt="Ali ‘Mehdi’ Isse headshot" class="avatar" />
-      <h1 class="name">Ali ‘Mehdi’<br/>Isse</h1>
-      <div class="buttons">
-        <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
-        <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:YOUR_EMAIL@princeton.edu">Email</a>
-        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </aside>
+<main class="container layout">
+  <!-- LEFT PROFILE -->
+  <aside class="profile">
+    <img src="images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali ‘Mehdi’<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </aside>
 
-    <section class="content">
-      <h2 id="research">Research</h2>
-      <p>Coming soon. Add your working papers, publications, and datasets here.</p>
-    </section>
+  <!-- CENTER CONTENT: WRITE HERE -->
+  <section class="content">
+    <h2 id="working-papers">Working Papers</h2>
+    <ul>
+      <li><strong>Anglo-American Nuclear Partnership:</strong> Cooperation, Integration, and Strategic Interdependence. <em>Target: Journal of Strategic Studies</em>.</li>
+      <li><strong>Authoritarian Calculus and the Risk of Nuclear Use:</strong> Executive Power and Brinkmanship in North Korea and Iran. <em>Target: JCR</em>.</li>
+      <li><strong>From Coercion to Cooperation:</strong> Reversing Nuclear Programs Through Guarantees. <em>Target: Nonproliferation Review</em>.</li>
+    </ul>
 
-    <aside class="toc">
-      <div class="toc-title">On this page</div>
-      <nav id="tocList"></nav>
-    </aside>
-  </main>
+    <h2 id="under-review">Under Review / Forthcoming</h2>
+    <ul>
+      <li><strong>Between Coercion and Inducements:</strong> Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW. <em>Under review</em>.</li>
+      <li><strong>The Strategies of Coercion in the Nuclear Era:</strong> From Diplomacy to War. <em>Forthcoming</em>.</li>
+    </ul>
+
+    <h2 id="data">Data & Replication</h2>
+    <p>Coming soon.</p>
+  </section>
+
+  <!-- RIGHT TOC auto-filled by script.js -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
 </body>
 </html>
