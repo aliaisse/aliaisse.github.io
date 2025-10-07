@@ -3,75 +3,57 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ali A. Isse</title>
+  <title>Home — Ali A. Isse</title>
 
-  <!-- Global CSS (root-absolute path!) -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Base path so all relative links work on GitHub Pages under /issemehdi -->
+  <base href="/issemehdi/">
+
+  <!-- CSS + JS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/script.js" defer></script>
 </head>
-  <script src="/issemehdi/script.js" defer></script>
 <body>
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">Ali A. Isse</a>
+    <a class="brand" href="index.html">Ali A. Isse</a>
     <nav class="nav">
-      <a href="/" class="active">Home</a>
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="Research.html">Research</a>
+      <a href="Teaching.html">Teaching</a>
+      <a href="cv.pdf" target="_blank" rel="noopener">CV</a>
 
       <!-- Dark / light toggle -->
-     <label class="theme-switch">
-  <input type="checkbox" id="themeSwitch">
-  <span class="switch-slider"></span>
-</label>
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
     </nav>
   </div>
 </header>
-  
-  <!-- MAIN -->
-  <main class="container layout">
-    <!-- Left column -->
-    <aside class="profile">
-      <img src="/images/profile.jpg" alt="Ali ‘Mehdi’ Isse headshot" class="avatar" />
-      <h1 class="name">Ali A. Isse</h1>
-      <div class="buttons">
-        <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
-        <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:YOUR_EMAIL@princeton.edu">Email</a>
-        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </aside>
 
-    <!-- Center content -->
-    <section class="content">
-      <h2 id="about">About</h2>
+<main class="container layout">
+  <aside class="profile">
+    <img src="images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </aside>
 
-      <p>
-        I am Mehdi! (Ali Isse) a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).</p>
-      </p>
-      
-      </p>
-        My research builds on a multidisciplinary approach that integrates international relations theory, security studies, formal modeling, computational social science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods—archival research, case studies, game theory, and statistical analysis—to study coercion, deterrence, and crisis bargaining in international security.       
-      </p>
-     
-      <p>
-        My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies..
-      </p>
-     
-      <p>
-        I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my comprehensive exams with Highest Distinction; and a B.A. in Political Science from the University of Texas San Antonio.
-      </p>
-      <p>
-        For more information about my research, teaching, or service, please feel free to contact me.
-        </p>
-    </section>
+  <section class="content">
+    <h2>Welcome</h2>
+    <p>Brief intro here.</p>
+  </section>
 
-    <!-- Right TOC (hide via CSS if you don't want it) -->
-    <aside class="toc">
-      <div class="toc-title">On this page</div>
-      <nav id="tocList"></nav>
-    </aside>
-  </main>
-  <!-- Global JS (root-absolute path!) -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
 </body>
 </html>
