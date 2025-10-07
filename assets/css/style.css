@@ -206,3 +206,17 @@ body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
   .nav { width: 100%; gap: .4rem; }
   .nav a { padding: .3rem .45rem; }
 }
+/* ===== CSS-only DARK MODE (works even if JS fails) ===== */
+/* When the checkbox #themeSwitch is checked, switch all variables to dark */
+:root:has(#themeSwitch:checked) {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #a1a1aa;
+  --link: #93c5fd;
+  --card: #111827;
+  --border: #1f2937;
+
+  --header-bg: #111827;
+  --header-text: #e5e7eb;
+  --header-muted: #cbd5e1;
+}
