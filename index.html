@@ -8,59 +8,84 @@
   <script src="/assets/script.js" defer></script>
 
   <!-- Page accents -->
-  <style>
-  /* Brand + accent colors */
+ <style>
+  /* ===== Brand + color tokens ===== */
   :root{
-    /* Header/nav can stay navy if you like */
-    --brand:#0A2A66;
+    --brand:#0A2A66;     /* header/nav navy */
     --brand-ink:#0b2252;
 
-    /* === Choose ONE accent === */
-    --accent:#E87722;      /* Princeton Orange (PMS 158 C) */
-    /* --accent:#F15A22;   UTSA Orange (PMS 1665 C) — uncomment to use */
+    /* Pick your accent */
+    --accent:#E87722;    /* Princeton Orange (default) */
+    /* --accent:#F15A22; */ /* UTSA Orange — uncomment to use */
 
-    --accent-ink:#281a00;  /* readable ink on light accent tints */
-    --pill-bg:#fff7f0;     /* light orange wash for chips */
+    /* Core text + surfaces (light) */
+    --text:#111111;          /* Force black text in light mode */
+    --muted:#4b5563;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --accent-ink:#2a1a00;    /* readable on light orange tints */
+    --pill-bg:#fff7f0;
   }
+
   [data-theme="dark"], body.dark{
     --brand:#93c5fd;
     --brand-ink:#e5e7eb;
 
-    /* tone the orange up a bit in dark mode */
+    /* Slightly brighter orange in dark mode */
     --accent:#FF9A4D;
-    --accent-ink:#ffe9dc;
+    --text:#ECEFF1;          /* high-contrast text on dark */
+    --muted:#cfd8dc;
+    --card:#0f1216;
+    --border:#1f2937;
+    --accent-ink:#fff1e6;    /* ink on orange tints in dark */
     --pill-bg:#2b1603;
   }
 
+  /* ===== Global text color ===== */
+  html, body { color:var(--text); }
+
+  /* Ensure all common text elements follow --text */
+  p, li, a, span, small, time, dd, dt, div { color:inherit; }
+  .muted{ color:var(--muted); }
+
   .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-  /* Make section titles and card titles orange */
+  /* ===== Section & card titles: bold + orange ===== */
   .content h2,
   .card h3,
   .toc-title{
     color:var(--accent);
+    font-weight:800;
   }
 
-  /* Fancy pill chips */
+  /* ===== Chips / Pills ===== */
   .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
   .pill{
     display:inline-flex;align-items:center;gap:.4rem;
     padding:.35rem .6rem;border-radius:999px;
     background:linear-gradient(180deg, var(--pill-bg), transparent);
     border:1px solid var(--border);
-    color:var(--accent-ink);
-    font-weight:600;font-size:.92rem;
+    /* Force pill text black in light; readable in dark */
+    color:#111;                         /* light mode default */
+    font-weight:700;                    /* clearer label */
+    font-size:.92rem;
     box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
-    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
   }
+  /* In dark theme, override pill text for contrast */
+  [data-theme="dark"] .pill,
+  body.dark .pill { color:var(--accent-ink); }
+
   .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
   .pill--accent{
     background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
     border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+    /* keep text strong on accent tint */
     color:var(--accent-ink);
+    font-weight:800;
   }
 
-  /* Feature cards */
+  /* ===== Cards ===== */
   .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
   @media (min-width: 860px){.feature-grid{grid-template-columns:1fr 1fr;}}
   .card{
@@ -74,10 +99,9 @@
   }
   .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
   .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
-  .muted{color:var(--muted)}
   .badge{
     display:inline-block;padding:.18rem .45rem;border-radius:6px;
-    font-size:.8rem;font-weight:700;letter-spacing:.02em;
+    font-size:.8rem;font-weight:800;letter-spacing:.02em;
     color:var(--accent-ink);
     background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
     border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
@@ -122,15 +146,14 @@
     <h2>Welcome</h2>
     <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
 
-    <div class="pill-group">
+  <div class="pill-group">
   <span class="pill pill--accent">Deterrence</span>
   <span class="pill pill--accent">Coercion</span>
   <span class="pill pill--accent">Nuclear Policy</span>
   <span class="pill pill--accent">Alliance Politics</span>
   <span class="pill pill--accent">Strategic Studies</span>
-  <span class="pill">Methodology</span> <!-- can leave neutral if you like -->
+  <span class="pill">Methodology</span>
 </div>
-
 
 <h2>Research Interests</h2>
 <div class="feature-grid">
