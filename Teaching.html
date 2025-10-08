@@ -9,10 +9,79 @@
 
   <!-- Page-specific styles -->
   <style>
-    .course{margin:0 0 .9rem}
-    .title{color:#0A2A66;font-weight:700}
+    /* ---- Brand tokens (align with site) ---- */
+    :root{
+      --brand:#0A2A66;           /* site header/nav navy */
+      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
+
+      /* Light theme text/surfaces */
+      --text:#111111;            /* black body text */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
+
+      /* Accordion header colors: ORANGE bar w/ white text */
+      --panel:var(--accent);
+      --panel-ink:#ffffff;
+      --stripe:rgba(0,0,0,.1);
+    }
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;            /* white body text in dark */
+      --muted:#d0d7de;
+      --card:#0f1216;
+      --border:#1f2937;
+
+      --panel:#FF9A4D;           /* brighter orange on dark */
+      --panel-ink:#101317;       /* dark ink for contrast on bright orange */
+      --stripe:rgba(0,0,0,.15);
+    }
+
+    /* ---- Global text ---- */
+    html, body { color:var(--text); }
+    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .name{color:var(--text);}
+
+    /* Page title: black in light, white in dark */
+    .content h2{
+      font-weight:800;
+      color:#111111;
+      margin-top:.2rem;
+    }
+    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
+
+    /* ---- Accordion ---- */
+    .accordion{display:grid;gap:1rem;margin:1rem 0}
+    .acc{
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      background:var(--card);
+      box-shadow:0 1px 6px rgba(0,0,0,.06);
+    }
+    .acc__head{
+      display:flex;align-items:center;justify-content:space-between;
+      background:var(--panel); color:var(--panel-ink);
+      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
+    }
+    .acc__head::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+      background:var(--stripe);
+    }
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
+    .acc__chev{
+      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
+      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
+    }
+    .acc.open .acc__chev{ transform:rotate(45deg); }
+
+    .acc__body{padding:1rem; display:none}
+    .acc.open .acc__body{display:block}
+
+    /* ---- Course rows ---- */
+    .course{margin:0 0 1rem}
+    .title{font-weight:800; color:inherit;}
     .meta{color:var(--muted)}
-    .desc{margin:.2rem 0 0 0}
+    .desc{margin:.3rem 0 0 0}
     .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
     .tiny a:hover{text-decoration:underline}
   </style>
@@ -52,40 +121,90 @@
   <section class="content">
     <h2>Teaching</h2>
 
-    <div class="course">
-      <span class="title">International Organizations (Undergraduate)</span> — Princeton University,
-      <span class="meta">Spring 2025 · ~400 students</span>
-      <div class="desc">
-        Examines the politics, structure, and effectiveness of international organizations in global governance.
-        Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
-        Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
-      </div>
-      <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
+    <div class="accordion">
 
-    <div class="course">
-      <span class="title">Introduction to Research Design (Undergraduate)</span> — Princeton University,
-      <span class="meta">Fall 2024 · ~75 students</span>
-      <div class="desc">
-        Introduces undergraduates to the principles of research design and the logic of social inquiry.
-        Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
-        Prepares students to write their junior and senior theses in public and international affairs.
-      </div>
-      <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
+      <!-- Current Teaching -->
+      <div class="acc open" id="sec-teaching">
+        <div class="acc__head" data-acc="sec-teaching">
+          <h3 class="acc__title">Teaching</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
 
-    <div class="course">
-      <span class="title">Mathematics for Social Science (Summer Math Camp)</span> — University of Chicago,
-      <span class="meta">2021</span>
-      <div class="desc">
-        Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
-      </div>
-      <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
+          <div class="course">
+            <span class="title">International Organizations (Undergraduate)</span>
+            <span class="meta"> — Spring 2025 · ~400 students</span>
+            <div class="desc">
+              Examines the politics, structure, and effectiveness of international organizations in global governance.
+              Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
+              Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
 
-    <div class="course">
-      <span class="title">Analyzing the City (Undergraduate)</span> — The Ohio State University, <span class="meta">Fall 2017</span>
-      <div class="desc">
-        Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+          <div class="course">
+            <span class="title">Introduction to Research Design (Undergraduate)</span>
+            <span class="meta"> — Fall 2024 · ~75 students</span>
+            <div class="desc">
+              Introduces undergraduates to the principles of research design and the logic of social inquiry.
+              Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
+              Prepares students to write their junior and senior theses in public and international affairs.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+
+        </div>
       </div>
-      <div class="tiny"><a href="/files/syllabi/Analyzing_the_City.pdf" target="_blank" rel="noopener">syllabus</a></div>
+
+      <!-- Selected Previous Teaching (universities omitted) -->
+      <div class="acc" id="sec-prev">
+        <div class="acc__head" data-acc="sec-prev">
+          <h3 class="acc__title">Selected Previous Teaching</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+
+          <div class="course">
+            <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
+            <span class="meta"> — 2021</span>
+            <div class="desc">
+              Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+
+          <div class="course">
+            <span class="title">Analyzing the City (Undergraduate)</span>
+            <span class="meta"> — Fall 2017</span>
+            <div class="desc">
+              Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
+<!-- Tiny accordion JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.acc__head').forEach(head => {
+      head.addEventListener('click', () => {
+        const id = head.getAttribute('data-acc');
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.toggle('open');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
