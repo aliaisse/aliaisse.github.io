@@ -7,107 +7,131 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page accents -->
- <style>
-  /* ===== Brand + color tokens ===== */
-  :root{
-    --brand:#0A2A66;     /* header/nav navy */
-    --brand-ink:#0b2252;
+  <!-- Page accents & accordion styles -->
+  <style>
+    /* ===== Brand + theme tokens (consistent site-wide) ===== */
+    :root{
+      --brand:#0A2A66;              /* header/nav navy */
+      --accent:#E87722;             /* Princeton orange; switch to #F15A22 for UTSA */
 
-    /* Pick your accent */
-    --accent:#E87722;    /* Princeton Orange (default) */
-    /* --accent:#F15A22; */ /* UTSA Orange — uncomment to use */
+      /* light surfaces */
+      --text:#111111;               /* body text black in light */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
 
-    /* Core text + surfaces (light) */
-    --text:#111111;          /* Force black text in light mode */
-    --muted:#4b5563;
-    --card:#ffffff;
-    --border:#e5e7eb;
-    --accent-ink:#2a1a00;    /* readable on light orange tints */
-    --pill-bg:#fff7f0;
-  }
+      /* pills/cards */
+      --accent-ink:#2a1a00;
+      --pill-bg:#fff7f0;
 
-  [data-theme="dark"], body.dark{
-    --brand:#93c5fd;
-    --brand-ink:#e5e7eb;
+      /* accordion header */
+      --panel:var(--accent);
+      --panel-ink:#ffffff;
+      --stripe:rgba(0,0,0,.1);
+    }
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;               /* body text white in dark */
+      --muted:#cfd8dc;
+      --card:#0f1216;
+      --border:#1f2937;
 
-    /* Slightly brighter orange in dark mode */
-    --accent:#FF9A4D;
-    --text:#ECEFF1;          /* high-contrast text on dark */
-    --muted:#cfd8dc;
-    --card:#0f1216;
-    --border:#1f2937;
-    --accent-ink:#fff1e6;    /* ink on orange tints in dark */
-    --pill-bg:#2b1603;
-  }
+      --accent:#FF9A4D;             /* brighter orange in dark */
+      --accent-ink:#0f1216;         /* dark ink over bright orange tints */
+      --pill-bg:#2b1603;
 
-  /* ===== Global text color ===== */
-  html, body { color:var(--text); }
+      --panel:#FF9A4D;
+      --panel-ink:#101317;
+      --stripe:rgba(0,0,0,.15);
+    }
 
-  /* Ensure all common text elements follow --text */
-  p, li, a, span, small, time, dd, dt, div { color:inherit; }
-  .muted{ color:var(--muted); }
+    /* ===== Global text colors ===== */
+    html, body { color:var(--text); }
+    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+    .name{color:var(--text);}
 
-  .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+    /* ===== Fancy pill chips ===== */
+    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+    .pill{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .6rem;border-radius:999px;
+      background:linear-gradient(180deg, var(--pill-bg), transparent);
+      border:1px solid var(--border);
+      color:#111; /* strong in light */
+      font-weight:700;font-size:.92rem;
+      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
+    }
+    [data-theme="dark"] .pill, body.dark .pill { color:var(--accent-ink); }
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+    .pill--accent{
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+      color:var(--accent-ink);
+      font-weight:800;
+    }
 
-  /* ===== Section & card titles: bold + orange ===== */
-  .content h2,
-  .card h3,
-  .toc-title{
-    color:var(--accent);
-    font-weight:800;
-  }
+    /* ===== Cards (for Featured / Degrees card look) ===== */
+    .feature-grid{
+      display:grid;gap:1rem;margin-top:.35rem;
+      grid-template-columns:1fr;
+    }
+    @media (min-width: 860px){
+      .feature-grid{grid-template-columns:1fr 1fr;}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-left:5px solid var(--accent);
+      border-radius:12px;
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
+      padding:1rem 1rem 1rem 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--accent);font-weight:800}
+    [data-theme="dark"] .card h3, body.dark .card h3{ color:#ffffff; }
+    .muted{color:var(--muted)}
+    .badge{
+      display:inline-block;padding:.18rem .45rem;border-radius:6px;
+      font-size:.8rem;font-weight:800;letter-spacing:.02em;
+      color:var(--accent-ink);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
+      margin-bottom:.35rem;
+    }
 
-  /* ===== Chips / Pills ===== */
-  .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
-  .pill{
-    display:inline-flex;align-items:center;gap:.4rem;
-    padding:.35rem .6rem;border-radius:999px;
-    background:linear-gradient(180deg, var(--pill-bg), transparent);
-    border:1px solid var(--border);
-    /* Force pill text black in light; readable in dark */
-    color:#111;                         /* light mode default */
-    font-weight:700;                    /* clearer label */
-    font-size:.92rem;
-    box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
-    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
-  }
-  /* In dark theme, override pill text for contrast */
-  [data-theme="dark"] .pill,
-  body.dark .pill { color:var(--accent-ink); }
+    /* ===== Accordion layout ===== */
+    .accordion{display:grid;gap:1rem;margin:1rem 0}
+    .acc{
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      background:var(--card);
+      box-shadow:0 1px 6px rgba(0,0,0,.06);
+    }
+    .acc__head{
+      display:flex;align-items:center;justify-content:space-between;
+      background:var(--panel); color:var(--panel-ink);
+      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
+    }
+    .acc__head::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+      background:var(--stripe);
+    }
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
+    .acc__chev{
+      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
+      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
+    }
+    .acc.open .acc__chev{ transform:rotate(45deg); }
+    .acc__body{padding:1rem; display:none}
+    .acc.open .acc__body{display:block}
 
-  .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-  .pill--accent{
-    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-    border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
-    /* keep text strong on accent tint */
-    color:var(--accent-ink);
-    font-weight:800;
-  }
-
-  /* ===== Cards ===== */
-  .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
-  @media (min-width: 860px){.feature-grid{grid-template-columns:1fr 1fr;}}
-  .card{
-    border:1px solid var(--border);
-    border-left:5px solid var(--accent);
-    border-radius:12px;
-    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
-    padding:1rem 1rem 1rem 1rem;
-    box-shadow:0 2px 6px rgba(0,0,0,.05);
-    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-  }
-  .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-  .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
-  .badge{
-    display:inline-block;padding:.18rem .45rem;border-radius:6px;
-    font-size:.8rem;font-weight:800;letter-spacing:.02em;
-    color:var(--accent-ink);
-    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-    border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
-    margin-bottom:.35rem;
-  }
-</style>
+    /* ===== About block typography ===== */
+    .about-title{font-weight:800;margin:0 0 .3rem}
+    .about-text{margin:0 0 .6rem;line-height:1.55}
+  </style>
 </head>
 <body>
 
@@ -143,71 +167,100 @@
 
   <!-- center content -->
   <section class="content">
-    <h2>Welcome</h2>
-    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+    <!-- Accordions wrapper -->
+    <div class="accordion">
 
-  <div class="pill-group">
-  <span class="pill">Deterrence</span>
-  <span class="pill">Coercion</span>
-  <span class="pill">Nuclear Policy</span>
-  <span class="pill">Alliance Politics</span>
-  <span class="pill">Strategic Studies</span>
-  <span class="pill">Methodology</span>
-</div>
-
-<h2>Research Interests</h2>
-<div class="feature-grid">
-  <div class="card">
-    <span class="pill">Focus</span>
-    <h3>Deterrence & Coercion</h3>
-    <p class="muted">Nuclear deterrence, compellence, crisis bargaining, escalation management, War.</p>
-  </div>
-
-  <div class="card">
-    <span class="pill">Institutions</span>
-    <h3>Alliance Politics</h3>
-    <p class="muted">Assurance, burden-sharing, U.S.–ally posture alignment in Europe & Asia.</p>
-  </div>
-
-  <div class="card">
-    <span class="pill">Nonproliferation</span>
-    <h3>Nuclear Policy</h3>
-    <p class="muted">Counter-proliferation, disarmament, arms control, rollback and reversal, and the governance of dual-use technology diffusion.</p>
-  </div>
-
-  <div class="card">
-    <span class="pill">Methods</span>
-    <h3>Mixed-Methods</h3>
-    <p class="muted">Formal, quantitative, and qualitative analysis.</p>
-  </div>
-</div>
-
-<h2>Degrees</h2>
-<div class="feature-grid">
-  <div class="card">
-    <span class="pill">Degrees</span>
-    <p class="muted">
-      Ph.D. Candidate, Princeton University<br>
-      M.A., University of Chicago<br>
-      M.S., Ohio State University<br>
-      B.A., UT San Antonio
-    </p>
-  </div>
-</div>
-    
-    <h2>Featured</h2>
-    <div class="feature-grid">
-
-      <div class="card">
-        <span class="pill">Manuscript · 2025</span>
-        <h3>Anglo-American Nuclear Partnership</h3>
-        <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+      <!-- About -->
+      <div class="acc open" id="sec-about">
+        <div class="acc__head" data-acc="sec-about">
+          <h3 class="acc__title">About</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <p class="about-text">
+            Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.
+          </p>
+          <div class="pill-group">
+            <span class="pill pill--accent">Deterrence</span>
+            <span class="pill pill--accent">Coercion</span>
+            <span class="pill pill--accent">Nuclear Policy</span>
+            <span class="pill pill--accent">Alliance Politics</span>
+            <span class="pill pill--accent">Strategic Studies</span>
+            <span class="pill">Methodology</span>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <span class="pill">Teaching · Spring 2025</span>
-        <h3>International Organizations</h3>
-        <p class="muted">Discussion sections, office hours, assignments, and Exams.</p>
+      <!-- Featured -->
+      <div class="acc" id="sec-featured">
+        <div class="acc__head" data-acc="sec-featured">
+          <h3 class="acc__title">Featured</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+
+            <div class="card">
+              <span class="pill">Manuscript · 2025</span>
+              <h3>Anglo-American Nuclear Partnership</h3>
+              <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+            </div>
+
+            <div class="card">
+              <span class="pill">Teaching · Spring 2025</span>
+              <h3>International Organizations</h3>
+              <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Research -->
+      <div class="acc" id="sec-research">
+        <div class="acc__head" data-acc="sec-research">
+          <h3 class="acc__title">Research</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <!-- A compact teaser that mirrors your research page -->
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill pill--accent">Manuscript</span>
+              <h3>Coercion & Compliance</h3>
+              <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
+            </div>
+            <div class="card">
+              <span class="pill pill--accent">Alliances</span>
+              <h3>Posture & Assurance</h3>
+              <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Degrees -->
+      <div class="acc" id="sec-degrees">
+        <div class="acc__head" data-acc="sec-degrees">
+          <h3 class="acc__title">Degrees</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill pill--accent">Degrees</span>
+              <h3>Education</h3>
+              <p class="muted" style="margin:0">
+                Ph.D. Candidate, Princeton University<br>
+                M.A., University of Chicago<br>
+                M.S., Ohio State University<br>
+                B.A., UT San Antonio
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -219,6 +272,19 @@
     <nav id="tocList"></nav>
   </aside>
 </main>
+
+<!-- Tiny accordion toggler -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.acc__head').forEach(head => {
+      head.addEventListener('click', () => {
+        const id = head.getAttribute('data-acc');
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.toggle('open');
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
