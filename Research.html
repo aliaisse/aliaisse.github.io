@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,25 +10,61 @@
 
   <!-- Page-specific styles -->
   <style>
-    /* --- Panel colors --- */
+    /* ---- Brand tokens (match header) ---- */
     :root{
-      --panel:#0A2A66;        /* navy bar */
-      --panel-ink:#ffffff;    /* header text */
-      --stripe:#E87722;       /* Princeton orange  | switch to #F15A22 for UTSA */
-    }
-    [data-theme="dark"], body.dark{
-      --panel:#0E1C3A;        /* darker navy in dark mode */
-      --panel-ink:#e6edf3;
-      --stripe:#FF9A4D;       /* brighter orange for dark backgrounds */
+      --brand:#0A2A66;         /* header/nav navy */
+      --brand-ink:#0b2252;
+
+      --accent:#E87722;        /* Princeton orange (swap to #F15A22 for UTSA) */
+
+      /* Light theme text/surfaces */
+      --text:#111111;          /* force black body text in light mode */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
+
+      /* Accordion header colors (use the same dark navy as header) */
+      --panel:var(--brand);
+      --panel-ink:#ffffff;     /* header text */
+      --stripe:var(--accent);  /* orange underline */
     }
 
-    /* --- Existing text styles (kept from your page) --- */
+    /* Dark mode overrides */
+    [data-theme="dark"], body.dark{
+      --text:#FFFFFF;          /* switch all body text to white */
+      --muted:#d0d7de;
+      --card:#0f1216;
+      --border:#1f2937;
+
+      --panel:#0A2A66;         /* keep dark navy bar */
+      --panel-ink:#ffffff;
+      --stripe:#FF9A4D;        /* brighter orange line on dark */
+    }
+
+    /* ---- Global text color + name ---- */
+    html, body { color:var(--text); }
+    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .name { color:var(--text); }  /* your sidebar name follows theme */
+
+    /* Keep your originals */
     .item{margin:0 0 .6rem}
     .when{color:var(--muted)}
-    .ptitle{color:#0A2A66;font-style:italic}
-    .status{color:var(--muted);font-style:italic}
+    .ptitle{color:var(--brand);font-style:italic}
+    [data-theme="dark"] .ptitle, body.dark .ptitle{ color:#ffffff; } /* titles white in dark */
 
-    /* --- Accordion layout --- */
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+
+    /* ---- Section titles: bold orange in light, white in dark ---- */
+    .content h2{
+      font-weight:800;
+      color:var(--accent);
+      margin-top:.2rem;
+    }
+    [data-theme="dark"] .content h2, body.dark .content h2{
+      color:#ffffff;
+    }
+
+    /* ---- Accordion layout ---- */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -45,7 +82,11 @@
       content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
       background:var(--stripe);
     }
-    .acc__title{margin:0; font-size:1.05rem}
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
+    /* Make the accordion titles orange in light, white in dark */
+    .acc__title{ color:var(--accent); }
+    [data-theme="dark"] .acc__title, body.dark .acc__title{ color:#ffffff; }
+
     .acc__chev{
       border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
