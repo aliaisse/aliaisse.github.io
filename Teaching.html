@@ -3,53 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teaching — Ali A. Isse</title>
+  <title>CV — Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles -->
+  <!-- Page-specific styles (aligned with your other pages) -->
   <style>
-    /* ---- Brand tokens (align with site) ---- */
     :root{
-      --brand:#0A2A66;           /* site header/nav navy */
-      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
-
-      /* Light theme text/surfaces */
-      --text:#111111;            /* black body text */
+      --brand:#0A2A66;
+      --accent:#E87722;           /* Princeton orange; swap to #F15A22 for UTSA */
+      --text:#111111;             /* black text in light mode */
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
-
-      /* Accordion header colors: ORANGE bar w/ white text */
-      --panel:var(--accent);
-      --panel-ink:#ffffff;
+      --panel:var(--accent);      /* accordion header bg */
+      --panel-ink:#ffffff;        /* accordion header text */
       --stripe:rgba(0,0,0,.1);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;            /* white body text in dark */
+      --text:#ffffff;             /* white text in dark mode */
       --muted:#d0d7de;
       --card:#0f1216;
       --border:#1f2937;
-
-      --panel:#FF9A4D;           /* brighter orange on dark */
-      --panel-ink:#101317;       /* dark ink for contrast on bright orange */
+      --panel:#FF9A4D;            /* brighter orange on dark */
+      --panel-ink:#101317;
       --stripe:rgba(0,0,0,.15);
     }
 
-    /* ---- Global text ---- */
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
     .name{color:var(--text);}
 
-    /* Page title: black in light, white in dark */
-    .content h2{
-      font-weight:800;
-      color:#111111;
-      margin-top:.2rem;
-    }
-    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
-
-    /* ---- Accordion ---- */
+    /* Accordion */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -73,17 +58,18 @@
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
-
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 
-    /* ---- Course rows ---- */
-    .course{margin:0 0 1rem}
-    .title{font-weight:800; color:inherit;}
-    .meta{color:var(--muted)}
-    .desc{margin:.3rem 0 0 0}
-    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
-    .tiny a:hover{text-decoration:underline}
+    /* Content bits */
+    .cv-summary{margin:0 0 .8rem; color:var(--muted);}
+    .cv-actions{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
+    .btn-primary{
+      display:inline-block; padding:.55rem .9rem; border-radius:10px;
+      font-weight:800; text-decoration:none; border:1px solid var(--border);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, transparent), transparent);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
   </style>
 </head>
 <body>
@@ -94,10 +80,8 @@
     <nav class="nav">
       <a href="/">Home</a>
       <a href="/Research.html">Research</a>
-      <a href="/Teaching.html" class="active">Teaching</a>
-      <a href="/CV.html">CV</a>
-
-      <!-- dark/light toggle -->
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html" class="active">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -107,86 +91,44 @@
 </header>
 
 <main class="container layout">
-  <!-- Left profile column -->
+  <!-- Left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
     </div>
   </aside>
 
   <!-- Center content -->
   <section class="content">
-    <h2>Teaching</h2>
-
     <div class="accordion">
 
-      <!-- Current Teaching -->
-      <div class="acc open" id="sec-teaching">
-        <div class="acc__head" data-acc="sec-teaching">
-          <h3 class="acc__title">Teaching</h3>
+      <!-- CV panel -->
+      <div class="acc open" id="sec-cv">
+        <div class="acc__head" data-acc="sec-cv">
+          <h3 class="acc__title">Curriculum Vitae</h3>
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-
-          <div class="course">
-            <span class="title">International Organizations (Undergraduate)</span>
-            <span class="meta"> — Spring 2025 · ~400 students</span>
-            <div class="desc">
-              Examines the politics, structure, and effectiveness of international organizations in global governance.
-              Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
-              Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
-            </div>
-            <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          <p class="cv-summary">
+            Current academic CV including publications, teaching, research activities, awards, and service.
+          </p>
+          <div class="cv-actions">
+            <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+            <a href="/cv.pdf" target="_blank" rel="noopener">Open as plain link →</a>
           </div>
-
-          <div class="course">
-            <span class="title">Introduction to Research Design (Undergraduate)</span>
-            <span class="meta"> — Fall 2024 · ~75 students</span>
-            <div class="desc">
-              Introduces undergraduates to the principles of research design and the logic of social inquiry.
-              Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
-              Prepares students to write their junior and senior theses in public and international affairs.
-            </div>
-            <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Selected Previous Teaching (universities omitted) -->
-      <div class="acc" id="sec-prev">
-        <div class="acc__head" data-acc="sec-prev">
-          <h3 class="acc__title">Selected Previous Teaching</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-
-          <div class="course">
-            <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
-            <span class="meta"> — 2021</span>
-            <div class="desc">
-              Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
-            </div>
-            <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
-          </div>
-
-          <div class="course">
-            <span class="title">Analyzing the City (Undergraduate)</span>
-            <span class="meta"> — Fall 2017</span>
-            <div class="desc">
-              Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
-            </div>
-          </div>
-
         </div>
       </div>
 
     </div>
   </section>
 
+  <!-- Right TOC (optional) -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
