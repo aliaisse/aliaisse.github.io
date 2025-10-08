@@ -6,6 +6,71 @@
   <title>CV — Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
+
+  <!-- Page-specific styles (aligned with your other pages) -->
+  <style>
+    :root{
+      --brand:#0A2A66;
+      --accent:#E87722;           /* Princeton orange; swap to #F15A22 for UTSA */
+      --text:#111111;             /* black text in light mode */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --panel:var(--accent);      /* accordion header bg */
+      --panel-ink:#ffffff;        /* accordion header text */
+      --stripe:rgba(0,0,0,.1);
+    }
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;             /* white text in dark mode */
+      --muted:#d0d7de;
+      --card:#0f1216;
+      --border:#1f2937;
+      --panel:#FF9A4D;            /* brighter orange on dark */
+      --panel-ink:#101317;
+      --stripe:rgba(0,0,0,.15);
+    }
+
+    html, body { color:var(--text); }
+    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .name{color:var(--text);}
+
+    /* Accordion */
+    .accordion{display:grid;gap:1rem;margin:1rem 0}
+    .acc{
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      background:var(--card);
+      box-shadow:0 1px 6px rgba(0,0,0,.06);
+    }
+    .acc__head{
+      display:flex;align-items:center;justify-content:space-between;
+      background:var(--panel); color:var(--panel-ink);
+      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
+    }
+    .acc__head::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+      background:var(--stripe);
+    }
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
+    .acc__chev{
+      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
+      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
+    }
+    .acc.open .acc__chev{ transform:rotate(45deg); }
+    .acc__body{padding:1rem; display:none}
+    .acc.open .acc__body{display:block}
+
+    /* Content bits */
+    .cv-summary{margin:0 0 .8rem; color:var(--muted);}
+    .cv-actions{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
+    .btn-primary{
+      display:inline-block; padding:.55rem .9rem; border-radius:10px;
+      font-weight:800; text-decoration:none; border:1px solid var(--border);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, transparent), transparent);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+  </style>
 </head>
 <body>
 
@@ -26,21 +91,62 @@
 </header>
 
 <main class="container layout">
+  <!-- Left profile -->
   <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
     </div>
   </aside>
 
+  <!-- Center content -->
   <section class="content">
-    <h2>Curriculum Vitae</h2>
-    <p><strong>Click</strong> <a href="/cv.pdf" target="_blank" rel="noopener">cv.pdf</a>.</p>
-    <!-- optional: also offer a direct download -->
+    <div class="accordion">
+
+      <!-- CV panel -->
+      <div class="acc open" id="sec-cv">
+        <div class="acc__head" data-acc="sec-cv">
+          <h3 class="acc__title">Curriculum Vitae</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <p class="cv-summary">
+            Current academic CV including publications, teaching, research activities, awards, and service.
+          </p>
+          <div class="cv-actions">
+            <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+            <a href="/cv.pdf" target="_blank" rel="noopener">Open as plain link →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 
+  <!-- Right TOC (optional) -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
+
+<!-- Tiny accordion JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.acc__head').forEach(head => {
+      head.addEventListener('click', () => {
+        const id = head.getAttribute('data-acc');
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.toggle('open');
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
