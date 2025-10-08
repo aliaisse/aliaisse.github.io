@@ -9,61 +9,81 @@
 
   <!-- Page accents -->
   <style>
-    :root { --accent:#0A2A66; --accent-ink:#0b2252; --pill-bg:#eef2ff; }
-    [data-theme="dark"], body.dark {
-      --accent:#93c5fd; --accent-ink:#e5e7eb; --pill-bg:#0b1730;
-    }
+  /* Brand + accent colors */
+  :root{
+    /* Header/nav can stay navy if you like */
+    --brand:#0A2A66;
+    --brand-ink:#0b2252;
 
-    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+    /* === Choose ONE accent === */
+    --accent:#E87722;      /* Princeton Orange (PMS 158 C) */
+    /* --accent:#F15A22;   UTSA Orange (PMS 1665 C) — uncomment to use */
 
-    /* Fancy pill chips */
-    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
-    .pill{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.35rem .6rem;border-radius:999px;
-      background:linear-gradient(180deg, var(--pill-bg), transparent);
-      border:1px solid var(--border);
-      color:var(--accent-ink);
-      font-weight:600;font-size:.92rem;
-      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-    .pill--accent{
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-      border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
-      color:var(--accent-ink);
-    }
+    --accent-ink:#281a00;  /* readable ink on light accent tints */
+    --pill-bg:#fff7f0;     /* light orange wash for chips */
+  }
+  [data-theme="dark"], body.dark{
+    --brand:#93c5fd;
+    --brand-ink:#e5e7eb;
 
-    /* Feature cards */
-    .feature-grid{
-      display:grid;gap:1rem;margin-top:.35rem;
-      grid-template-columns:1fr; 
-    }
-    @media (min-width: 860px){
-      .feature-grid{grid-template-columns:1fr 1fr;}
-    }
-    .card{
-      border:1px solid var(--border);
-      border-left:5px solid var(--accent);
-      border-radius:12px;
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
-      padding:1rem 1rem 1rem 1rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
-    .muted{color:var(--muted)}
-    .badge{
-      display:inline-block;padding:.18rem .45rem;border-radius:6px;
-      font-size:.8rem;font-weight:700;letter-spacing:.02em;
-      color:var(--accent-ink);
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-      border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
-      margin-bottom:.35rem;
-    }
-  </style>
+    /* tone the orange up a bit in dark mode */
+    --accent:#FF9A4D;
+    --accent-ink:#ffe9dc;
+    --pill-bg:#2b1603;
+  }
+
+  .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+
+  /* Make section titles and card titles orange */
+  .content h2,
+  .card h3,
+  .toc-title{
+    color:var(--accent);
+  }
+
+  /* Fancy pill chips */
+  .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+  .pill{
+    display:inline-flex;align-items:center;gap:.4rem;
+    padding:.35rem .6rem;border-radius:999px;
+    background:linear-gradient(180deg, var(--pill-bg), transparent);
+    border:1px solid var(--border);
+    color:var(--accent-ink);
+    font-weight:600;font-size:.92rem;
+    box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+  .pill--accent{
+    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+    border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+    color:var(--accent-ink);
+  }
+
+  /* Feature cards */
+  .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
+  @media (min-width: 860px){.feature-grid{grid-template-columns:1fr 1fr;}}
+  .card{
+    border:1px solid var(--border);
+    border-left:5px solid var(--accent);
+    border-radius:12px;
+    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
+    padding:1rem 1rem 1rem 1rem;
+    box-shadow:0 2px 6px rgba(0,0,0,.05);
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+  .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
+  .muted{color:var(--muted)}
+  .badge{
+    display:inline-block;padding:.18rem .45rem;border-radius:6px;
+    font-size:.8rem;font-weight:700;letter-spacing:.02em;
+    color:var(--accent-ink);
+    background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+    border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
+    margin-bottom:.35rem;
+  }
+</style>
 </head>
 <body>
 
@@ -103,14 +123,66 @@
     <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
 
     <div class="pill-group">
-      <span class="pill">Deterrence</span>
-      <span class="pill">Coercion</span>
-      <span class="pill">Nuclear Policy</span>
-      <span class="pill">Alliance Politics</span>
-      <span class="pill">Strategic Studies</span>
-      <span class="pill">Methodology</span>
-    </div>
+  <span class="pill pill--accent">Deterrence</span>
+  <span class="pill pill--accent">Coercion</span>
+  <span class="pill pill--accent">Nuclear Policy</span>
+  <span class="pill pill--accent">Alliance Politics</span>
+  <span class="pill pill--accent">Strategic Studies</span>
+  <span class="pill">Methodology</span> <!-- can leave neutral if you like -->
+</div>
 
+
+<h2>Research Interests</h2>
+<div class="feature-grid">
+  <div class="card">
+    <span class="pill pill--accent">Focus</span>
+    <h3>Deterrence & Coercion</h3>
+    <p class="muted">Nuclear deterrence, compellence, crisis bargaining, escalation management.</p>
+  </div>
+
+  <div class="card">
+    <span class="pill pill--accent">Institutions</span>
+    <h3>Alliance Politics</h3>
+    <p class="muted">Assurance, burden-sharing, U.S.–ally posture alignment in Europe & Asia.</p>
+  </div>
+
+  <div class="card">
+    <span class="pill pill--accent">Nonproliferation</span>
+    <h3>Nuclear Policy</h3>
+    <p class="muted">Counter-proliferation, rollback, guarantees for reversal, technology diffusion.</p>
+  </div>
+
+  <div class="card">
+    <span class="pill pill--accent">Methods</span>
+    <h3>Mixed-Methods</h3>
+    <p class="muted">Formal theory, quantitative inference, archival process-tracing, elite interviewing.</p>
+  </div>
+</div>
+
+<h2>Degrees</h2>
+<div class="feature-grid">
+  <div class="card">
+    <span class="pill">Doctoral</span>
+    <h3>Princeton University</h3>
+    <p class="muted">Ph.D. (in progress), Public & International Affairs — Security Studies.</p>
+  </div>
+  <div class="card">
+    <span class="pill">Visiting</span>
+    <h3>Yale University</h3>
+    <p class="muted">Visiting Scholar, Nuclear Security Program / Political Science.</p>
+  </div>
+  <div class="card">
+    <span class="pill">Master’s</span>
+    <h3>University of Chicago</h3>
+    <p class="muted">M.A., International Relations.</p>
+  </div>
+  <div class="card">
+    <span class="pill">Master’s</span>
+    <h3>Ohio State University</h3>
+    <p class="muted">M.S., City & Regional Planning.</p>
+  </div>
+</div>
+    
     <h2>Featured</h2>
     <div class="feature-grid">
 
