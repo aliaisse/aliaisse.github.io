@@ -10,61 +10,55 @@
 
   <!-- Page-specific styles -->
   <style>
-    /* ---- Brand tokens (match header) ---- */
+    /* ---- Brand tokens ---- */
     :root{
-      --brand:#0A2A66;         /* header/nav navy */
-      --brand-ink:#0b2252;
-
-      --accent:#E87722;        /* Princeton orange (swap to #F15A22 for UTSA) */
+      --brand:#0A2A66;           /* site header/nav navy (unchanged) */
+      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
 
       /* Light theme text/surfaces */
-      --text:#111111;          /* force black body text in light mode */
+      --text:#111111;            /* black body text in light mode */
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
 
-      /* Accordion header colors (use the same dark navy as header) */
-      --panel:var(--brand);
-      --panel-ink:#ffffff;     /* header text */
-      --stripe:var(--accent);  /* orange underline */
+      /* Accordion header colors: ORANGE bar w/ white text */
+      --panel:var(--accent);
+      --panel-ink:#ffffff;
+      --stripe:rgba(0,0,0,.1);   /* subtle separator line under header */
     }
-
     /* Dark mode overrides */
     [data-theme="dark"], body.dark{
-      --text:#FFFFFF;          /* switch all body text to white */
+      --text:#ffffff;            /* white body text for contrast in dark */
       --muted:#d0d7de;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#0A2A66;         /* keep dark navy bar */
-      --panel-ink:#ffffff;
-      --stripe:#FF9A4D;        /* brighter orange line on dark */
+      --panel:#FF9A4D;           /* brighter orange bar on dark */
+      --panel-ink:#101317;       /* dark ink on bright orange in dark */
+      --stripe:rgba(0,0,0,.15);
     }
 
-    /* ---- Global text color + name ---- */
+    /* ---- Global text ---- */
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
-    .name { color:var(--text); }  /* your sidebar name follows theme */
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+    .name{color:var(--text);} /* sidebar name follows theme */
 
-    /* Keep your originals */
+    /* Paper line parts */
     .item{margin:0 0 .6rem}
     .when{color:var(--muted)}
-    .ptitle{color:var(--brand);font-style:italic}
-    [data-theme="dark"] .ptitle, body.dark .ptitle{ color:#ffffff; } /* titles white in dark */
+    .ptitle{font-style:italic; color:inherit;}  /* titles italic, inherit text color */
+    .status{color:var(--muted);font-style:italic}
 
-    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
-
-    /* ---- Section titles: bold orange in light, white in dark ---- */
+    /* Top page title: black in light, white in dark */
     .content h2{
       font-weight:800;
-      color:var(--accent);
+      color:#111111;
       margin-top:.2rem;
     }
-    [data-theme="dark"] .content h2, body.dark .content h2{
-      color:#ffffff;
-    }
+    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
 
-    /* ---- Accordion layout ---- */
+    /* ---- Accordion ---- */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -82,11 +76,7 @@
       content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
       background:var(--stripe);
     }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
-    /* Make the accordion titles orange in light, white in dark */
-    .acc__title{ color:var(--accent); }
-    [data-theme="dark"] .acc__title, body.dark .acc__title{ color:#ffffff; }
-
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
     .acc__chev{
       border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
@@ -137,15 +127,15 @@
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-          <div class="item"><span class="when">2025.</span> Isse, A. <span class="status">Anglo-American Nuclear Partnership: Cooperation, Integration, and Strategic Interdependence</span>. <span class="status">Manuscript.</span></div>
+          <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">Anglo-American Nuclear Partnership: Cooperation, Integration, and Strategic Interdependence</span>. <span class="status">Manuscript.</span></div>
 
-          <div class="item"><span class="when">2025.</span> Isse, A. <span class="status">Authoritarian Calculus and the Risk of Nuclear Use: Executive Power and Brinkmanship in North Korea and Iran</span>. <span class="status">Manuscript.</span></div>
+          <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">Authoritarian Calculus and the Risk of Nuclear Use: Executive Power and Brinkmanship in North Korea and Iran</span>. <span class="status">Manuscript.</span></div>
 
-          <div class="item"><span class="when">2025.</span> Isse, A. <span class="status">From Coercion to Cooperation: Reversing Nuclear Programs Through Guarantees</span>. <span class="status">Manuscript.</span></div>
+          <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">From Coercion to Cooperation: Reversing Nuclear Programs Through Guarantees</span>. <span class="status">Manuscript.</span></div>
 
-          <div class="item"><span class="when">2024.</span> Isse, A. <span class="status">Between Coercion and Inducements: Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW</span>. <span class="status">Under review.</span></div>
+          <div class="item"><span class="when">2024.</span> Isse, A. <span class="ptitle">Between Coercion and Inducements: Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW</span>. <span class="status">Under review.</span></div>
 
-          <div class="item"><span class="when">2024.</span> Isse, A. <span class="status">The Strategies of Coercion in the Nuclear Era: From Diplomacy to War</span>. <span class="status">Forthcoming.</span></div>
+          <div class="item"><span class="when">2024.</span> Isse, A. <span class="ptitle">The Strategies of Coercion in the Nuclear Era: From Diplomacy to War</span>. <span class="status">Forthcoming.</span></div>
         </div>
       </div>
 
