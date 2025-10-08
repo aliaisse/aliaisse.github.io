@@ -6,11 +6,63 @@
   <title>Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
+
+  <!-- Page accents -->
   <style>
-    .pill{display:inline-block;padding:.2rem .5rem;border:1px solid var(--border);border-radius:999px;font-size:.9rem;margin:.15rem .25rem 0 0;background:var(--card)}
-    .lead{font-size:1.15rem;margin:.5rem 0 1rem}
-    .card{border:1px solid var(--border);border-radius:10px;background:var(--card);padding:1rem;margin:0 0 1rem}
+    :root { --accent:#0A2A66; --accent-ink:#0b2252; --pill-bg:#eef2ff; }
+    [data-theme="dark"], body.dark {
+      --accent:#93c5fd; --accent-ink:#e5e7eb; --pill-bg:#0b1730;
+    }
+
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+
+    /* Fancy pill chips */
+    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+    .pill{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .6rem;border-radius:999px;
+      background:linear-gradient(180deg, var(--pill-bg), transparent);
+      border:1px solid var(--border);
+      color:var(--accent-ink);
+      font-weight:600;font-size:.92rem;
+      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+    .pill--accent{
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+      color:var(--accent-ink);
+    }
+
+    /* Feature cards */
+    .feature-grid{
+      display:grid;gap:1rem;margin-top:.35rem;
+      grid-template-columns:1fr; 
+    }
+    @media (min-width: 860px){
+      .feature-grid{grid-template-columns:1fr 1fr;}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-left:5px solid var(--accent);
+      border-radius:12px;
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
+      padding:1rem 1rem 1rem 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
     .muted{color:var(--muted)}
+    .badge{
+      display:inline-block;padding:.18rem .45rem;border-radius:6px;
+      font-size:.8rem;font-weight:700;letter-spacing:.02em;
+      color:var(--accent-ink);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
+      margin-bottom:.35rem;
+    }
   </style>
 </head>
 <body>
@@ -32,6 +84,7 @@
 </header>
 
 <main class="container layout">
+  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
@@ -44,32 +97,39 @@
     </div>
   </aside>
 
+  <!-- center content -->
   <section class="content">
     <h2>Welcome</h2>
     <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
 
-    <div>
-      <span class="pill">Deterrence</span>
+    <div class="pill-group">
+      <span class="pill pill--accent">Deterrence</span>
       <span class="pill">Coercion</span>
       <span class="pill">Nuclear Policy</span>
       <span class="pill">Alliance Politics</span>
-      <span class="pill">Formal Theory</span>
+      <span class="pill">Strategic Studies</span>
+      <span class="pill">Methodology</span>
     </div>
 
     <h2>Featured</h2>
-    <div class="card">
-      <strong>Anglo-American Nuclear Partnership</strong>
-      <div class="muted">Manuscript (2026)</div>
-      <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
-    </div>
+    <div class="feature-grid">
 
-    <div class="card">
-      <strong>International Organizations</strong>
-      <div class="muted">Teaching — Princeton (Spring 2025)</div>
-      <p class="muted">Discussion sections, office hours, assessment; design and performance of IOs.</p>
+      <div class="card">
+        <span class="badge">Manuscript · 2026</span>
+        <h3>Anglo-American Nuclear Partnership</h3>
+        <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Teaching · Spring 2025</span>
+        <h3>International Organizations</h3>
+        <p class="muted">Discussion sections, office hours, assessment; design and performance of IOs.</p>
+      </div>
+
     </div>
   </section>
 
+  <!-- right TOC -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
