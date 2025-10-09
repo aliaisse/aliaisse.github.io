@@ -128,39 +128,6 @@
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 </style>
-  <style>
-  /* ===== Right-side Personal box ===== */
-  .sidebox{
-    position:sticky; top:76px; align-self:start;
-    border:1px solid var(--border); background:var(--card);
-    border-radius:12px; padding:.9rem; box-shadow:0 2px 8px rgba(0,0,0,.06);
-  }
-  .sidebox__title{
-    font-weight:800; letter-spacing:.02em; margin-bottom:.5rem; color:#0A2A66;
-  }
-
-  .p-item{
-    border:1px solid var(--border);
-    border-radius:10px; background:linear-gradient(180deg, color-mix(in oklab, #0A2A66 4%, var(--card)), var(--card));
-    padding:.35rem .55rem; margin:.5rem 0; box-shadow:0 1px 4px rgba(0,0,0,.04);
-  }
-  .p-item[open]{box-shadow:0 6px 16px rgba(0,0,0,.08)}
-  .p-item summary{
-    display:grid; grid-template-columns: auto 1fr auto; align-items:center;
-    gap:.5rem; list-style:none; cursor:pointer; padding:.15rem 0;
-  }
-  .p-item summary::-webkit-details-marker{display:none}
-  .p-kicker{
-    font-size:.74rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;
-  }
-  .p-title{font-weight:800; color:var(--text)}
-  .p-meta{color:var(--muted); font-size:.9rem}
-  .p-body{color:var(--text); padding:.35rem 0 .2rem .05rem; line-height:1.45}
-
-  /* Dark mode polish */
-  [data-theme="dark"] .sidebox__title{color:#93c5fd}
-  [data-theme="dark"] .p-item{box-shadow:0 2px 10px rgba(0,0,0,.35)}
-</style>
 </head>
 <body>
 
@@ -331,83 +298,9 @@
   </section>
 
   <!-- right TOC -->
-<aside class="sidebox" id="personal-box">
-  <div class="sidebox__title">Personal · Trips</div>
-
-  <!-- Yale Visiting Scholar -->
-  <details class="p-item" open id="yale-2025">
-    <summary>
-      <span class="p-kicker">Fellowship</span>
-      <span class="p-title">Yale — Nuclear Security Program</span>
-      <span class="p-meta">2025–26</span>
-    </summary>
-    <div class="p-body">
-      Visiting Scholar year at the MacMillan Center’s Nuclear Security Program:
-      research on deterrence, coercive diplomacy, and alliance politics.
-    </div>
-  </details>
-
-  <!-- Uppsala -->
-  <details class="p-item" id="uppsala-2025">
-    <summary>
-      <span class="p-kicker">Conference</span>
-      <span class="p-title">Uppsala, Sweden — Alva Myrdal Conference</span>
-      <span class="p-meta">2025</span>
-    </summary>
-    <div class="p-body">
-      Talks on nuclear disarmament and strategic stability; cross-disciplinary sessions.
-    </div>
-  </details>
-
-  <!-- Ghana -->
-  <details class="p-item" id="ghana-2024">
-    <summary>
-      <span class="p-kicker">Policy Trip</span>
-      <span class="p-title">Accra, Ghana — SPIA International Policy Trip</span>
-      <span class="p-meta">Winter 2024</span>
-    </summary>
-    <div class="p-body">
-      Mentored students and met partners on implementation and governance capacity.
-    </div>
-  </details>
-
-  <!-- Cambridge -->
-  <details class="p-item" id="cambridge-2023">
-    <summary>
-      <span class="p-kicker">Study</span>
-      <span class="p-title">Cambridge (UK) — Summer Law Modules</span>
-      <span class="p-meta">2023</span>
-    </summary>
-    <div class="p-body">
-      International law of force (UN Charter) and law of armed conflict.
-    </div>
-  </details>
-
-  <!-- Taipei -->
-  <details class="p-item" id="taipei-2018">
-    <summary>
-      <span class="p-kicker">Study</span>
-      <span class="p-title">Taipei, Taiwan — National Taipei University</span>
-      <span class="p-meta">2018</span>
-    </summary>
-    <div class="p-body">
-      Transportation planning and high-speed rail systems.
-    </div>
-  </details>
-
-  <!-- Early journey (optional) -->
-  <details class="p-item" id="journey">
-    <summary>
-      <span class="p-kicker">Journey</span>
-      <span class="p-title">CFBT Scholarship → U.S. → BA → Grad School</span>
-      <span class="p-meta">2004–2027</span>
-    </summary>
-    <div class="p-body">
-      CFBT Education Trust Scholarship (Kenya, 2004–2008); relocation to the U.S. in 2009; WTAMU (2010); 
-      BA at UT San Antonio (2015, first in family); MS at Ohio State (2018); MA at UChicago (2021); 
-      MPA at Princeton (2024); PhD (projected 2027).
-    </div>
-  </details>
+<aside class="toc">
+  <div class="toc-title">On this page</div>
+  <nav id="tocList"></nav>
 </aside>
 </main>
 
