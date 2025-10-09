@@ -10,26 +10,32 @@
        THEME TOKENS
        (Dark charcoal — not blue)
     ========================== */
-:root{
-  --brand:#0B1E3B;          /* DARK NAVY (header, accordions, chips, buttons) */
-  --text:#111111;           /* black text in light */
-  --muted:#4b5563;
-  --card:#ffffff;           /* page/background in light */
-  --border:#e5e7eb;
+    :root{
+      --brand:#0A2A66;           /* site header/nav navy (unchanged) */
+      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
 
-  --panel:var(--brand);     /* unify brand surfaces */
-  --panel-ink:#ffffff;      /* text on brand surfaces */
-}
-[data-theme="dark"], body.dark{
-  --text:#ffffff;           /* body text flips to white */
-  --muted:#cfd8dc;
-  --card:#0f1216;           /* page/background in dark */
-  --border:#1f2937;
+      /* Light theme text/surfaces */
+      --text:#111111;            /* black body text in light mode */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
 
-  --panel:var(--brand);     /* keep the same dark navy in dark */
-  --panel-ink:#ffffff;
-}
-    /* =========================
+      /* Accordion header colors: ORANGE bar w/ white text */
+      --panel:var(--accent);
+      --panel-ink:#ffffff;
+      --stripe:rgba(0,0,0,.1);   /* subtle separator line under header */
+    }
+    /* Dark mode overrides */
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;            /* white body text for contrast in dark */
+      --muted:#d0d7de;
+      --card:#0f1216;
+      --border:#1f2937;
+
+      --panel:#FF9A4D;           /* brighter orange bar on dark */
+      --panel-ink:#101317;       /* dark ink on bright orange in dark */
+      --stripe:rgba(0,0,0,.15);
+    }    /* =========================
        BASE LAYOUT
     ========================== */
     *{box-sizing:border-box}
