@@ -64,6 +64,23 @@
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
+    /* ===== Feature cards (match index) ===== */
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+    .card{
+      border:1px solid var(--border);
+      border-left:none;
+      border-radius:12px;
+      background:var(--card);
+      padding:1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+    .muted{color:var(--muted)}
+    .tiny{font-size:.9rem}
+
     /* ===== Simple items list (papers) ===== */
     .item{margin:0 0 .7rem}
     .when{color:var(--muted)}
@@ -117,7 +134,7 @@
 </header>
 
 <main class="container layout">
-  <!-- left profile (kept minimal to match index) -->
+  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <div class="buttons">
@@ -129,6 +146,29 @@
   <!-- content -->
   <section class="content">
     <h2 style="margin:.2rem 0 .8rem 0">Research</h2>
+
+    <!-- ===== Research Interests card (NEW, above accordions) ===== -->
+    <div class="feature-grid" style="margin-bottom:.6rem">
+      <div class="card" style="grid-column:1 / -1">
+        <h3>Research Interests</h3>
+        <p class="muted" style="margin:.2rem 0 .6rem 0">
+          International security, strategic studies, and the political economy of international organizations,
+          with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.
+        </p>
+        <div class="pill-group">
+          <span class="pill">Deterrence</span>
+          <span class="pill">Coercion</span>
+          <span class="pill">Nuclear Policy</span>
+          <span class="pill">Nonproliferation</span>
+          <span class="pill">Alliance Politics</span>
+          <span class="pill">Escalation Management</span>
+          <span class="pill">IOs &amp; UN</span>
+          <span class="pill">Formal Models</span>
+          <span class="pill">Causal Inference</span>
+          <span class="pill">Archival Research</span>
+        </div>
+      </div>
+    </div>
 
     <div class="accordion">
 
