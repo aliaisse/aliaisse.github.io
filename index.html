@@ -5,68 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — Ali A. Isse</title>
 
-  <!-- keep your existing shared assets -->
+  <!-- CSS + JS from root -->
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
-
-  <!-- PAGE-LOCAL THEME OVERRIDE (light navy) -->
-  <style id="page-theme">
-    :root{
-      /* light navy (tune if you want slightly lighter/darker) */
-      --brand:#1B3B72;              /* header color */
-      --panel:var(--brand);         /* accordions / chips / buttons */
-      --panel-ink:#ffffff;          /* text on brand */
-      --text:#111111;               /* body text in light */
-      --muted:#4b5563;
-      --card:#ffffff;
-      --border:#e5e7eb;
-    }
-    /* dark mode keeps the same light navy for brand surfaces; text flips to white */
-    [data-theme="dark"], body.dark{
-      --text:#ffffff;
-      --muted:#cfd8dc;
-      --card:#0f1216;
-      --border:#1f2937;
-      --panel:var(--brand);
-      --panel-ink:#ffffff;
-    }
-
-    /* force header to use this page’s brand (beats external CSS) */
-    .site-header{ background:var(--brand) !important; color:#fff; }
-    .site-header .brand, .site-header .nav a{ color:#fff !important; }
-
-    /* buttons under the profile: light navy background */
-    .buttons .btn{
-      background:var(--panel) !important;
-      color:var(--panel-ink) !important;
-      border:1px solid var(--panel) !important;
-      padding:.45rem .7rem;border-radius:8px;
-      font-weight:700;font-size:.92rem;text-decoration:none;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .buttons .btn:hover{ transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.12); }
-
-    /* chips/pills (if you keep them on this page) */
-    .pill{
-      display:inline-block;
-      padding:.35rem .6rem;border-radius:999px;
-      background:var(--panel) !important;
-      border:1px solid var(--panel) !important;
-      color:var(--panel-ink) !important;
-      font-weight:700;font-size:.92rem;
-    }
-
-    /* accordion headers (if present on this page) */
-    .acc__head{
-      background:var(--panel) !important;
-      color:var(--panel-ink) !important;
-    }
-    .acc__title{ color:var(--panel-ink) !important; }
-    .acc__chev{ border-color:var(--panel-ink) !important; }
-
-    /* optional: make nav active/hover look crisper on the light navy */
-    .nav a.active{ text-decoration:underline; text-underline-offset:4px; }
-  </style>
 </head>
 <body>
 
@@ -77,7 +18,7 @@
       <a href="/" class="active">Home</a>
       <a href="/Research.html">Research</a>
       <a href="/Teaching.html">Teaching</a>
-      <a href="/CV.html">CV</a>
+     <a href="/CV.html">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -95,21 +36,192 @@
       <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
       <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>  
+     <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>  
     </div>
   </aside>
 
   <section class="content">
     <h2>About me</h2>
     <p>Welcome!</p>
-    <p>I am Mehdi! (Ali Isse) a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).</p>
+    <p> I am Mehdi! (Ali Isse) a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).</p>
 
-    <p>My research builds on a multidisciplinary approach that integrates international relations theory, security studies, formal modeling, computational social science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods—archival research, case studies, game theory, and statistical analysis—to study coercion, deterrence, and crisis bargaining in international security.</p>
+<p>My research builds on a multidisciplinary approach that integrates international relations theory, security studies, formal modeling, computational social science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods—archival research, case studies, game theory, and statistical analysis—to study coercion, deterrence, and crisis bargaining in international security.</p>
 
-    <p>My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies.</p>
-    <p>I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my comprehensive exams with Highest Distinction; and a B.A. in Political Science from the University of Texas San Antonio.</p>
+<p>My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies.</p>
+<p>I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my comprehensive exams with Highest Distinction; and a B.A. in Political Science from the University of Texas San Antonio.</p>
 
     <p>For more information about my research, teaching, or service, please feel free to contact me.</p>    
+  </section>
+
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+---------------------------------------------Research.md ----------------------
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">Ali A. Isse</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/Research.html" class="active">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+    <a href="/CV.html">CV</a>
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
+    </nav>
+  </div>
+</header>
+
+<main class="container layout">
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+     <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>    
+    </div>
+  </aside>
+
+  <section class="content">
+    <h2 id="working-papers">Working Papers</h2>
+    <ul>
+      <li><strong>Anglo-American Nuclear Partnership:</strong> Cooperation, Integration, and Strategic Interdependence. <em>Target: Journal of Strategic Studies</em>.</li>
+      <li><strong>Authoritarian Calculus and the Risk of Nuclear Use:</strong> Executive Power and Brinkmanship in North Korea and Iran. <em>Target: JCR</em>.</li>
+      <li><strong>From Coercion to Cooperation:</strong> Reversing Nuclear Programs Through Guarantees. <em>Target: Nonproliferation Review</em>.</li>
+    </ul>
+
+    <h2 id="under-review">Under Review / Forthcoming</h2>
+    <ul>
+      <li><strong>Between Coercion and Inducements:</strong> Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW. <em>Under review</em>.</li>
+      <li><strong>The Strategies of Coercion in the Nuclear Era:</strong> From Diplomacy to War. <em>Forthcoming</em>.</li>
+    </ul>
+
+    <h2 id="data">Data & Replication</h2>
+    <p>Coming soon.</p>
+  </section>
+
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========Index.html again======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
+  <style>
+    .pill{display:inline-block;padding:.2rem .5rem;border:1px solid var(--border);border-radius:999px;font-size:.9rem;margin:.15rem .25rem 0 0;background:var(--card)}
+    .lead{font-size:1.15rem;margin:.5rem 0 1rem}
+    .card{border:1px solid var(--border);border-radius:10px;background:var(--card);padding:1rem;margin:0 0 1rem}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">Ali A. Isse</a>
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
+    </nav>
+  </div>
+</header>
+
+<main class="container layout">
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
+    </div>
+  </aside>
+
+  <section class="content">
+    <h2>Welcome</h2>
+    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+
+    <div>
+      <span class="pill">Deterrence</span>
+      <span class="pill">Coercion</span>
+      <span class="pill">Nuclear Policy</span>
+      <span class="pill">Alliance Politics</span>
+      <span class="pill">Formal Theory</span>
+    </div>
+
+    <h2>Featured</h2>
+    <div class="card">
+      <strong>Anglo-American Nuclear Partnership</strong>
+      <div class="muted">Manuscript (2026)</div>
+      <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+    </div>
+
+    <div class="card">
+      <strong>International Organizations</strong>
+      <div class="muted">Teaching — Princeton (Spring 2025)</div>
+      <p class="muted">Discussion sections, office hours, assessment; design and performance of IOs.</p>
+    </div>
   </section>
 
   <aside class="toc">
