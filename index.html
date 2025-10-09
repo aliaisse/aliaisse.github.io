@@ -8,9 +8,9 @@
   <script src="/assets/script.js" defer></script>
 
   <style>
-    /* ===== Site palette — Dark Navy everywhere ===== */
+    /* ===== Site palette — EXACT header navy from your Teaching page ===== */
     :root{
-      --brand:#0A2A66;        /* your original header/nav navy */
+      --brand:#0A2A66;        /* dark navy you’re using site-wide */
       --brand-ink:#ffffff;
 
       --text:#111111;
@@ -18,24 +18,25 @@
       --card:#ffffff;
       --border:#d9dde4;
 
-      --title:var(--brand);
-      --panel-bg:#eef2f7;     /* soft navy-tinted body bg for accordions */
-      --list-dot:#0A2A66;
+      --title:var(--brand);   /* headings & card titles */
+      --panel-bg:#eef2f7;     /* soft body for accordion content */
+      --list-dot:var(--brand);
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
       --muted:#cbd5e1;
-      --card:#101317;
+      --card:#0f1216;
       --border:#1f2937;
 
-      --brand:#0f3a87;        /* slightly brighter navy in dark for contrast */
+      /* keep the same navy, but titles lighter for contrast */
+      --brand:#0A2A66;
       --brand-ink:#ffffff;
-      --title:#e6edff;
+      --title:#cfe0ff;
       --panel-bg:#0f1420;
-      --list-dot:#9db7ff;
+      --list-dot:#a9c2ff;
     }
 
-    /* ===== Header recolor ===== */
+    /* ===== Header uses your navy ===== */
     .site-header{
       background:var(--brand);
       border-bottom:0;
@@ -47,8 +48,9 @@
     /* Global */
     html, body { color:var(--text); }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
+    .name{color:var(--text);}
 
-    /* Cards */
+    /* Cards (border & titles in navy) */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
@@ -77,7 +79,7 @@
     .acc__body{padding:1rem;background:var(--panel-bg);display:none}
     .acc.open .acc__body{display:block}
 
-    /* Expertise list (replaces chips) */
+    /* Expertise list (replacing chips) */
     .expertise{columns:1;column-gap:2rem;list-style:none;padding:0;margin:.3rem 0 0}
     @media (min-width: 680px){ .expertise{columns:2} }
     .expertise li{
@@ -89,7 +91,7 @@
       background:var(--list-dot);
     }
 
-    /* Right rail “Personal · Trips” */
+    /* Right rail Personal · Trips */
     .right-rail .acc{margin-bottom:1rem}
     .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
     .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
@@ -97,6 +99,11 @@
     .trip .t{font-weight:800;line-height:1.2;color:var(--title)}
     .trip .d{color:var(--muted);font-size:.9rem}
     .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
+
+    /* Make sure the right rail shows on mobile */
+    @media (max-width: 760px){
+      .right-rail{margin-top:1rem}
+    }
   </style>
 </head>
 <body>
@@ -137,7 +144,7 @@
 
     <div class="accordion">
 
-      <!-- Expertise (now a list) -->
+      <!-- Expertise -->
       <div class="acc open" id="sec-expertise">
         <div class="acc__head" data-acc="sec-expertise">
           <h3 class="acc__title">Expertise</h3><i class="acc__chev"></i>
@@ -147,6 +154,7 @@
             <li>Deterrence</li>
             <li>Coercion</li>
             <li>Nuclear Policy</li>
+            <li>Nonproliferation</li>
             <li>Alliance Politics</li>
             <li>Strategic Studies</li>
             <li>Research Methods & Causal Inference</li>
@@ -220,7 +228,7 @@
     </div>
   </section>
 
-  <!-- Right sidebar -->
+  <!-- Right sidebar (Personal · Trips) -->
   <aside class="right-rail">
     <div class="acc open" id="sec-personal">
       <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
