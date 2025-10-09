@@ -3,273 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ali A. Isse</title>
+  <title>Home — Ali A. Isse</title>
 
-  <style>
-    /* =========================
-       THEME TOKENS
-       (Dark charcoal — not blue)
-    ========================== */
-:root{
-  --brand:#0B1E3B;          /* DARK NAVY (header, accordions, chips, buttons) */
-  --text:#111111;           /* black text in light */
-  --muted:#4b5563;
-  --card:#ffffff;           /* page/background in light */
-  --border:#e5e7eb;
+  <!-- keep your existing shared assets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
 
-  --panel:var(--brand);     /* unify brand surfaces */
-  --panel-ink:#ffffff;      /* text on brand surfaces */
-}
-[data-theme="dark"], body.dark{
-  --text:#ffffff;           /* body text flips to white */
-  --muted:#cfd8dc;
-  --card:#0f1216;           /* page/background in dark */
-  --border:#1f2937;
-
-  --panel:var(--brand);     /* keep the same dark navy in dark */
-  --panel-ink:#ffffff;
-}
-    /* =========================
-       BASE LAYOUT
-    ========================== */
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      color:var(--text);
-      background:var(--card);
+  <!-- PAGE-LOCAL THEME OVERRIDE (light navy) -->
+  <style id="page-theme">
+    :root{
+      /* light navy (tune if you want slightly lighter/darker) */
+      --brand:#1B3B72;              /* header color */
+      --panel:var(--brand);         /* accordions / chips / buttons */
+      --panel-ink:#ffffff;          /* text on brand */
+      --text:#111111;               /* body text in light */
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 16px}
-    .layout{display:grid;grid-template-columns:280px 1fr 320px;gap:24px;margin:24px 0}
-    @media (max-width: 1100px){
-      .layout{grid-template-columns:1fr}
-      .right-rail{order:3} .profile{order:1} .content{order:2}
+    /* dark mode keeps the same light navy for brand surfaces; text flips to white */
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;
+      --muted:#cfd8dc;
+      --card:#0f1216;
+      --border:#1f2937;
+      --panel:var(--brand);
+      --panel-ink:#ffffff;
     }
 
-    /* =========================
-       HEADER (dark charcoal)
-    ========================== */
-    .site-header{background:var(--brand);color:#fff}
-    .header-inner{display:flex;justify-content:space-between;align-items:center;height:64px}
-    .brand{font-weight:800;color:#fff}
-    .nav{display:flex;gap:18px;align-items:center}
-    .nav a{color:#fff;opacity:.9}
-    .nav a.active,.nav a:hover{opacity:1}
-    .theme-switch{display:inline-flex;align-items:center;gap:8px;color:#fff}
-    .theme-switch input{
-      appearance:none;width:40px;height:22px;border-radius:999px;background:#fff3;border:1px solid #ffffff55;position:relative;cursor:pointer
-    }
-    .theme-switch input::after{
-      content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s ease
-    }
-    body.dark .theme-switch input::after{transform:translateX(18px)}
+    /* force header to use this page’s brand (beats external CSS) */
+    .site-header{ background:var(--brand) !important; color:#fff; }
+    .site-header .brand, .site-header .nav a{ color:#fff !important; }
 
-    /* =========================
-       PROFILE (LEFT)
-    ========================== */
-    .avatar{width:100%;border-radius:12px;display:block;border:1px solid var(--border)}
-    .buttons{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
-    .btn{
-      background:var(--panel);color:var(--panel-ink);border:1px solid var(--panel);
-      padding:.45rem .7rem;border-radius:8px;font-weight:700;font-size:.92rem;
-      transition:transform .12s ease,box-shadow .12s ease
+    /* buttons under the profile: light navy background */
+    .buttons .btn{
+      background:var(--panel) !important;
+      color:var(--panel-ink) !important;
+      border:1px solid var(--panel) !important;
+      padding:.45rem .7rem;border-radius:8px;
+      font-weight:700;font-size:.92rem;text-decoration:none;
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .buttons .btn:hover{ transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.12); }
 
-    /* =========================
-       CONTENT (CENTER)
-    ========================== */
-    h2{margin:0 0 .25rem}
-    .lead{font-size:1.08rem;margin:.3rem 0 1rem;color:var(--muted)}
-    .card{border:1px solid var(--border);border-radius:12px;background:var(--card);padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-    .card h3{margin:.1rem 0 .35rem 0}
-
-    /* Chips (inside Expertise accordion) */
-    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem}
+    /* chips/pills (if you keep them on this page) */
     .pill{
-      display:inline-flex;align-items:center;gap:.4rem;
+      display:inline-block;
       padding:.35rem .6rem;border-radius:999px;
-      background:var(--panel);border:1px solid var(--panel);color:var(--panel-ink);
-      font-weight:700;font-size:.92rem;transition:transform .12s ease,box-shadow .12s ease
+      background:var(--panel) !important;
+      border:1px solid var(--panel) !important;
+      color:var(--panel-ink) !important;
+      font-weight:700;font-size:.92rem;
     }
-    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.10)}
 
-    /* =========================
-       ACCORDIONS (dark charcoal headers)
-    ========================== */
-    .accordion{display:grid;gap:1rem;margin:1.25rem 0}
-    .acc{
-      border:1px solid var(--border);
-      border-radius:10px;overflow:hidden;background:var(--card);
-      box-shadow:0 1px 6px rgba(0,0,0,.06)
-    }
+    /* accordion headers (if present on this page) */
     .acc__head{
-      display:flex;align-items:center;justify-content:space-between;
-      background:var(--panel);color:var(--panel-ink);
-      padding:.9rem 1rem;font-weight:800;cursor:pointer
+      background:var(--panel) !important;
+      color:var(--panel-ink) !important;
     }
-    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--panel-ink)}
-    .acc__chev{border:solid var(--panel-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
-    .acc.open .acc__chev{transform:rotate(45deg)}
-    .acc__body{padding:1rem;display:none}
-    .acc.open .acc__body{display:block}
+    .acc__title{ color:var(--panel-ink) !important; }
+    .acc__chev{ border-color:var(--panel-ink) !important; }
 
-    /* =========================
-       RIGHT RAIL
-    ========================== */
-    .right-rail .acc{margin-bottom:1rem}
-    .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0}
-    .trip small{display:block;color:var(--muted);font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.2rem}
-    .trip .t{font-weight:800;line-height:1.2}
-    .trip .d{color:var(--muted);font-size:.9rem;margin-top:.25rem}
-    .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
+    /* optional: make nav active/hover look crisper on the light navy */
+    .nav a.active{ text-decoration:underline; text-underline-offset:4px; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">Ali A. Isse</a>
-      <nav class="nav">
-        <a href="/" class="active">Home</a>
-        <a href="/Research.html">Research</a>
-        <a href="/Teaching.html">Teaching</a>
-        <a href="/CV.html">CV</a>
-        <label class="theme-switch" title="Toggle dark mode">
-          <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
-          <span class="switch-slider"></span>
-        </label>
-      </nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">Ali A. Isse</a> 
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
+    </nav>
+  </div>
+</header>
+
+<main class="container layout">
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A. Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID iD</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>  
     </div>
-  </header>
+  </aside>
 
-  <!-- MAIN -->
-  <main class="container layout">
-    <!-- LEFT PROFILE -->
-    <aside class="profile">
-      <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
-      <div class="buttons">
-        <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-        <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
-        <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
-      </div>
-    </aside>
+  <section class="content">
+    <h2>About me</h2>
+    <p>Welcome!</p>
+    <p>I am Mehdi! (Ali Isse) a PhD Candidate in Security Studies at Princeton University’s School of Public and International Affairs, specializing in nuclear deterrence, coercive diplomacy, and war. For 2025–2026, I am also a Visiting Scholar in the Nuclear Security Program at Yale University’s MacMillan Center (Department of Political Science).</p>
 
-    <!-- CENTER CONTENT -->
-    <section class="content">
-      <h2>Welcome</h2>
-      <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+    <p>My research builds on a multidisciplinary approach that integrates international relations theory, security studies, formal modeling, computational social science, and qualitative historical analysis. In my doctoral dissertation, I use mixed methods—archival research, case studies, game theory, and statistical analysis—to study coercion, deterrence, and crisis bargaining in international security.</p>
 
-      <div class="accordion">
-        <!-- Expertise (chips grouped) -->
-        <div class="acc open" id="sec-expertise">
-          <div class="acc__head" data-acc="sec-expertise"><h3 class="acc__title">Expertise</h3><i class="acc__chev"></i></div>
-          <div class="acc__body">
-            <div class="pill-group">
-              <span class="pill">Deterrence</span>
-              <span class="pill">Coercion</span>
-              <span class="pill">Nuclear Policy</span>
-              <span class="pill">Alliance Politics</span>
-              <span class="pill">Strategic Studies</span>
-              <span class="pill">Methodology</span>
-            </div>
-          </div>
-        </div>
+    <p>My work contributes to understanding the strategic, political, and normative dimensions of nuclear weapons policy. It advances debates on how states can reduce the risks of nuclear use and strengthen extended deterrence commitments for allies.</p>
+    <p>I hold an M.A. in Public Affairs from Princeton University; an M.A. in Political Science from the University of Chicago as a Maroon Scholar; an M.S. in City and Regional Planning from The Ohio State University, where I passed my comprehensive exams with Highest Distinction; and a B.A. in Political Science from the University of Texas San Antonio.</p>
 
-        <!-- About -->
-        <div class="acc" id="sec-about">
-          <div class="acc__head" data-acc="sec-about"><h3 class="acc__title">About</h3><i class="acc__chev"></i></div>
-          <div class="acc__body">
-            <div class="card">
-              <h3>Ph.D. Candidate, Princeton SPIA</h3>
-              <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26 Visiting Scholar in Yale University’s Nuclear Security Program. My work sits at the intersection of international security, strategic studies, and the political economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
-              <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
-            </div>
-          </div>
-        </div>
+    <p>For more information about my research, teaching, or service, please feel free to contact me.</p>    
+  </section>
 
-        <!-- Research Spotlights -->
-        <div class="acc" id="sec-research">
-          <div class="acc__head" data-acc="sec-research"><h3 class="acc__title">Research Spotlights</h3><i class="acc__chev"></i></div>
-          <div class="acc__body">
-            <div class="card">
-              <h3>Coercion & Compliance</h3>
-              <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
-            </div>
-            <div class="card" style="margin-top:1rem">
-              <h3>Posture & Assurance</h3>
-              <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
-            </div>
-          </div>
-        </div>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
 
-        <!-- Degrees -->
-        <div class="acc" id="sec-degrees">
-          <div class="acc__head" data-acc="sec-degrees"><h3 class="acc__title">Degrees</h3><i class="acc__chev"></i></div>
-          <div class="acc__body">
-            <div class="card">
-              <p style="margin:0">
-                Ph.D. Candidate, Princeton University<br>
-                M.A., Princeton University<br>
-                M.A., The University of Chicago<br>
-                M.S., The Ohio State University<br>
-                B.A., The University of Texas San Antonio
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RIGHT SIDEBAR -->
-    <aside class="right-rail">
-      <div class="acc open" id="sec-personal">
-        <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
-        <div class="acc__body">
-          <a class="trip" href="#">
-            <small>FELLOWSHIP</small><span class="date">2025–26</span>
-            <div class="t">Yale — Nuclear Security Program</div>
-            <div class="d">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program.</div>
-          </a>
-          <a class="trip" href="#">
-            <small>CONFERENCE</small><span class="date">2025</span>
-            <div class="t">Uppsala, Sweden — Alva Myrdal Conference</div>
-            <div class="d">Panel participation and research presentation.</div>
-          </a>
-          <a class="trip" href="#">
-            <small>POLICY TRIP</small><span class="date">Winter 2024</span>
-            <div class="t">Accra, Ghana — SPIA International Policy Trip</div>
-            <div class="d">Field briefings and meetings with policy stakeholders.</div>
-          </a>
-        </div>
-      </div>
-    </aside>
-  </main>
-
-  <!-- JS: accordion + dark mode -->
-  <script>
-    // Accordion toggles
-    document.querySelectorAll('.acc__head').forEach(head=>{
-      head.addEventListener('click', ()=>{
-        const id = head.getAttribute('data-acc');
-        const panel = document.getElementById(id);
-        if(panel) panel.classList.toggle('open');
-      });
-    });
-
-    // Dark mode toggle (persists)
-    const switchEl = document.getElementById('themeSwitch');
-    if (switchEl){
-      if(localStorage.getItem('theme')==='dark'){ document.body.classList.add('dark'); switchEl.checked=true; }
-      switchEl.addEventListener('change', ()=>{
-        document.body.classList.toggle('dark');
-        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark':'light');
-      });
-    }
-  </script>
 </body>
 </html>
