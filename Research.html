@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,57 +7,70 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles -->
+  <!-- Page-specific styles (matches index.html palette + components) -->
   <style>
-    /* ---- Brand tokens ---- */
+    /* ===== Brand + theme tokens (keep site palette) ===== */
     :root{
-      --brand:#0A2A66;           /* site header/nav navy (unchanged) */
-      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
+      --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
+      --accent:#E87722;             /* retained for other uses if needed */
 
-      /* Light theme text/surfaces */
-      --text:#111111;            /* black body text in light mode */
+      /* light surfaces */
+      --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
 
-      /* Accordion header colors: ORANGE bar w/ white text */
-      --panel:var(--accent);
+      /* neutral chips */
+      --pill-bg: var(--card);
+      --pill-ink: var(--text);
+
+      /* ===== Accordion bars ONLY: dark orange (match index) ===== */
+      --panel:#B74E00;              /* dark orange */
       --panel-ink:#ffffff;
-      --stripe:rgba(0,0,0,.1);   /* subtle separator line under header */
+      --stripe:rgba(0,0,0,.1);
     }
-    /* Dark mode overrides */
     [data-theme="dark"], body.dark{
-      --text:#ffffff;            /* white body text for contrast in dark */
-      --muted:#d0d7de;
+      --text:#ffffff;
+      --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#FF9A4D;           /* brighter orange bar on dark */
-      --panel-ink:#101317;       /* dark ink on bright orange in dark */
+      /* keep accordion dark orange in dark mode too */
+      --panel:#B74E00;
+      --panel-ink:#ffffff;
+
+      --pill-bg:#12171d;
+      --pill-ink:#e5e7eb;
       --stripe:rgba(0,0,0,.15);
     }
 
-    /* ---- Global text ---- */
+    /* ===== Global text ===== */
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
-    .name{color:var(--text);} /* sidebar name follows theme */
+    .name{color:var(--text);}
 
-    /* Paper line parts */
-    .item{margin:0 0 .6rem}
+    /* ===== Neutral pill chips (no accent) ===== */
+    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+    .pill{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .6rem;border-radius:999px;
+      background:var(--pill-bg);
+      border:1px solid var(--border);
+      color:var(--pill-ink);
+      font-weight:700;font-size:.92rem;
+      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
+    }
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+
+    /* ===== Simple items list (papers) ===== */
+    .item{margin:0 0 .7rem}
     .when{color:var(--muted)}
-    .ptitle{font-style:italic; color:inherit;}  /* titles italic, inherit text color */
+    .ptitle{font-style:italic;color:inherit;}
     .status{color:var(--muted);font-style:italic}
 
-    /* Top page title: black in light, white in dark */
-    .content h2{
-      font-weight:800;
-      color:#111111;
-      margin-top:.2rem;
-    }
-    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
-
-    /* ---- Accordion ---- */
+    /* ===== Accordions (dark orange headers, like index) ===== */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -82,7 +94,6 @@
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
-
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
   </style>
@@ -106,6 +117,7 @@
 </header>
 
 <main class="container layout">
+  <!-- left profile (kept minimal to match index) -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <div class="buttons">
@@ -114,8 +126,9 @@
     </div>
   </aside>
 
+  <!-- content -->
   <section class="content">
-    <span class="ptitle"Research</span>
+    <h2 style="margin:.2rem 0 .8rem 0">Research</h2>
 
     <div class="accordion">
 
@@ -165,13 +178,14 @@
     </div>
   </section>
 
+  <!-- right TOC -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
 
-<!-- Tiny accordion JS -->
+<!-- Tiny accordion toggler (same as index) -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
