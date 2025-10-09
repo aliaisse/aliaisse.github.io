@@ -7,24 +7,21 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page accents & accordion styles -->
+  <!-- Page accents, cards, accordions, right-rail, and toggle color -->
   <style>
-    /* ===== Brand + theme tokens (consistent site-wide) ===== */
+    /* ===== Brand + theme tokens ===== */
     :root{
       --brand:#0A2A66;          /* header/nav navy */
-      --accent:#E87722;         /* Princeton orange */
+      --accent:#E87722;         /* orange accent */
 
-      /* light surfaces */
       --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
 
-      /* pills/cards */
       --accent-ink:#2a1a00;
       --pill-bg:#fff7f0;
 
-      /* accordion header */
       --panel:var(--accent);
       --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.1);
@@ -44,103 +41,70 @@
       --stripe:rgba(0,0,0,.15);
     }
 
-    /* ===== Global text colors ===== */
+    /* Global text color normalize */
     html, body { color:var(--text); }
-    p, li, a, span, small, time, dd, dt, div { color:inherit; }
-    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
     .name{color:var(--text);}
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-    /* ===== Fancy pill chips ===== */
+    /* ===== Pills ===== */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
       padding:.35rem .6rem;border-radius:999px;
       background:linear-gradient(180deg, var(--pill-bg), transparent);
       border:1px solid var(--border);
-      color:#111;
-      font-weight:700;font-size:.92rem;
+      color:#111;font-weight:700;font-size:.92rem;
       box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
     }
     [data-theme="dark"] .pill, body.dark .pill { color:var(--accent-ink); }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-    .pill--accent{
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-      border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
-      color:var(--accent-ink);
-      font-weight:800;
-    }
 
-    /* ===== Cards ===== */
-    .feature-grid{
-      display:grid;gap:1rem;margin-top:.35rem;
-      grid-template-columns:1fr;
-    }
-    @media (min-width: 860px){
-      .feature-grid{grid-template-columns:1fr 1fr;}
-    }
+    /* ===== Cards (Featured/Degrees) ===== */
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
-      border:1px solid var(--border);
-      border-left:5px solid var(--accent);
-      border-radius:12px;
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
-      padding:1rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      border:1px solid var(--border);border-left:5px solid var(--accent);
+      border-radius:12px;background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
+      padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
     .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--accent);font-weight:800}
     [data-theme="dark"] .card h3, body.dark .card h3{ color:#ffffff; }
     .muted{color:var(--muted)}
-    .badge{
-      display:inline-block;padding:.18rem .45rem;border-radius:6px;
-      font-size:.8rem;font-weight:800;letter-spacing:.02em;
-      color:var(--accent-ink);
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
-      border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
-      margin-bottom:.35rem;
-    }
 
-    /* ===== Accordion layout ===== */
+    /* ===== Accordions ===== */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
-    .acc{
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:0 1px 6px rgba(0,0,0,.06);
-    }
-    .acc__head{
-      display:flex;align-items:center;justify-content:space-between;
-      background:var(--panel); color:var(--panel-ink);
-      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
-    }
-    .acc__head::after{
-      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
-      background:var(--stripe);
-    }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
-    .acc__chev{
-      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
-      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
-    }
-    .acc.open .acc__chev{ transform:rotate(45deg); }
-    .acc__body{padding:1rem; display:none}
+    .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
+    .acc__head{display:flex;align-items:center;justify-content:space-between;background:var(--panel);color:var(--panel-ink);padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative}
+    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--stripe)}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--panel-ink)}
+    .acc__chev{border:solid var(--panel-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
+    .acc.open .acc__chev{transform:rotate(45deg)}
+    .acc__body{padding:1rem;display:none}
     .acc.open .acc__body{display:block}
 
-    /* ===== Clickable list rows for Personal ===== */
-    .link-list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-    .link-list a{
-      display:flex;gap:.6rem;align-items:baseline;
-      border:1px solid var(--border);background:var(--card);
-      border-radius:10px;padding:.65rem .75rem;text-decoration:none;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    /* ===== Right rail (sidebar content) ===== */
+    .right-rail .acc{margin-bottom:1rem}
+    .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
+    .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+    .trip small{display:block;color:var(--muted);font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.2rem}
+    .trip .t{font-weight:800;line-height:1.2}
+    .trip .d{color:var(--muted);font-size:.9rem;margin-top:.25rem}
+    .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
+
+    /* Journey chips (no dates) */
+    .journey{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+    .chip{
+      display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);background:var(--card);
+      padding:.3rem .55rem;border-radius:999px;font-weight:700
     }
-    .link-list a:hover{transform:translateY(-1px);box-shadow:0 6px 12px rgba(0,0,0,.06)}
-    .kicker{font-size:.74rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-    .title{font-weight:800}
-    .meta{margin-left:auto;color:var(--muted);white-space:nowrap}
-    .chev{margin-left:.35rem;border:solid var(--muted);border-width:0 2px 2px 0;display:inline-block;padding:3px;transform:rotate(-45deg)}
+    .arrow{opacity:.6;margin:0 .2rem}
+
+    /* ===== Toggle track override: light gray ===== */
+    .theme-switch .switch-slider{background:#d1d5db !important;border-color:#cfd4dc !important}
+    [data-theme="dark"] .theme-switch .switch-slider, body.dark .theme-switch .switch-slider{background:#4b5563 !important;border-color:#6b7280 !important}
   </style>
 </head>
 <body>
@@ -165,6 +129,7 @@
   <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
       <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
@@ -176,209 +141,131 @@
 
   <!-- center content -->
   <section class="content">
-    <!-- Accordions wrapper -->
-    <div class="accordion">
+    <h2>Welcome</h2>
+    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
 
-      <!-- About -->
+    <div class="pill-group">
+      <span class="pill">Deterrence</span><span class="pill">Coercion</span><span class="pill">Nuclear Policy</span>
+      <span class="pill">Alliance Politics</span><span class="pill">Strategic Studies</span><span class="pill">Methodology</span>
+    </div>
+
+    <h2>Featured</h2>
+    <div class="feature-grid">
+      <div class="card">
+        <span class="pill">Manuscript · 2025</span>
+        <h3>US–UK Nuclear Partnership</h3>
+        <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Teaching · Spring 2025</span>
+        <h3>International Organizations</h3>
+        <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
+      </div>
+    </div>
+
+    <!-- About / Research / Degrees kept as accordions under center column (unchanged) -->
+    <div class="accordion" style="margin-top:1.25rem">
       <div class="acc open" id="sec-about">
-        <div class="acc__head" data-acc="sec-about">
-          <h3 class="acc__title">About</h3>
-          <i class="acc__chev"></i>
-        </div>
+        <div class="acc__head" data-acc="sec-about"><h3 class="acc__title">About</h3><i class="acc__chev"></i></div>
         <div class="acc__body">
           <h3>Ph.D. Candidate, Princeton SPIA</h3>
-
-          <p>
-            I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26
-            Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and
-            Area Studies. My work sits at the intersection of international security, strategic studies, and the political
-            economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation,
-            and alliance politics.
-          </p>
-
-          <p>
-            My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions:
-            When does coercion succeed without war? Which guarantees and institutional commitments move states from
-            brinkmanship to cooperation? And what do alliances and international organizations signal in crises?
-          </p>
-
-          <p>
-            I expalin that credible security guarantees and institutionalized cooperation—particularly within
-            alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit
-            compliance. The project draws on archival and declassified sources, original datasets, formal models, causal
-            inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.
-          </p>
-
-          <p>
-            A second stream of my research examines international organizations and international interventions in
-            statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional
-            organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates
-            and institutional unity condition local compliance. Conceptually and empirically, this stream complements
-            my focus on war studies and international security: interventions alter the incentives, signals, and constraints
-            that determine whether coercion and deterrence succeed.
-          </p>
-
-          <p>
-            Across projects I use mixed methods—archival work in U.S. and U.K. repositories, interviews with practitioners,
-            formal modeling, statistical analysis, and survey/experimental evidence. My research has been supported by
-            Princeton SPIA, the Liechtenstein Institute on Self-Determination (LISD), the Center for International Security
-            Studies (CISS), PIIRS, and Yale University’s Nuclear Security Program at the MacMillan Center.
-          </p>
-
+          <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26 Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and Area Studies. My work sits at the intersection of international security, strategic studies, and the political economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+          <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
+          <p>I explain that credible security guarantees and institutionalized cooperation—particularly within alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit compliance. The project draws on archival and declassified sources, original datasets, formal models, causal inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.</p>
+          <p>A second stream of my research examines international organizations and international interventions in statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates and institutional unity condition local compliance. Conceptually and empirically, this stream complements my focus on war studies and international security: interventions alter the incentives, signals, and constraints that determine whether coercion and deterrence succeed.</p>
+          <p>Across projects I use mixed methods—archival work in U.S. and U.K. repositories, interviews with practitioners, formal modeling, statistical analysis, and survey/experimental evidence. My research has been supported by Princeton SPIA, the Liechtenstein Institute on Self-Determination (LISD), the Center for International Security Studies (CISS), PIIRS, and Yale University’s Nuclear Security Program at the MacMillan Center.</p>
           <div class="pill-group" style="margin-top:.5rem">
-            <span class="pill">Deterrence</span>
-            <span class="pill">Coercion</span>
-            <span class="pill">Nuclear Policy</span>
-            <span class="pill">Nonproliferation</span>
-            <span class="pill">Alliance Politics</span>
-            <span class="pill">Strategic Studies</span>
-            <span class="pill">Methodology</span>
+            <span class="pill">Deterrence</span><span class="pill">Coercion</span><span class="pill">Nuclear Policy</span>
+            <span class="pill">Nonproliferation</span><span class="pill">Alliance Politics</span><span class="pill">Strategic Studies</span><span class="pill">Methodology</span>
           </div>
         </div>
       </div>
 
-      <!-- Research -->
-      <div class="acc" id="sec-research">
-        <div class="acc__head" data-acc="sec-research">
-          <h3 class="acc__title">Research Spotlights</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Manuscript</span>
-              <h3>Coercion & Compliance</h3>
-              <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
-              <div class="tiny"><a href="/Research.html">View all research →</a></div>
-            </div>
-            <div class="card">
-              <span class="pill">Alliances</span>
-              <h3>Posture & Assurance</h3>
-              <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
-              <div class="tiny"><a href="/Research.html">View all research →</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Featured -->
-      <div class="acc" id="sec-featured">
-        <div class="acc__head" data-acc="sec-featured">
-          <h3 class="acc__title">Featured Work</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Manuscript · 2025</span>
-              <h3>US-UK Nuclear Partnership</h3>
-              <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
-            </div>
-
-            <div class="card">
-              <span class="pill">Teaching · Spring 2025</span>
-              <h3>International Organizations</h3>
-              <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Degrees -->
       <div class="acc" id="sec-degrees">
-        <div class="acc__head" data-acc="sec-degrees">
-          <h3 class="acc__title">Degrees</h3>
-          <i class="acc__chev"></i>
-        </div>
+        <div class="acc__head" data-acc="sec-degrees"><h3 class="acc__title">Degrees</h3><i class="acc__chev"></i></div>
         <div class="acc__body">
-          <div class="feature-grid">
-            <div class="card">
-              <p class="muted" style="margin:0">
-                Ph.D. Candidate, Princeton University<br>
-                M.A., Princeton University<br>
-                M.A., The University of Chicago<br>
-                M.S., The Ohio State University<br>
-                B.A., The University of Texas San Antonio
-              </p>
-            </div>
+          <div class="card">
+            <p class="muted" style="margin:0">
+              Ph.D. Candidate, Princeton University<br>
+              M.A., Princeton University<br>
+              M.A., The University of Chicago<br>
+              M.S., The Ohio State University<br>
+              B.A., The University of Texas San Antonio
+            </p>
           </div>
         </div>
       </div>
-
-      <!-- NEW: Personal · Trips (clickable) -->
-      <div class="acc" id="sec-personal">
-        <div class="acc__head" data-acc="sec-personal">
-          <h3 class="acc__title">Personal · Trips</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <ul class="link-list">
-            <li>
-              <a href="/personal/yale.html">
-                <span class="kicker">Fellowship</span>
-                <span class="title">Yale — Nuclear Security Program</span>
-                <span class="meta">2025–26</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/personal/uppsala.html">
-                <span class="kicker">Conference</span>
-                <span class="title">Uppsala, Sweden — Alva Myrdal Conference</span>
-                <span class="meta">2025</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/personal/accra-ghana.html">
-                <span class="kicker">Policy Trip</span>
-                <span class="title">Accra, Ghana — SPIA International Policy Trip</span>
-                <span class="meta">Winter 2024</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/personal/cambridge-law.html">
-                <span class="kicker">Study</span>
-                <span class="title">Cambridge (UK) — Summer Law Modules</span>
-                <span class="meta">2023</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/personal/taipei.html">
-                <span class="kicker">Study</span>
-                <span class="title">Taipei — National Taipei University</span>
-                <span class="meta">2018</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/personal/journey.html">
-                <span class="kicker">Journey</span>
-                <span class="title">CFBT Scholarship → U.S. → BA → Graduate School → Ph.D.</span>
-                <span class="meta">2004–2027</span>
-                <i class="chev"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- right TOC -->
-  <aside class="toc">
+  <!-- RIGHT SIDEBAR: Personal · Trips accordion + (optional) On this page -->
+  <aside class="toc right-rail">
+    <!-- Personal accordion on the right -->
+    <div class="acc open" id="sec-personal">
+      <div class="acc__head" data-acc="sec-personal">
+        <h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i>
+      </div>
+      <div class="acc__body">
+        <!-- Trips keep dates -->
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>FELLOWSHIP</small>
+          <span class="date">2025–26</span>
+          <div class="t">Yale — Nuclear Security Program</div>
+          <div class="d">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program.</div>
+        </a>
+
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>CONFERENCE</small>
+          <span class="date">2025</span>
+          <div class="t">Uppsala, Sweden — Alva Myrdal Conference</div>
+          <div class="d">Panel participation and research presentation.</div>
+        </a>
+
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>POLICY TRIP</small>
+          <span class="date">Winter 2024</span>
+          <div class="t">Accra, Ghana — SPIA International Policy Trip</div>
+          <div class="d">Field briefings and meetings with policy stakeholders.</div>
+        </a>
+
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>STUDY</small>
+          <span class="date">2023</span>
+          <div class="t">Cambridge (UK) — Summer Law Modules</div>
+          <div class="d">Use of force (UN Charter) and Law of Armed Conflict.</div>
+        </a>
+
+        <!-- Journey (NO dates) -->
+        <div class="card" style="margin-top:.75rem">
+          <h3 style="margin:0 0 .35rem 0">Journey</h3>
+          <div class="journey">
+            <span class="chip">CFBT Scholarship (Kenya)</span>
+            <span class="arrow">→</span>
+            <span class="chip">Relocated to U.S.</span>
+            <span class="arrow">→</span>
+            <span class="chip">WTAMU</span>
+            <span class="arrow">→</span>
+            <span class="chip">UT San Antonio (B.A.)</span>
+            <span class="arrow">→</span>
+            <span class="chip">Ohio State (M.S.)</span>
+            <span class="arrow">→</span>
+            <span class="chip">UChicago (M.A.)</span>
+            <span class="arrow">→</span>
+            <span class="chip">Princeton (M.A., Ph.D.)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (Optional) keep “On this page” TOC under it; comment out if you don’t want it) -->
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
 
-<!-- Tiny accordion toggler + open-from-hash -->
+<!-- Accordion toggler -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Toggle on header click
     document.querySelectorAll('.acc__head').forEach(head => {
       head.addEventListener('click', () => {
         const id = head.getAttribute('data-acc');
@@ -386,13 +273,6 @@
         if (panel) panel.classList.toggle('open');
       });
     });
-
-    // If URL hash matches an accordion id, open it
-    const h = location.hash && location.hash.replace('#','');
-    if (h) {
-      const panel = document.getElementById(h);
-      if (panel) panel.classList.add('open');
-    }
   });
 </script>
 </body>
