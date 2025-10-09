@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,9 +8,9 @@
   <script src="/assets/script.js" defer></script>
 
   <style>
-    /* ===== Brand: UChicago Maroon everywhere ===== */
+    /* ===== Site palette — Dark Navy everywhere ===== */
     :root{
-      --brand:#800000;            /* UChicago Maroon */
+      --brand:#0A2A66;        /* your original header/nav navy */
       --brand-ink:#ffffff;
 
       --text:#111111;
@@ -20,21 +19,23 @@
       --border:#d9dde4;
 
       --title:var(--brand);
-      --chip-bg:#f4e9e9;          /* light maroon tint for chips (readable with black text) */
+      --panel-bg:#eef2f7;     /* soft navy-tinted body bg for accordions */
+      --list-dot:#0A2A66;
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
       --muted:#cbd5e1;
-      --card:#0f1216;
+      --card:#101317;
       --border:#1f2937;
 
-      --brand:#9b1c1c;            /* slightly brighter in dark */
+      --brand:#0f3a87;        /* slightly brighter navy in dark for contrast */
       --brand-ink:#ffffff;
-      --title:#ffe9e9;
-      --chip-bg:#3a0b0b;          /* deep maroon tint in dark */
+      --title:#e6edff;
+      --panel-bg:#0f1420;
+      --list-dot:#9db7ff;
     }
 
-    /* ===== Header recolor to maroon ===== */
+    /* ===== Header recolor ===== */
     .site-header{
       background:var(--brand);
       border-bottom:0;
@@ -43,22 +44,9 @@
     .site-header .nav a{ color:var(--brand-ink) !important; }
     .site-header .nav a.active{ text-decoration:underline; text-underline-offset:4px; }
 
-    /* Global text */
+    /* Global */
     html, body { color:var(--text); }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
-
-    /* Chips (now inside an accordion) */
-    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem}
-    .pill{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.35rem .6rem;border-radius:999px;
-      background:var(--chip-bg);
-      border:1px solid color-mix(in oklab, var(--brand) 35%, var(--chip-bg));
-      color:var(--text);
-      font-weight:700;font-size:.92rem;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
     /* Cards */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
@@ -68,13 +56,13 @@
       border-left:6px solid var(--brand);
       border-radius:12px;background:var(--card);
       padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      transition:transform .12s ease, box-shadow .12s ease;
     }
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
     .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--title)}
     .muted{color:var(--muted)}
 
-    /* Accordions (maroon headers) */
+    /* Accordions (navy headers) */
     .accordion{display:grid;gap:1rem;margin:1.25rem 0}
     .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
     .acc__head{
@@ -82,14 +70,26 @@
       background:var(--brand);color:var(--brand-ink);
       padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative
     }
-    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.1)}
+    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.12)}
     .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--brand-ink)}
     .acc__chev{border:solid var(--brand-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
     .acc.open .acc__chev{transform:rotate(45deg)}
-    .acc__body{padding:1rem;display:none}
+    .acc__body{padding:1rem;background:var(--panel-bg);display:none}
     .acc.open .acc__body{display:block}
 
-    /* Right rail trips */
+    /* Expertise list (replaces chips) */
+    .expertise{columns:1;column-gap:2rem;list-style:none;padding:0;margin:.3rem 0 0}
+    @media (min-width: 680px){ .expertise{columns:2} }
+    .expertise li{
+      break-inside:avoid;margin:.3rem 0 .2rem;padding-left:1.1rem;position:relative;
+      color:var(--text);font-weight:700;
+    }
+    .expertise li::before{
+      content:"";position:absolute;left:0;top:.55rem;width:.5rem;height:.5rem;border-radius:999px;
+      background:var(--list-dot);
+    }
+
+    /* Right rail “Personal · Trips” */
     .right-rail .acc{margin-bottom:1rem}
     .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
     .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
@@ -137,20 +137,20 @@
 
     <div class="accordion">
 
-      <!-- Expertise (chips grouped here) -->
+      <!-- Expertise (now a list) -->
       <div class="acc open" id="sec-expertise">
         <div class="acc__head" data-acc="sec-expertise">
           <h3 class="acc__title">Expertise</h3><i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-          <div class="pill-group">
-            <span class="pill">Deterrence</span>
-            <span class="pill">Coercion</span>
-            <span class="pill">Nuclear Policy</span>
-            <span class="pill">Alliance Politics</span>
-            <span class="pill">Strategic Studies</span>
-            <span class="pill">Methodology</span>
-          </div>
+          <ul class="expertise">
+            <li>Deterrence</li>
+            <li>Coercion</li>
+            <li>Nuclear Policy</li>
+            <li>Alliance Politics</li>
+            <li>Strategic Studies</li>
+            <li>Research Methods & Causal Inference</li>
+          </ul>
         </div>
       </div>
 
