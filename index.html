@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,10 +10,10 @@
 
   <!-- Page accents & accordion styles -->
   <style>
-    /* ===== Brand + theme tokens (keep your site palette) ===== */
+    /* ===== Brand + theme tokens (keep site palette) ===== */
     :root{
       --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
-      --accent:#E87722;             /* kept for other uses, but NOT used on cards/pills now */
+      --accent:#E87722;             /* kept for other uses */
 
       /* light surfaces */
       --text:#111111;
@@ -24,8 +25,8 @@
       --pill-bg: var(--card);
       --pill-ink: var(--text);
 
-      /* ===== Accordions: slightly darker than header by mixing a bit of black ===== */
-      --panel: color-mix(in oklab, var(--brand) 85%, black 15%);
+      /* ===== Accordion bars ONLY: dark orange ===== */
+      --panel:#B74E00;              /* dark orange */
       --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.1);
     }
@@ -35,12 +36,12 @@
       --card:#0f1216;
       --border:#1f2937;
 
-      /* keep the same “slightly darker than header” effect in dark mode */
-      --panel: color-mix(in oklab, var(--brand) 80%, black 20%);
+      /* keep accordion dark orange in dark mode too */
+      --panel:#B74E00;
       --panel-ink:#ffffff;
 
-      --pill-bg: #12171d;       /* neutral pill surface in dark */
-      --pill-ink: #e5e7eb;
+      --pill-bg:#12171d;
+      --pill-ink:#e5e7eb;
       --stripe:rgba(0,0,0,.15);
     }
 
@@ -63,7 +64,6 @@
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-    /* If any pill has the old accent class, neutralize it */
     .pill--accent{
       background:var(--pill-bg) !important;
       border-color:var(--border) !important;
@@ -71,18 +71,14 @@
       font-weight:700 !important;
     }
 
-    /* ===== Cards — remove yellow/orange accent completely ===== */
-    .feature-grid{
-      display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;
-    }
-    @media (min-width: 860px){
-      .feature-grid{grid-template-columns:1fr 1fr;}
-    }
+    /* ===== Cards — neutral (no yellow/orange accents) ===== */
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
       border:1px solid var(--border);
-      border-left:none;                 /* no accent bar */
+      border-left:none;
       border-radius:12px;
-      background:var(--card);           /* no tinted background */
+      background:var(--card);
       padding:1rem;
       box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
@@ -90,9 +86,9 @@
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
     .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
     .muted{color:var(--muted)}
-    .badge{ display:none } /* hide any leftover accent badges if present */
+    .badge{ display:none }
 
-    /* ===== Accordions (darker navy headers) ===== */
+    /* ===== Accordions (dark orange headers) ===== */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -283,7 +279,7 @@
         </div>
       </div>
 
-      <!-- Personal · Trips (kept from prior step) -->
+      <!-- Personal · Trips -->
       <div class="acc" id="sec-personal">
         <div class="acc__head" data-acc="sec-personal">
           <h3 class="acc__title">Personal · Trips</h3>
