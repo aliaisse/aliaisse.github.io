@@ -132,6 +132,40 @@
     .about-title{font-weight:800;margin:0 0 .3rem}
     .about-text{margin:0 0 .6rem;line-height:1.55}
   </style>
+<style>
+  /* ===== Right-side Personal box ===== */
+  .sidebox{
+    position:sticky; top:76px; align-self:start;
+    border:1px solid var(--border); background:var(--card);
+    border-radius:12px; padding:.9rem; box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+  .sidebox__title{
+    font-weight:800; letter-spacing:.02em; margin-bottom:.5rem; color:#0A2A66;
+  }
+
+  .p-item{
+    border:1px solid var(--border);
+    border-radius:10px; background:linear-gradient(180deg, color-mix(in oklab, #0A2A66 4%, var(--card)), var(--card));
+    padding:.35rem .55rem; margin:.5rem 0; box-shadow:0 1px 4px rgba(0,0,0,.04);
+  }
+  .p-item[open]{box-shadow:0 6px 16px rgba(0,0,0,.08)}
+  .p-item summary{
+    display:grid; grid-template-columns: auto 1fr auto; align-items:center;
+    gap:.5rem; list-style:none; cursor:pointer; padding:.15rem 0;
+  }
+  .p-item summary::-webkit-details-marker{display:none}
+  .p-kicker{
+    font-size:.74rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;
+  }
+  .p-title{font-weight:800; color:var(--text)}
+  .p-meta{color:var(--muted); font-size:.9rem}
+  .p-body{color:var(--text); padding:.35rem 0 .2rem .05rem; line-height:1.45}
+
+  /* Dark mode polish */
+  [data-theme="dark"] .sidebox__title{color:#93c5fd}
+  [data-theme="dark"] .p-item{box-shadow:0 2px 10px rgba(0,0,0,.35)}
+</style>
+  
 </head>
 <body>
 
@@ -302,10 +336,10 @@
   </section>
 
   <!-- right TOC -->
-  <aside class="toc">
-    <div class="toc-title">On this page</div>
-    <nav id="tocList"></nav>
-  </aside>
+<aside class="toc">
+  <div class="toc-title">On this page</div>
+  <nav id="tocList"></nav>
+</aside>
 </main>
 
 <!-- Tiny accordion toggler -->
