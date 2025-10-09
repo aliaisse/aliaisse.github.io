@@ -39,3 +39,179 @@
       border:1px solid var(--border);
       border-left:4px solid var(--accent);
       border-radius:12px;
+      background:var(--card);
+      padding:1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
+
+    /* ===== Right-side Personal box ===== */
+    .sidebox{
+      position:sticky; top:76px; align-self:start;
+      border:1px solid var(--border); background:var(--card);
+      border-radius:12px; padding:.9rem; box-shadow:0 2px 8px rgba(0,0,0,.06);
+    }
+    .sidebox__title{font-weight:800; letter-spacing:.02em; margin-bottom:.5rem; color:var(--accent)}
+    .p-item{
+      border:1px solid var(--border);
+      border-radius:10px; background:var(--card);
+      padding:.4rem .6rem; margin:.6rem 0; box-shadow:0 1px 4px rgba(0,0,0,.04);
+    }
+    .p-item[open]{box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .p-item summary{
+      display:flex; align-items:baseline; gap:.5rem;
+      cursor:pointer; list-style:none; padding:.1rem 0;
+    }
+    .p-item summary::-webkit-details-marker{display:none}
+    .p-kicker{
+      font-size:.74rem; font-weight:700; color:var(--muted);
+      text-transform:uppercase; letter-spacing:.04em; margin-right:.25rem;
+    }
+    .p-title{font-weight:800; color:var(--text); line-height:1.25}
+    .p-meta{margin-left:auto; color:var(--muted); font-size:.9rem; white-space:nowrap}
+    .p-body{color:var(--text); padding:.35rem 0 .2rem .05rem; line-height:1.45}
+
+    /* Dark mode polish */
+    [data-theme="dark"] .sidebox__title{color:var(--accent)}
+    [data-theme="dark"] .p-item{box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">Ali A. Isse</a>
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
+    </nav>
+  </div>
+</header>
+
+<main class="container layout">
+  <!-- left profile -->
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
+    </div>
+  </aside>
+
+  <!-- center content -->
+  <section class="content">
+    <h2>Welcome</h2>
+    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+
+    <div class="pill-group">
+      <span class="pill">Deterrence</span>
+      <span class="pill">Coercion</span>
+      <span class="pill">Nuclear Policy</span>
+      <span class="pill">Alliance Politics</span>
+      <span class="pill">Strategic Studies</span>
+      <span class="pill">Methodology</span>
+    </div>
+
+    <h2>Featured</h2>
+    <div class="feature-grid">
+      <div class="card">
+        <h3>Anglo-American Nuclear Partnership</h3>
+        <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship. <em>(Manuscript · 2025)</em></p>
+      </div>
+
+      <div class="card">
+        <h3>International Organizations</h3>
+        <p class="muted">Teaching — Princeton (Spring 2025). Discussion sections, office hours, assignments, and exams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- right: Personal panel -->
+  <aside class="sidebox" id="personal-box">
+    <div class="sidebox__title">Personal · Trips</div>
+
+    <details class="p-item" open id="yale-2025">
+      <summary>
+        <span class="p-kicker">Fellowship</span>
+        <span class="p-title">Yale — Nuclear Security Program</span>
+        <span class="p-meta">2025–26</span>
+      </summary>
+      <div class="p-body">
+        Visiting Scholar year at the MacMillan Center’s Nuclear Security Program:
+        research on deterrence, coercive diplomacy, and alliance politics.
+      </div>
+    </details>
+
+    <details class="p-item" id="uppsala-2025">
+      <summary>
+        <span class="p-kicker">Conference</span>
+        <span class="p-title">Uppsala, Sweden — Alva Myrdal Conference</span>
+        <span class="p-meta">2025</span>
+      </summary>
+      <div class="p-body">
+        Talks on nuclear disarmament and strategic stability; cross-disciplinary sessions.
+      </div>
+    </details>
+
+    <details class="p-item" id="ghana-2024">
+      <summary>
+        <span class="p-kicker">Policy Trip</span>
+        <span class="p-title">Accra, Ghana — SPIA International Policy Trip</span>
+        <span class="p-meta">Winter 2024</span>
+      </summary>
+      <div class="p-body">
+        Mentored students and met partners on implementation and governance capacity.
+      </div>
+    </details>
+
+    <details class="p-item" id="cambridge-2023">
+      <summary>
+        <span class="p-kicker">Study</span>
+        <span class="p-title">Cambridge (UK) — Summer Law Modules</span>
+        <span class="p-meta">2023</span>
+      </summary>
+      <div class="p-body">
+        International law of force (UN Charter) and law of armed conflict.
+      </div>
+    </details>
+
+    <details class="p-item" id="taipei-2018">
+      <summary>
+        <span class="p-kicker">Study</span>
+        <span class="p-title">Taipei, Taiwan — National Taipei University</span>
+        <span class="p-meta">2018</span>
+      </summary>
+      <div class="p-body">
+        Transportation planning and high-speed rail systems.
+      </div>
+    </details>
+
+    <details class="p-item" id="journey">
+      <summary>
+        <span class="p-kicker">Journey</span>
+        <span class="p-title">CFBT Scholarship → U.S. → BA → Grad School</span>
+        <span class="p-meta">2004–2027</span>
+      </summary>
+      <div class="p-body">
+        CFBT Education Trust Scholarship (Kenya, 2004–2008); relocation to the U.S. in 2009; WTAMU (2010); 
+        BA at UT San Antonio (2015, first in family); MS at Ohio State (2018); MA at UChicago (2021); 
+        MPA at Princeton (2024); PhD (projected 2027).
+      </div>
+    </details>
+  </aside>
+</main>
+
+</body>
+</html>
