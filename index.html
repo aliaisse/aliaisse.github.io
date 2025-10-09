@@ -320,7 +320,126 @@
     });
   });
 </script>
+<!-- ===================== -->
+<!-- Education Timeline    -->
+<!-- ===================== -->
+<section class="tl" aria-labelledby="edu-timeline">
+  <h2 id="edu-timeline" class="tl-heading">Education Timeline</h2>
 
+  <!-- the horizontal track -->
+  <div class="tl-track" aria-hidden="true"></div>
+
+  <!-- events: set the year in data-year, and choose top/bottom to alternate -->
+  <ul class="tl-events">
+    <li class="tl-event" data-year="2004" data-side="top">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2004</time>
+      <h4 class="tl-title">CFBT Education Trust Scholarship (Kenya)</h4>
+      <p class="tl-note">EU-funded scholarship; studied in Kenya (2004–2008).</p>
+    </li>
+
+    <li class="tl-event" data-year="2009" data-side="bottom">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2009</time>
+      <h4 class="tl-title">Relocated to the United States</h4>
+    </li>
+
+    <li class="tl-event" data-year="2010" data-side="top">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2010</time>
+      <h4 class="tl-title">First U.S. College</h4>
+      <p class="tl-note">West Texas A&M University (WTAMU).</p>
+    </li>
+
+    <li class="tl-event" data-year="2013" data-side="bottom">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2013</time>
+      <h4 class="tl-title">Transferred</h4>
+      <p class="tl-note">The University of Texas at San Antonio (UTSA).</p>
+    </li>
+
+    <li class="tl-event" data-year="2015" data-side="top">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2015</time>
+      <h4 class="tl-title">B.A. in Political Science</h4>
+      <p class="tl-note">First in my family to earn a bachelor’s degree.</p>
+    </li>
+
+    <li class="tl-event" data-year="2018" data-side="bottom">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2018</time>
+      <h4 class="tl-title">M.S., City &amp; Regional Planning</h4>
+      <p class="tl-note">The Ohio State University.</p>
+    </li>
+
+    <li class="tl-event" data-year="2021" data-side="top">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2021</time>
+      <h4 class="tl-title">M.A., Political Science</h4>
+      <p class="tl-note">University of Chicago.</p>
+    </li>
+
+    <li class="tl-event" data-year="2024" data-side="bottom">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2024</time>
+      <h4 class="tl-title">M.P.A., Public Affairs</h4>
+      <p class="tl-note">Princeton University.</p>
+    </li>
+
+    <li class="tl-event" data-year="2027" data-side="top">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <time class="tl-year">2027</time>
+      <h4 class="tl-title">Ph.D. (expected)</h4>
+      <p class="tl-note">Princeton University.</p>
+    </li>
+  </ul>
+</section>
+
+<style>
+  /* ---- self-contained timeline styles ---- */
+  .tl { --navy:#0A2A66; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+        margin: 2.5rem 0 3.5rem; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+  .tl-heading{ margin:0 0 .75rem; color:var(--ink); font-size:1.4rem; }
+  .tl-track{ position:relative; height:2px; background:var(--line); margin:3.25rem 0; }
+  .tl-events{ position:relative; list-style:none; margin:0; padding:0; min-height:10rem; }
+  .tl-event{ position:absolute; transform:translateX(-50%); width:240px; max-width:28vw; }
+  .tl-event[data-side="top"]{ bottom:2.4rem; text-align:left; }
+  .tl-event[data-side="bottom"]{ top:2.4rem; text-align:left; }
+  .tl-dot{ position:absolute; left:50%; top:0; transform:translate(-50%,-1.05rem);
+           width:12px; height:12px; background:#fff; border:3px solid var(--navy);
+           border-radius:50%; box-shadow:0 0 0 2px #fff, 0 0 0 4px rgba(10,42,102,.15); }
+  .tl-year{ display:block; font-weight:700; color:var(--navy); line-height:1.2; }
+  .tl-title{ margin:.1rem 0 .15rem; font-size:.98rem; color:var(--ink); }
+  .tl-note{ margin:0; color:var(--muted); font-size:.9rem; }
+  /* tiny stems to the track */
+  .tl-event::after{
+    content:""; position:absolute; left:50%; transform:translateX(-50%);
+    width:2px; background:var(--line);
+  }
+  .tl-event[data-side="top"]::after{ top:-.9rem; height:.9rem; }
+  .tl-event[data-side="bottom"]::after{ top:-.1rem; height:.9rem; }
+  /* mobile: stack vertically */
+  @media (max-width: 760px){
+    .tl-track{ display:none; }
+    .tl-events{ position:static; }
+    .tl-event{ position:static; transform:none; max-width:100%; width:auto; margin:0 0 1.1rem; }
+    .tl-event::after, .tl-dot{ display:none; }
+    .tl-year{ color:var(--navy); }
+  }
+</style>
+
+<script>
+  // Position events along the track by year (no external libs required)
+  (function(){
+    const minYear = 2004, maxYear = 2027; // adjust if you add/remove items
+    const events = document.querySelectorAll('.tl .tl-event');
+    events.forEach(ev=>{
+      const y = +ev.dataset.year;
+      const pct = ((y - minYear) / (maxYear - minYear)) * 100;
+      ev.style.left = pct + '%';
+    });
+  })();
+</script>
 </body>
 </html>
 
