@@ -12,7 +12,7 @@
   <style>
     /* ===== Brand + theme tokens (consistent site-wide) ===== */
     :root{
-      --brand:#0A2A66;              /* header/nav navy */
+      --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
       --accent:#E87722;             /* Princeton orange; switch to #F15A22 for UTSA */
 
       /* light surfaces */
@@ -25,8 +25,8 @@
       --accent-ink:#2a1a00;
       --pill-bg:#fff7f0;
 
-      /* accordion header */
-      --panel:var(--accent);
+      /* ===== CHANGED: accordions now use header color, not accent ===== */
+      --panel:var(--brand);         /* was var(--accent) */
       --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.1);
     }
@@ -36,12 +36,13 @@
       --card:#0f1216;
       --border:#1f2937;
 
-      --accent:#FF9A4D;             /* brighter orange in dark */
+      --accent:#FF9A4D;             /* keep your orange for card/pill tints */
       --accent-ink:#0f1216;         /* dark ink over bright orange tints */
       --pill-bg:#2b1603;
 
-      --panel:#FF9A4D;
-      --panel-ink:#101317;
+      /* ===== CHANGED: keep accordions on header navy in dark too ===== */
+      --panel:var(--brand);         /* was #FF9A4D */
+      --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.15);
     }
 
@@ -102,7 +103,7 @@
       margin-bottom:.35rem;
     }
 
-    /* ===== Accordion layout ===== */
+    /* ===== Accordions (now navy like the header) ===== */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -167,65 +168,65 @@
     <div class="accordion">
 
       <!-- About -->
-    <div class="acc open" id="sec-about">
-  <div class="acc__head" data-acc="sec-about">
-    <h3 class="acc__title">About</h3>
-    <i class="acc__chev"></i>
-  </div>
+      <div class="acc open" id="sec-about">
+        <div class="acc__head" data-acc="sec-about">
+          <h3 class="acc__title">About</h3>
+          <i class="acc__chev"></i>
+        </div>
 
-  <div class="acc__body">
-    <h3>Ph.D. Candidate, Princeton SPIA</h3>
+        <div class="acc__body">
+          <h3>Ph.D. Candidate, Princeton SPIA</h3>
 
-    <p>
-      I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26
-      Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and
-      Area Studies. My work sits at the intersection of international security, strategic studies, and the political
-      economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation,
-      and alliance politics.
-    </p>
+          <p>
+            I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26
+            Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and
+            Area Studies. My work sits at the intersection of international security, strategic studies, and the political
+            economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation,
+            and alliance politics.
+          </p>
 
-    <p>
-      My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions:
-      When does coercion succeed without war? Which guarantees and institutional commitments move states from
-      brinkmanship to cooperation? And what do alliances and international organizations signal in crises?
-    </p>
+          <p>
+            My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions:
+            When does coercion succeed without war? Which guarantees and institutional commitments move states from
+            brinkmanship to cooperation? And what do alliances and international organizations signal in crises?
+          </p>
 
-    <p>
-      I expalin that credible security guarantees and institutionalized cooperation—particularly within
-      alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit
-      compliance. The project draws on archival and declassified sources, original datasets, formal models, causal
-      inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.
-    </p>
+          <p>
+            I explain that credible security guarantees and institutionalized cooperation—particularly within
+            alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit
+            compliance. The project draws on archival and declassified sources, original datasets, formal models, causal
+            inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.
+          </p>
 
-    <p>
-      A second stream of my research examines international organizations and international interventions in
-      statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional
-      organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates
-      and institutional unity condition local compliance. Conceptually and empirically, this stream complements
-      my focus on war studies and international security: interventions alter the incentives, signals, and constraints
-      that determine whether coercion and deterrence succeed.
-    </p>
+          <p>
+            A second stream of my research examines international organizations and international interventions in
+            statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional
+            organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates
+            and institutional unity condition local compliance. Conceptually and empirically, this stream complements
+            my focus on war studies and international security: interventions alter the incentives, signals, and constraints
+            that determine whether coercion and deterrence succeed.
+          </p>
 
-    <p>
-      Across projects I use mixed methods—archival work in U.S. and U.K. repositories, interviews with practitioners,
-      formal modeling, statistical analysis, and survey/experimental evidence. My research has been supported by
-      Princeton SPIA, the Liechtenstein Institute on Self-Determination (LISD), the Center for International Security
-      Studies (CISS), PIIRS, and Yale University’s Nuclear Security Program at the MacMillan Center.
-    </p>
+          <p>
+            Across projects I use mixed methods—archival work in U.S. and U.K. repositories, interviews with practitioners,
+            formal modeling, statistical analysis, and survey/experimental evidence. My research has been supported by
+            Princeton SPIA, the Liechtenstein Institute on Self-Determination (LISD), the Center for International Security
+            Studies (CISS), PIIRS, and Yale University’s Nuclear Security Program at the MacMillan Center.
+          </p>
 
-    <div class="pill-group" style="margin-top:.5rem">
-      <span class="pill">Deterrence</span>
-      <span class="pill">Coercion</span>
-      <span class="pill">Nuclear Policy</span>
-      <span class="pill">Nonproliferation</span>
-      <span class="pill">Alliance Politics</span>
-      <span class="pill">Strategic Studies</span>
-      <span class="pill">Methodology</span>
-    </div>
-  </div>
-</div>
-      
-   <!-- Research -->
+          <div class="pill-group" style="margin-top:.5rem">
+            <span class="pill">Deterrence</span>
+            <span class="pill">Coercion</span>
+            <span class="pill">Nuclear Policy</span>
+            <span class="pill">Nonproliferation</span>
+            <span class="pill">Alliance Politics</span>
+            <span class="pill">Strategic Studies</span>
+            <span class="pill">Methodology</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research -->
       <div class="acc" id="sec-research">
         <div class="acc__head" data-acc="sec-research">
           <h3 class="acc__title">Research Spotlights</h3>
@@ -235,13 +236,13 @@
           <!-- A compact teaser that mirrors your research page -->
           <div class="feature-grid">
             <div class="card">
-              <span class="pill">Manuscript</span>
+              <span class="pill pill--accent">Manuscript</span>
               <h3>Coercion & Compliance</h3>
               <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
             <div class="card">
-              <span class="pill">Alliances</span>
+              <span class="pill pill--accent">Alliances</span>
               <h3>Posture & Assurance</h3>
               <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
@@ -249,6 +250,7 @@
           </div>
         </div>
       </div>
+
       <!-- Featured -->
       <div class="acc" id="sec-featured">
         <div class="acc__head" data-acc="sec-featured">
@@ -259,13 +261,13 @@
           <div class="feature-grid">
 
             <div class="card">
-              <span class="pill">Manuscript · 2025</span>
+              <span class="pill pill--accent">Manuscript · 2025</span>
               <h3>US-UK Nuclear Partnership</h3>
               <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
             </div>
 
             <div class="card">
-              <span class="pill">Teaching · Spring 2025</span>
+              <span class="pill pill--accent">Teaching · Spring 2025</span>
               <h3>International Organizations</h3>
               <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
             </div>
@@ -295,14 +297,38 @@
         </div>
       </div>
 
+      <!-- NEW: Personal · Trips -->
+      <div class="acc" id="sec-personal">
+        <div class="acc__head" data-acc="sec-personal">
+          <h3 class="acc__title">Personal · Trips</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill pill--accent">Fellowship</span>
+              <h3 style="margin-top:.25rem">Yale — Nuclear Security Program</h3>
+              <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill pill--accent">Conference</span>
+              <h3 style="margin-top:.25rem">Alva Myrdal Conference — Uppsala, Sweden</h3>
+              <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill pill--accent">Policy Trip</span>
+              <h3 style="margin-top:.25rem">Accra, Ghana — SPIA International Policy Trip</h3>
+              <p class="muted">Field briefings and meetings with policy stakeholders. <strong>Winter 2024</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- right TOC -->
-<aside class="toc">
-  <div class="toc-title">On this page</div>
-  <nav id="tocList"></nav>
-</aside>
+
 </main>
 
 <!-- Tiny accordion toggler -->
