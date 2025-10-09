@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,12 +8,12 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles -->
+  <!-- Page-specific styles (match index/research palette + components) -->
   <style>
     /* ---- Brand tokens (align with site) ---- */
     :root{
       --brand:#0A2A66;           /* site header/nav navy */
-      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
+      --accent:#E87722;          /* reserved if needed */
 
       /* Light theme text/surfaces */
       --text:#111111;            /* black body text */
@@ -20,19 +21,27 @@
       --card:#ffffff;
       --border:#e5e7eb;
 
-      /* Accordion header colors: ORANGE bar w/ white text */
-      --panel:var(--accent);
+      /* Chips (neutral) */
+      --pill-bg: var(--card);
+      --pill-ink: var(--text);
+
+      /* Accordion header colors: DARK ORANGE (match index) */
+      --panel:#B74E00;
       --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.1);
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;            /* white body text in dark */
-      --muted:#d0d7de;
+      --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#FF9A4D;           /* brighter orange on dark */
-      --panel-ink:#101317;       /* dark ink for contrast on bright orange */
+      /* keep accordion dark orange in dark */
+      --panel:#B74E00;
+      --panel-ink:#ffffff;
+
+      --pill-bg:#12171d;
+      --pill-ink:#e5e7eb;
       --stripe:rgba(0,0,0,.15);
     }
 
@@ -40,14 +49,39 @@
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
     .name{color:var(--text);}
+    .content h2{font-weight:800;margin-top:.2rem}
 
-    /* Page title: black in light, white in dark */
-    .content h2{
-      font-weight:800;
-      color:#111111;
-      margin-top:.2rem;
+    /* ---- Feature cards (neutral, like index) ---- */
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+    .card{
+      border:1px solid var(--border);
+      border-left:none;
+      border-radius:12px;
+      background:var(--card);
+      padding:1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+    .muted{color:var(--muted)}
+    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
+    .tiny a:hover{text-decoration:underline}
+
+    /* ---- Neutral pill chips ---- */
+    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 0}
+    .pill{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .6rem;border-radius:999px;
+      background:var(--pill-bg);
+      border:1px solid var(--border);
+      color:var(--pill-ink);
+      font-weight:700;font-size:.92rem;
+      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
+    }
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
     /* ---- Accordion ---- */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
@@ -82,8 +116,6 @@
     .title{font-weight:800; color:inherit;}
     .meta{color:var(--muted)}
     .desc{margin:.3rem 0 0 0}
-    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
-    .tiny a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
@@ -118,18 +150,37 @@
 
   <!-- Center content -->
   <section class="content">
+    <h2 style="margin:.2rem 0 .8rem 0">Teaching</h2>
+
+    <!-- ===== Teaching Interests card (NEW, above accordions) ===== -->
+    <div class="feature-grid" style="margin-bottom:.6rem">
+      <div class="card" style="grid-column:1 / -1">
+        <h3>Teaching Interests</h3>
+        <p class="muted" style="margin:.2rem 0 .6rem 0">
+          I design inclusive, discussion-forward courses that build conceptual clarity and analytic skill.
+          My teaching emphasizes theory-to-evidence translation, policy relevance, and methodological literacy.
+        </p>
+        <div class="pill-group">
+          <span class="pill">International Security</span>
+          <span class="pill">International Relations</span>
+          <span class="pill">Research Methods &amp; Design</span>
+          <span class="pill">Foreign Policy &amp; Decision-Making</span>
+          <span class="pill">International Organizations &amp; Global Governance</span>
+        </div>
+      </div>
+    </div>
 
     <div class="accordion">
 
       <!-- Current Teaching -->
       <div class="acc open" id="sec-teaching">
         <div class="acc__head" data-acc="sec-teaching">
-          <h3 class="acc__title">Teaching</h3>     
+          <h3 class="acc__title">Teaching</h3>
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-        <h3>Princeton University</h3>           
-       <div class="course">
+          <h3>Princeton University</h3>
+          <div class="course">
             <span class="title">International Organizations (Undergraduate)</span>
             <span class="meta"> — Spring 2025 · ~400 students</span>
             <div class="desc">
@@ -150,7 +201,6 @@
             </div>
             <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
           </div>
-
         </div>
       </div>
 
@@ -161,7 +211,6 @@
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-
           <div class="course">
             <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
             <span class="meta"> — 2021</span>
@@ -178,7 +227,6 @@
               Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
             </div>
           </div>
-
         </div>
       </div>
 
@@ -191,7 +239,7 @@
   </aside>
 </main>
 
-<!-- Tiny accordion JS -->
+<!-- Tiny accordion JS (same as other pages) -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
