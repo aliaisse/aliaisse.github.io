@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,84 +9,93 @@
   <script src="/assets/script.js" defer></script>
 
   <style>
-    /* ===== Theme tokens (Yale Blue accents) ===== */
+    /* ===== Brand + theme tokens ===== */
     :root{
-      --yale:#00356B;           /* Yale Blue */
-      --yale-ink:#ffffff;       /* text on Yale surfaces (light) */
+      --brand:#0A2A66;          /* site header/nav + accents (navy) */
 
-      --text:#111111;           /* body text in light */
-      --muted:#4b5563;
-      --card:#ffffff;
+      /* Text colors */
+      --text:#111111;           /* body text (light) -> flips to white in dark */
+      --title:#111111;          /* headings/titles (light) */
+      --title-dark:#ffffff;     /* headings/titles (dark) */
+
+      /* Surfaces */
+      --card:#ffffff;           /* card/accordion body (light) */
       --border:#d9dde4;
 
-      --pill-bg:#e6eef7;        /* light Yale tint for chips */
-      --title:#00356B;          /* Yale Blue for titles in light */
+      /* Accordion/chips panel surface now NAVY */
+      --panel:var(--brand);     /* accordion header + chip background */
+      --panel-ink:#ffffff;      /* text on navy surfaces */
+
+      --muted:#4b5563;
+      --stripe:rgba(255,255,255,.10); /* subtle divider on navy */
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;           /* body text in dark */
-      --muted:#cbd5e1;
+      --text:#ffffff;
+      --title:#ffffff;          /* keep headings readable in dark */
       --card:#0f1216;
       --border:#1f2937;
 
-      --yale:#0F4D92;           /* brighter Yale for dark */
-      --yale-ink:#ffffff;       /* white text on Yale in dark */
-      --pill-bg:#0b254a;        /* deep Yale tint for chips (dark) */
-      --title:#e5efff;          /* light title color in dark */
+      /* Keep navy accents in dark for consistency */
+      --panel:var(--brand);
+      --panel-ink:#ffffff;
+
+      --muted:#cfd8dc;
+      --stripe:rgba(255,255,255,.12);
     }
 
     /* Global */
     html, body { color:var(--text); }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-    /* Chips (Deterrence, Coercion, …) */
+    /* Pills — now navy with white text */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
       padding:.35rem .6rem;border-radius:999px;
-      background:var(--pill-bg);
-      border:1px solid color-mix(in oklab, var(--yale) 35%, var(--pill-bg));
-      color:var(--text);               /* black in light, white in dark via --text */
+      background:var(--panel);
+      border:1px solid var(--panel); /* unify to navy */
+      color:var(--panel-ink);
       font-weight:700;font-size:.92rem;
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.10)}
 
-    /* Cards (Featured/Research tiles) */
+    /* Cards — left accent/navy; titles follow text color (black/white) */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
       border:1px solid var(--border);
-      border-left:6px solid var(--yale);
+      border-left:5px solid var(--brand); /* navy accent */
       border-radius:12px;background:var(--card);
       padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.10)}
     .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--title)}
     .muted{color:var(--muted)}
 
-    /* Accordions (About, Research Spotlights, Featured, Degrees) */
+    /* Accordions — headers navy, header text white; body stays on card surface */
     .accordion{display:grid;gap:1rem;margin:1.25rem 0}
     .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
     .acc__head{
       display:flex;align-items:center;justify-content:space-between;
-      background:var(--yale);color:var(--yale-ink);
+      background:var(--panel);color:var(--panel-ink);
       padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative
     }
-    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.08)}
-    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--yale-ink)}
-    .acc__chev{border:solid var(--yale-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
+    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--stripe)}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--panel-ink)} /* ensure white on navy */
+    .acc__chev{border:solid var(--panel-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
     .acc.open .acc__chev{transform:rotate(45deg)}
     .acc__body{padding:1rem;display:none}
     .acc.open .acc__body{display:block}
 
-    /* Right-rail cards (Personal · Trips) keep same Yale look */
+    /* Right rail */
     .right-rail .acc{margin-bottom:1rem}
     .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
     .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
     .trip small{display:block;color:var(--muted);font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.2rem}
     .trip .t{font-weight:800;line-height:1.2;color:var(--title)}
-    .trip .d{color:var(--muted);font-size:.9rem}
+    .trip .d{color:var(--muted);font-size:.9rem;margin-top:.25rem}
     .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
   </style>
 </head>
@@ -143,8 +153,8 @@
           <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26 Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and Area Studies. My work sits at the intersection of international security, strategic studies, and the political economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
           <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
           <p>I explain that credible security guarantees and institutionalized cooperation—particularly within alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit compliance. The project draws on archival and declassified sources, original datasets, formal models, causal inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.</p>
-          <p>A second stream of my research examines international organizations and international interventions in statebuilding, fragile governments, and peacebuilding…</p>
-        </div>
+          <p>A second stream of my research examines international organizations and international interventions in statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates and institutional unity condition local compliance. Conceptually and empirically, this stream complements my focus on war studies and international security: interventions alter the incentives, signals, and constraints that determine whether coercion and deterrence succeed.</p>
+    </div>
       </div>
 
       <!-- Research Spotlights -->
@@ -154,12 +164,12 @@
           <div class="feature-grid">
             <div class="card">
               <h3>Coercion & Compliance</h3>
-              <p class="muted"><em>Between Coercion and Inducements</em>, <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
+              <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
             <div class="card">
               <h3>Posture & Assurance</h3>
-              <p class="muted">Alignment of U.S.–ally postures; escalation management; extended deterrence.</p>
+              <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
           </div>
@@ -206,10 +216,26 @@
     <div class="acc open" id="sec-personal">
       <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
       <div class="acc__body">
-        <a class="trip" href="#"><small>FELLOWSHIP</small><span class="date">2025–26</span><div class="t">Yale — Nuclear Security Program</div><div class="d">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program.</div></a>
-        <a class="trip" href="#"><small>CONFERENCE</small><span class="date">2025</span><div class="t">Uppsala, Sweden — Alva Myrdal Conference</div><div class="d">Panel participation and research presentation.</div></a>
-        <a class="trip" href="#"><small>POLICY TRIP</small><span class="date">Winter 2024</span><div class="t">Accra, Ghana — SPIA International Policy Trip</div><div class="d">Field briefings and meetings with policy stakeholders.</div></a>
-        <a class="trip" href="#"><small>STUDY</small><span class="date">2023</span><div class="t">Cambridge (UK) — Summer Law Modules</div><div class="d">Use of force (UN Charter) and Law of Armed Conflict.</div></a>
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>FELLOWSHIP</small><span class="date">2025–26</span>
+          <div class="t">Yale — Nuclear Security Program</div>
+          <div class="d">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program.</div>
+        </a>
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>CONFERENCE</small><span class="date">2025</span>
+          <div class="t">Uppsala, Sweden — Alva Myrdal Conference</div>
+          <div class="d">Panel participation and research presentation.</div>
+        </a>
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>POLICY TRIP</small><span class="date">Winter 2024</span>
+          <div class="t">Accra, Ghana — SPIA International Policy Trip</div>
+          <div class="d">Field briefings and meetings with policy stakeholders.</div>
+        </a>
+        <a class="trip" href="#" target="_blank" rel="noopener">
+          <small>STUDY</small><span class="date">2023</span>
+          <div class="t">Cambridge (UK) — Summer Law Modules</div>
+          <div class="d">Use of force (UN Charter) and Law of Armed Conflict.</div>
+        </a>
       </div>
     </div>
   </aside>
