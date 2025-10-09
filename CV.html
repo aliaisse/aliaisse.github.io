@@ -7,34 +7,55 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles (aligned with your other pages) -->
+  <!-- Page-specific styles (match index/research/teaching palette + components) -->
   <style>
     :root{
-      --brand:#0A2A66;
-      --accent:#E87722;           /* Princeton orange; swap to #F15A22 for UTSA */
-      --text:#111111;             /* black text in light mode */
+      --brand:#0A2A66;            /* site header/nav navy */
+      --accent:#E87722;           /* reserved if needed */
+
+      /* light surfaces */
+      --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
-      --panel:var(--accent);      /* accordion header bg */
-      --panel-ink:#ffffff;        /* accordion header text */
+
+      /* accordion headers: DARK ORANGE (consistent across site) */
+      --panel:#B74E00;
+      --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.1);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;             /* white text in dark mode */
-      --muted:#d0d7de;
+      --text:#ffffff;
+      --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
-      --panel:#FF9A4D;            /* brighter orange on dark */
-      --panel-ink:#101317;
+
+      /* keep dark orange in dark mode too */
+      --panel:#B74E00;
+      --panel-ink:#ffffff;
       --stripe:rgba(0,0,0,.15);
     }
 
+    /* global text */
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
     .name{color:var(--text);}
+    .muted{color:var(--muted)}
 
-    /* Accordion */
+    /* neutral card (optional wrapper for summary/actions if you expand later) */
+    .card{
+      border:1px solid var(--border);
+      border-left:none;
+      border-radius:12px;
+      background:var(--card);
+      padding:1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+
+    /* accordion */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -61,15 +82,17 @@
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 
-    /* Content bits */
-    .cv-summary{margin:0 0 .8rem; color:var(--muted);}
+    /* content bits */
+    .cv-summary{margin:0 0 .8rem}
     .cv-actions{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
     .btn-primary{
       display:inline-block; padding:.55rem .9rem; border-radius:10px;
       font-weight:800; text-decoration:none; border:1px solid var(--border);
-      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, transparent), transparent);
+      background:var(--card);
+      color:var(--text);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.08)}
   </style>
 </head>
 <body>
@@ -91,7 +114,7 @@
 </header>
 
 <main class="container layout">
-  <!-- Left profile -->
+  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <div class="buttons">
@@ -100,7 +123,7 @@
     </div>
   </aside>
 
-  <!-- Center content -->
+  <!-- center content -->
   <section class="content">
     <div class="accordion">
 
@@ -111,8 +134,8 @@
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-          <p class="cv-summary">
-            Current academic CV including publications, teaching, research activities, awards, and service.
+          <p class="cv-summary muted">
+            Current academic CV with publications, teaching, research activities, awards, and service.
           </p>
           <div class="cv-actions">
             <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
@@ -123,14 +146,14 @@
     </div>
   </section>
 
-  <!-- Right TOC (optional) -->
+  <!-- right TOC (optional) -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
 
-<!-- Tiny accordion JS -->
+<!-- Tiny accordion JS (same as other pages) -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
