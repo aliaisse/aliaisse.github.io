@@ -10,27 +10,25 @@
        THEME TOKENS
        (Dark charcoal — not blue)
     ========================== */
-    :root{
-      --brand:#111827;         /* dark charcoal for header/accordions/chips/buttons */
-      --text:#111111;          /* body text in light */
-      --muted:#4b5563;
-      --card:#ffffff;          /* surfaces in light */
-      --border:#e5e7eb;
+:root{
+  --brand:#0B1E3B;          /* DARK NAVY (header, accordions, chips, buttons) */
+  --text:#111111;           /* black text in light */
+  --muted:#4b5563;
+  --card:#ffffff;           /* page/background in light */
+  --border:#e5e7eb;
 
-      --panel:var(--brand);    /* unified brand surface */
-      --panel-ink:#ffffff;     /* text on brand surface */
-    }
-    [data-theme="dark"], body.dark{
-      --text:#ffffff;          /* body text flips to white */
-      --muted:#cfd8dc;
-      --card:#0f1216;          /* surfaces in dark */
-      --border:#1f2937;
+  --panel:var(--brand);     /* unify brand surfaces */
+  --panel-ink:#ffffff;      /* text on brand surfaces */
+}
+[data-theme="dark"], body.dark{
+  --text:#ffffff;           /* body text flips to white */
+  --muted:#cfd8dc;
+  --card:#0f1216;           /* page/background in dark */
+  --border:#1f2937;
 
-      /* keep the same dark charcoal in dark mode */
-      --panel:var(--brand);
-      --panel-ink:#ffffff;
-    }
-
+  --panel:var(--brand);     /* keep the same dark navy in dark */
+  --panel-ink:#ffffff;
+}
     /* =========================
        BASE LAYOUT
     ========================== */
