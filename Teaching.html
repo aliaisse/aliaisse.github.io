@@ -3,87 +3,107 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teaching — Ali A. Isse</title>
+  <title>Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles -->
   <style>
-    /* ---- Brand tokens (align with site) ---- */
+    /* ===== Site palette — EXACT header navy from your Teaching page ===== */
     :root{
-      --brand:#0A2A66;           /* site header/nav navy */
-      --accent:#E87722;          /* Princeton orange (use #F15A22 for UTSA) */
+      --brand:#0A2A66;        /* dark navy you’re using site-wide */
+      --brand-ink:#ffffff;
 
-      /* Light theme text/surfaces */
-      --text:#111111;            /* black body text */
+      --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
-      --border:#e5e7eb;
+      --border:#d9dde4;
 
-      /* Accordion header colors: ORANGE bar w/ white text */
-      --panel:var(--accent);
-      --panel-ink:#ffffff;
-      --stripe:rgba(0,0,0,.1);
+      --title:var(--brand);   /* headings & card titles */
+      --panel-bg:#eef2f7;     /* soft body for accordion content */
+      --list-dot:var(--brand);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;            /* white body text in dark */
-      --muted:#d0d7de;
+      --text:#ffffff;
+      --muted:#cbd5e1;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#FF9A4D;           /* brighter orange on dark */
-      --panel-ink:#101317;       /* dark ink for contrast on bright orange */
-      --stripe:rgba(0,0,0,.15);
+      /* keep the same navy, but titles lighter for contrast */
+      --brand:#0A2A66;
+      --brand-ink:#ffffff;
+      --title:#cfe0ff;
+      --panel-bg:#0f1420;
+      --list-dot:#a9c2ff;
     }
 
-    /* ---- Global text ---- */
+    /* ===== Header uses your navy ===== */
+    .site-header{
+      background:var(--brand);
+      border-bottom:0;
+    }
+    .site-header .brand,
+    .site-header .nav a{ color:var(--brand-ink) !important; }
+    .site-header .nav a.active{ text-decoration:underline; text-underline-offset:4px; }
+
+    /* Global */
     html, body { color:var(--text); }
-    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
     .name{color:var(--text);}
 
-    /* Page title: black in light, white in dark */
-    .content h2{
-      font-weight:800;
-      color:#111111;
-      margin-top:.2rem;
-    }
-    [data-theme="dark"] .content h2, body.dark .content h2{ color:#ffffff; }
-
-    /* ---- Accordion ---- */
-    .accordion{display:grid;gap:1rem;margin:1rem 0}
-    .acc{
+    /* Cards (border & titles in navy) */
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+    .card{
       border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:0 1px 6px rgba(0,0,0,.06);
+      border-left:6px solid var(--brand);
+      border-radius:12px;background:var(--card);
+      padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease;
     }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--title)}
+    .muted{color:var(--muted)}
+
+    /* Accordions (navy headers) */
+    .accordion{display:grid;gap:1rem;margin:1.25rem 0}
+    .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
     .acc__head{
       display:flex;align-items:center;justify-content:space-between;
-      background:var(--panel); color:var(--panel-ink);
-      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
+      background:var(--brand);color:var(--brand-ink);
+      padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative
     }
-    .acc__head::after{
-      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
-      background:var(--stripe);
-    }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
-    .acc__chev{
-      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
-      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
-    }
-    .acc.open .acc__chev{ transform:rotate(45deg); }
-
-    .acc__body{padding:1rem; display:none}
+    .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.12)}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--brand-ink)}
+    .acc__chev{border:solid var(--brand-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
+    .acc.open .acc__chev{transform:rotate(45deg)}
+    .acc__body{padding:1rem;background:var(--panel-bg);display:none}
     .acc.open .acc__body{display:block}
 
-    /* ---- Course rows ---- */
-    .course{margin:0 0 1rem}
-    .title{font-weight:800; color:inherit;}
-    .meta{color:var(--muted)}
-    .desc{margin:.3rem 0 0 0}
-    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
-    .tiny a:hover{text-decoration:underline}
+    /* Expertise list (replacing chips) */
+    .expertise{columns:1;column-gap:2rem;list-style:none;padding:0;margin:.3rem 0 0}
+    @media (min-width: 680px){ .expertise{columns:2} }
+    .expertise li{
+      break-inside:avoid;margin:.3rem 0 .2rem;padding-left:1.1rem;position:relative;
+      color:var(--text);font-weight:700;
+    }
+    .expertise li::before{
+      content:"";position:absolute;left:0;top:.55rem;width:.5rem;height:.5rem;border-radius:999px;
+      background:var(--list-dot);
+    }
+
+    /* Right rail Personal · Trips */
+    .right-rail .acc{margin-bottom:1rem}
+    .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
+    .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+    .trip small{display:block;color:var(--muted);font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.2rem}
+    .trip .t{font-weight:800;line-height:1.2;color:var(--title)}
+    .trip .d{color:var(--muted);font-size:.9rem}
+    .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
+
+    /* Make sure the right rail shows on mobile */
+    @media (max-width: 760px){
+      .right-rail{margin-top:1rem}
+    }
   </style>
 </head>
 <body>
@@ -92,12 +112,10 @@
   <div class="container header-inner">
     <a class="brand" href="/">Ali A. Isse</a>
     <nav class="nav">
-      <a href="/">Home</a>
+      <a href="/" class="active">Home</a>
       <a href="/Research.html">Research</a>
-      <a href="/Teaching.html" class="active">Teaching</a>
+      <a href="/Teaching.html">Teaching</a>
       <a href="/CV.html">CV</a>
-
-      <!-- dark/light toggle -->
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -107,91 +125,124 @@
 </header>
 
 <main class="container layout">
-  <!-- Left profile column -->
+  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
       <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
     </div>
   </aside>
 
-  <!-- Center content -->
+  <!-- center content -->
   <section class="content">
+    <h2>Welcome</h2>
+    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
 
     <div class="accordion">
 
-      <!-- Current Teaching -->
-      <div class="acc open" id="sec-teaching">
-        <div class="acc__head" data-acc="sec-teaching">
-          <h3 class="acc__title">Teaching</h3>     
-          <i class="acc__chev"></i>
+      <!-- Expertise -->
+      <div class="acc open" id="sec-expertise">
+        <div class="acc__head" data-acc="sec-expertise">
+          <h3 class="acc__title">Expertise</h3><i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-        <h3>Princeton University</h3>           
-       <div class="course">
-            <span class="title">International Organizations (Undergraduate)</span>
-            <span class="meta"> — Spring 2025 · ~400 students</span>
-            <div class="desc">
-              Examines the politics, structure, and effectiveness of international organizations in global governance.
-              Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
-              Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
-            </div>
-            <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
-          </div>
-
-          <div class="course">
-            <span class="title">Introduction to Research Design (Undergraduate)</span>
-            <span class="meta"> — Fall 2024 · ~75 students</span>
-            <div class="desc">
-              Introduces undergraduates to the principles of research design and the logic of social inquiry.
-              Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
-              Prepares students to write their junior and senior theses in public and international affairs.
-            </div>
-            <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
-          </div>
-
+          <ul class="expertise">
+            <li>Deterrence</li>
+            <li>Coercion</li>
+            <li>Nuclear Policy</li>
+            <li>Nonproliferation</li>
+            <li>Alliance Politics</li>
+            <li>Strategic Studies</li>
+            <li>Research Methods & Causal Inference</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Selected Previous Teaching (universities omitted) -->
-      <div class="acc" id="sec-prev">
-        <div class="acc__head" data-acc="sec-prev">
-          <h3 class="acc__title">Selected Previous Teaching</h3>
-          <i class="acc__chev"></i>
-        </div>
+      <!-- About -->
+      <div class="acc" id="sec-about">
+        <div class="acc__head" data-acc="sec-about"><h3 class="acc__title">About</h3><i class="acc__chev"></i></div>
         <div class="acc__body">
+          <h3 style="color:var(--title);margin:0 0 .5rem 0">Ph.D. Candidate, Princeton SPIA</h3>
+          <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26 Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and Area Studies. My work sits at the intersection of international security, strategic studies, and the political economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+          <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
+          <p>I explain that credible security guarantees and institutionalized cooperation—particularly within alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit compliance. The project draws on archival and declassified sources, original datasets, formal models, causal inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.</p>
+        </div>
+      </div>
 
-          <div class="course">
-            <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
-            <span class="meta"> — 2021</span>
-            <div class="desc">
-              Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
+      <!-- Research Spotlights -->
+      <div class="acc" id="sec-research">
+        <div class="acc__head" data-acc="sec-research"><h3 class="acc__title">Research Spotlights</h3><i class="acc__chev"></i></div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <h3>Coercion & Compliance</h3>
+              <p class="muted"><em>Between Coercion and Inducements</em>, <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
-            <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
-          </div>
-
-          <div class="course">
-            <span class="title">Analyzing the City (Undergraduate)</span>
-            <span class="meta"> — Fall 2017</span>
-            <div class="desc">
-              Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+            <div class="card">
+              <h3>Posture & Assurance</h3>
+              <p class="muted">Alignment of U.S.–ally postures; escalation management; extended deterrence.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- Featured -->
+      <div class="acc" id="sec-featured">
+        <div class="acc__head" data-acc="sec-featured"><h3 class="acc__title">Featured</h3><i class="acc__chev"></i></div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <h3>US–UK Nuclear Partnership</h3>
+              <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship. <span class="muted">Manuscript · 2025</span></p>
+            </div>
+            <div class="card">
+              <h3>International Organizations</h3>
+              <p class="muted">Discussion sections, office hours, assignments, and exams. <span class="muted">Teaching · Spring 2025</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Degrees -->
+      <div class="acc" id="sec-degrees">
+        <div class="acc__head" data-acc="sec-degrees"><h3 class="acc__title">Degrees</h3><i class="acc__chev"></i></div>
+        <div class="acc__body">
+          <div class="card">
+            <p class="muted" style="margin:0">
+              Ph.D. Candidate, Princeton University<br>
+              M.A., Princeton University<br>
+              M.A., The University of Chicago<br>
+              M.S., The Ohio State University<br>
+              B.A., The University of Texas San Antonio
+            </p>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <aside class="toc">
-    <div class="toc-title">On this page</div>
-    <nav id="tocList"></nav>
+  <!-- Right sidebar (Personal · Trips) -->
+  <aside class="right-rail">
+    <div class="acc open" id="sec-personal">
+      <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
+      <div class="acc__body">
+        <a class="trip" href="#"><small>FELLOWSHIP</small><span class="date">2025–26</span><div class="t">Yale — Nuclear Security Program</div><div class="d">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program.</div></a>
+        <a class="trip" href="#"><small>CONFERENCE</small><span class="date">2025</span><div class="t">Uppsala, Sweden — Alva Myrdal Conference</div><div class="d">Panel participation and research presentation.</div></a>
+        <a class="trip" href="#"><small>POLICY TRIP</small><span class="date">Winter 2024</span><div class="t">Accra, Ghana — SPIA International Policy Trip</div><div class="d">Field briefings and meetings with policy stakeholders.</div></a>
+        <a class="trip" href="#"><small>STUDY</small><span class="date">2023</span><div class="t">Cambridge (UK) — Summer Law Modules</div><div class="d">UN Charter use-of-force & Law of Armed Conflict.</div></a>
+      </div>
+    </div>
   </aside>
 </main>
 
-<!-- Tiny accordion JS -->
+<!-- Accordion toggler -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
@@ -203,6 +254,5 @@
     });
   });
 </script>
-
 </body>
 </html>
