@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,35 +11,39 @@
   <style>
     /* ===== Brand + theme tokens ===== */
     :root{
-      --brand:#0A2A66;          /* header/nav navy */
-      --title:#0A2A66;          /* blue for section titles */
-      --title-dark:#93c5fd;     /* blue in dark mode */
-      --text:#111111;           /* body text in light */
+      --brand:#0A2A66;          /* header/nav */
+      /* Neutral, “OSU-like” grays for panels/cards/titles */
+      --title:#334155;          /* slate-700 for titles in light */
+      --title-dark:#cbd5e1;     /* slate-300/200 in dark */
+      --text:#111111;           /* body in light */
       --muted:#4b5563;
       --card:#ffffff;
-      --border:#d8dbe2;
+      --border:#d9dde4;
 
-      /* Darker gray panels for accordions/pills */
-      --panel:#d1d5db;          /* darker gray */
-      --panel-ink:#111111;      /* dark text on gray */
+      /* Darker panel gray for accordions & pills */
+      --panel:#6b7280;          /* gray-500 (good contrast in light) */
+      --panel-ink:#111111;      /* text on panel in light */
       --stripe:rgba(0,0,0,.06);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;           /* body text in dark */
+      --text:#ffffff;
       --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#374151;          /* darker gray for dark mode */
-      --panel-ink:#ffffff;
+      --panel:#374151;          /* gray-700 in dark */
+      --panel-ink:#e5e7eb;      /* light ink on dark panel */
       --stripe:rgba(255,255,255,.08);
+
+      --title:#cbd5e1;          /* match right-rail titles in dark */
+      --title-dark:#cbd5e1;
     }
 
     /* Global */
     html, body { color:var(--text); }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-    /* Pills (neutral, match accordion gray) */
+    /* Pills — neutral to match accordion */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
@@ -51,7 +56,7 @@
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
-    /* Cards (blue accent to match titles) */
+    /* Cards — titles/accents use same gray family as right-rail */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
@@ -61,13 +66,11 @@
       padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    [data-theme="dark"] .card, body.dark .card { border-left-color:var(--title-dark); }
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
     .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--title)}
-    [data-theme="dark"] .card h3, body.dark .card h3{ color:var(--title-dark); }
     .muted{color:var(--muted)}
 
-    /* Accordions */
+    /* Accordions — darker gray panel; blue-ish gray titles for consistency */
     .accordion{display:grid;gap:1rem;margin:1.25rem 0}
     .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06)}
     .acc__head{
@@ -77,18 +80,17 @@
     }
     .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--stripe)}
     .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--title)}
-    [data-theme="dark"] .acc__title, body.dark .acc__title{ color:var(--title-dark); }
     .acc__chev{border:solid var(--panel-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
     .acc.open .acc__chev{transform:rotate(45deg)}
     .acc__body{padding:1rem;display:none}
     .acc.open .acc__body{display:block}
 
-    /* Right rail (mobile-visible) */
+    /* Right rail – unchanged (this is the look we’re matching) */
     .right-rail .acc{margin-bottom:1rem}
     .trip{display:block;border:1px solid var(--border);border-radius:10px;background:var(--card);padding:.9rem;margin:.55rem 0;text-decoration:none}
     .trip:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
     .trip small{display:block;color:var(--muted);font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:.2rem}
-    .trip .t{font-weight:800;line-height:1.2}
+    .trip .t{font-weight:800;line-height:1.2;color:var(--title)}
     .trip .d{color:var(--muted);font-size:.9rem;margin-top:.25rem}
     .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
   </style>
@@ -148,7 +150,7 @@
           <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
           <p>I explain that credible security guarantees and institutionalized cooperation—particularly within alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit compliance. The project draws on archival and declassified sources, original datasets, formal models, causal inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.</p>
           <p>A second stream of my research examines international organizations and international interventions in statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates and institutional unity condition local compliance. Conceptually and empirically, this stream complements my focus on war studies and international security: interventions alter the incentives, signals, and constraints that determine whether coercion and deterrence succeed.</p>
-        </div>
+    </div>
       </div>
 
       <!-- Research Spotlights -->
@@ -205,7 +207,7 @@
     </div>
   </section>
 
-  <!-- RIGHT SIDEBAR: Personal · Trips (kept; Journey section removed) -->
+  <!-- RIGHT SIDEBAR: Personal · Trips -->
   <aside class="right-rail">
     <div class="acc open" id="sec-personal">
       <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
