@@ -16,7 +16,7 @@
       --accent:#E87722;          /* reserved if needed */
 
       /* Light theme text/surfaces */
-      --text:#111111;
+      --text:#111111;            /* black body text */
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
@@ -31,7 +31,7 @@
       --stripe:rgba(0,0,0,.1);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;
+      --text:#ffffff;            /* white body text in dark */
       --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
@@ -107,6 +107,7 @@
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
+
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 
@@ -151,36 +152,20 @@
   <section class="content">
     <h2 style="margin:.2rem 0 .8rem 0">Teaching</h2>
 
-    <!-- ===== Two-card Interests/Approach (NEW) ===== -->
+    <!-- ===== Teaching Interests card (NEW, above accordions) ===== -->
     <div class="feature-grid" style="margin-bottom:.6rem">
-      <!-- Areas card -->
-      <div class="card">
-        <h3>Teaching Interests — Areas</h3>
+      <div class="card" style="grid-column:1 / -1">
+        <h3>Teaching Interests</h3>
         <p class="muted" style="margin:.2rem 0 .6rem 0">
-          Courses that blend conceptual depth with policy application and analytic practice.
+          I design inclusive, discussion-forward courses that build conceptual clarity and analytic skill.
+          My teaching emphasizes theory-to-evidence translation, policy relevance, and methodological literacy.
         </p>
         <div class="pill-group">
           <span class="pill">International Security</span>
           <span class="pill">International Relations</span>
           <span class="pill">Research Methods &amp; Design</span>
-          <span class="pill">Foreign Policy</span>
-          <span class="pill">International Organizations</span>
-        </div>
-      </div>
-
-      <!-- Approach card -->
-      <div class="card">
-        <h3>Teaching Approach — How I Teach</h3>
-        <p class="muted" style="margin:.2rem 0 .6rem 0">
-          Inclusive, discussion-forward seminars that connect theory to evidence and policy. Students practice
-          the craft of inquiry—posing questions, building arguments, and evaluating causal claims.
-        </p>
-        <div class="pill-group">
-          <span class="pill">Active Learning</span>
-          <span class="pill">Theory ↔ Evidence</span>
-          <span class="pill">Policy Relevance</span>
-          <span class="pill">Method Literacy</span>
-          <span class="pill">Writing Across the Curriculum</span>
+          <span class="pill">Foreign Policy &amp; Decision-Making</span>
+          <span class="pill">International Organizations &amp; Global Governance</span>
         </div>
       </div>
     </div>
