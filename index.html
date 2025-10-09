@@ -8,35 +8,37 @@
   <script src="/assets/script.js" defer></script>
 
   <style>
-    /* ===== Brand + theme tokens (no orange) ===== */
+    /* ===== Brand + theme tokens ===== */
     :root{
       --brand:#0A2A66;          /* header/nav navy */
-      --text:#111111;
+      --title:#0A2A66;          /* blue for section titles */
+      --title-dark:#93c5fd;     /* blue in dark mode */
+      --text:#111111;           /* body text in light */
       --muted:#4b5563;
       --card:#ffffff;
-      --border:#e5e7eb;
+      --border:#d8dbe2;
 
-      /* Neutral gray for accordions, pills, and card accents */
-      --panel:#e5e7eb;          /* light gray */
+      /* Darker gray panels for accordions/pills */
+      --panel:#d1d5db;          /* darker gray */
       --panel-ink:#111111;      /* dark text on gray */
-      --stripe:rgba(0,0,0,.05);
+      --stripe:rgba(0,0,0,.06);
     }
     [data-theme="dark"], body.dark{
-      --text:#ffffff;
+      --text:#ffffff;           /* body text in dark */
       --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
 
-      --panel:#374151;          /* dark gray */
+      --panel:#374151;          /* darker gray for dark mode */
       --panel-ink:#ffffff;
-      --stripe:rgba(255,255,255,.06);
+      --stripe:rgba(255,255,255,.08);
     }
 
-    /* Global text */
+    /* Global */
     html, body { color:var(--text); }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-    /* Pills match accordion gray */
+    /* Pills (neutral, match accordion gray) */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
@@ -49,18 +51,20 @@
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
-    /* Cards (accent = panel gray) */
+    /* Cards (blue accent to match titles) */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
       border:1px solid var(--border);
-      border-left:5px solid var(--panel);   /* neutral gray stripe */
+      border-left:5px solid var(--title);
       border-radius:12px;background:var(--card);
       padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
+    [data-theme="dark"] .card, body.dark .card { border-left-color:var(--title-dark); }
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--title)}
+    [data-theme="dark"] .card h3, body.dark .card h3{ color:var(--title-dark); }
     .muted{color:var(--muted)}
 
     /* Accordions */
@@ -72,7 +76,8 @@
       padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative
     }
     .acc__head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--stripe)}
-    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--panel-ink)}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:var(--title)}
+    [data-theme="dark"] .acc__title, body.dark .acc__title{ color:var(--title-dark); }
     .acc__chev{border:solid var(--panel-ink);border-width:0 2px 2px 0;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease}
     .acc.open .acc__chev{transform:rotate(45deg)}
     .acc__body{padding:1rem;display:none}
@@ -86,15 +91,6 @@
     .trip .t{font-weight:800;line-height:1.2}
     .trip .d{color:var(--muted);font-size:.9rem;margin-top:.25rem}
     .trip .date{float:right;color:var(--muted);font-size:.9rem;margin-left:.75rem}
-
-    /* Journey chips (no dates) */
-    .journey{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
-    .chip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);background:var(--card);padding:.3rem .55rem;border-radius:999px;font-weight:700}
-    .arrow{opacity:.6;margin:0 .2rem}
-
-    /* Toggle track: gray */
-    .theme-switch .switch-slider{background:#d1d5db !important;border-color:#cfd4dc !important}
-    [data-theme="dark"] .theme-switch .switch-slider, body.dark .theme-switch .switch-slider{background:#4b5563 !important;border-color:#6b7280 !important}
   </style>
 </head>
 <body>
@@ -147,12 +143,12 @@
       <div class="acc open" id="sec-about">
         <div class="acc__head" data-acc="sec-about"><h3 class="acc__title">About</h3><i class="acc__chev"></i></div>
         <div class="acc__body">
-          <h3>Ph.D. Candidate, Princeton SPIA</h3>
+          <h3 style="color:var(--title);margin:0 0 .5rem 0">Ph.D. Candidate, Princeton SPIA</h3>
           <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26 Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center for International and Area Studies. My work sits at the intersection of international security, strategic studies, and the political economy of international organizations, with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
           <p>My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks three questions: When does coercion succeed without war? Which guarantees and institutional commitments move states from brinkmanship to cooperation? And what do alliances and international organizations signal in crises?</p>
           <p>I explain that credible security guarantees and institutionalized cooperation—particularly within alliances and the United Nations—reshape expectations and increase the likelihood that coercive threats elicit compliance. The project draws on archival and declassified sources, original datasets, formal models, causal inference, and case studies of the UK–US nuclear partnership, North Korea, and Iran.</p>
           <p>A second stream of my research examines international organizations and international interventions in statebuilding, fragile governments, and peacebuilding. I study how external actors—UN missions, regional organizations, and allied partners—affect governance capacity and patterns of violence, and how mandates and institutional unity condition local compliance. Conceptually and empirically, this stream complements my focus on war studies and international security: interventions alter the incentives, signals, and constraints that determine whether coercion and deterrence succeed.</p>
-    </div>
+        </div>
       </div>
 
       <!-- Research Spotlights -->
@@ -206,11 +202,10 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- RIGHT SIDEBAR: Personal · Trips -->
+  <!-- RIGHT SIDEBAR: Personal · Trips (kept; Journey section removed) -->
   <aside class="right-rail">
     <div class="acc open" id="sec-personal">
       <div class="acc__head" data-acc="sec-personal"><h3 class="acc__title">Personal · Trips</h3><i class="acc__chev"></i></div>
@@ -235,20 +230,6 @@
           <div class="t">Cambridge (UK) — Summer Law Modules</div>
           <div class="d">Use of force (UN Charter) and Law of Armed Conflict.</div>
         </a>
-
-        <!-- Journey (NO dates) -->
-        <div class="card" style="margin-top:.75rem">
-          <h3 style="margin:0 0 .35rem 0">Journey</h3>
-          <div class="journey">
-            <span class="chip">CFBT Scholarship (Kenya)</span><span class="arrow">→</span>
-            <span class="chip">Relocated to U.S.</span><span class="arrow">→</span>
-            <span class="chip">WTAMU</span><span class="arrow">→</span>
-            <span class="chip">UT San Antonio (B.A.)</span><span class="arrow">→</span>
-            <span class="chip">Ohio State (M.S.)</span><span class="arrow">→</span>
-            <span class="chip">UChicago (M.A.)</span><span class="arrow">→</span>
-            <span class="chip">Princeton (M.A., Ph.D.)</span>
-          </div>
-        </div>
       </div>
     </div>
   </aside>
