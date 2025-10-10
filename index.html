@@ -114,31 +114,33 @@
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 
-    /* ===== Footer-style accordion ONLY (exact header navy, smaller type) ===== */
+    /* ===== Footer accordion — neutral white with thin dark-orange border ===== */
     .acc--footer{
-      border-color: var(--brand);
-      box-shadow: none;                     /* no extra glow */
-      margin-top: 1rem;
+      background: var(--card);
+      border:1px solid var(--panel);   /* thin dark-orange outline */
+      border-radius:10px;
+      box-shadow:none;
+      margin-top:1rem;
     }
     .acc--footer .acc__head{
-      background: var(--brand);             /* exact same variable as header */
-      color: #ffffff;
-      padding: .7rem .9rem;                 /* slightly tighter than others */
+      background: var(--card);         /* no color fill */
+      color: var(--text);
+      padding:.7rem .9rem;             /* slightly smaller */
+      border-bottom:1px solid var(--panel); /* hairline under header */
     }
-    .acc--footer .acc__head::after{
-      background: transparent;              /* remove the stripe so color is pure */
-    }
+    .acc--footer .acc__head::after{ background:transparent; } /* remove stripe */
     .acc--footer .acc__title{
-      color:#ffffff;
-      font-size:.95rem;                     /* smaller title */
+      color: inherit;
+      font-size:.95rem;                 /* smaller title */
       font-weight:800;
     }
     .acc--footer .acc__chev{
-      border: solid #ffffff;                /* keep chevron pure white */
-      border-width: 0 2px 2px 0;
+      border: solid currentColor;       /* match text color */
+      border-width:0 2px 2px 0;
     }
     .acc--footer .acc__body{
-      font-size:.95rem;                     /* slightly smaller body text */
+      background: var(--card);
+      font-size:.95rem;                 /* smaller body */
     }
     .acc--footer .pill{ padding:.3rem .55rem; font-size:.9rem; } /* compact pills */
   </style>
@@ -315,7 +317,7 @@
               <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
             </div>
 
-            <div class="card>
+            <div class="card">
               <span class="pill">Teaching · Spring 2025</span>
               <h3>International Organizations</h3>
               <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
@@ -391,12 +393,13 @@
       </div>
     </div> <!-- end .accordion -->
 
-    <!-- ===== TRUE footer-style accordion (navy bar, smaller, at very bottom) ===== -->
+    <!-- ===== TRUE footer-style accordion (neutral white + thin dark-orange border) ===== -->
     <div class="acc acc--footer" id="sec-places" style="margin-top:1.25rem;">
       <div class="acc__head" data-acc="sec-places">
         <h3 class="acc__title">Places I’ve Lived, Worked, or Studied</h3>
-
+        <i class="acc__chev"></i>
       </div>
+      <div class="acc__body">
         <div class="feature-grid" style="margin-top:.2rem">
           <!-- Countries -->
           <div class="card">
