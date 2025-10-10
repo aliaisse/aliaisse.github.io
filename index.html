@@ -12,22 +12,18 @@
     /* ===== Brand + theme tokens (keep site palette) ===== */
     :root{
       --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
-      --accent:#E87722;             /* kept for other uses */
-
-      /* light surfaces */
       --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
 
-      /* neutral chips */
+      /* chips */
       --pill-bg: var(--card);
       --pill-ink: var(--text);
 
-      /* ===== Accordion bars: EXACT header/footer navy ===== */
-      --panel:var(--brand);
+      /* accordion tokens (we'll hard-lock below) */
+      --panel: var(--brand);
       --panel-ink:#ffffff;
-      --stripe:transparent; /* remove any stripe tint */
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
@@ -35,13 +31,11 @@
       --card:#0f1216;
       --border:#1f2937;
 
-      /* keep exact same navy in dark mode */
-      --panel:var(--brand);
+      --panel: var(--brand);      /* EXACT same navy in dark */
       --panel-ink:#ffffff;
 
       --pill-bg:#12171d;
       --pill-ink:#e5e7eb;
-      --stripe:transparent;
     }
 
     /* ===== Global text colors ===== */
@@ -63,7 +57,7 @@
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-    .pill--accent{
+    .pill--accent{ /* keep neutral look */
       background:var(--pill-bg) !important;
       border-color:var(--border) !important;
       color:var(--pill-ink) !important;
@@ -96,19 +90,25 @@
       background:var(--card);
       box-shadow:0 1px 6px rgba(0,0,0,.06);
     }
-    .acc__head{
+
+    /* HARD-LOCK the header color to EXACT header/footer navy */
+    .accordion .acc .acc__head{
       display:flex;align-items:center;justify-content:space-between;
-      background:var(--panel); color:var(--panel-ink);
+      background:var(--brand) !important;   /* exact match */
+      color:#ffffff !important;
       padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
+      box-shadow:none !important;           /* no overlays */
+      border:none;                           /* no borders that shift tone */
     }
-    /* remove decorative stripe that lightened the bar */
-    .acc__head::after{ content:none; }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
+    .accordion .acc .acc__head::after{ content:none !important; }  /* remove stripe/overlay */
+
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:#ffffff !important;}
     .acc__chev{
-      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
+      border: solid #ffffff; border-width:0 2px 2px 0; display:inline-block;
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
+
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
   </style>
