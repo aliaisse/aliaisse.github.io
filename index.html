@@ -113,21 +113,6 @@
     .acc.open .acc__chev{ transform:rotate(45deg); }
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
-
-    /* ===== Site footer (matches header; minimal, unobtrusive) ===== */
-    .site-footer{
-      background: var(--brand);
-      color:#ffffff;
-      margin-top:2rem;
-    }
-    .site-footer .footer-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:1rem; padding:.9rem 0;
-    }
-    .site-footer a{ color:#ffffff; text-decoration:none; opacity:.9; }
-    .site-footer a:hover{ opacity:1; text-decoration:underline; }
-    .site-footer .footer-nav{ display:flex; gap:1rem; flex-wrap:wrap; }
-    .site-footer small{ opacity:.9; }
   </style>
 </head>
 <body>
@@ -330,11 +315,11 @@
   </aside>
 </main>
 
-<!-- ===== Site footer (NEW) ===== -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <small>© <span id="year"></span> Ali A. Isse</small>
-    <nav class="footer-nav">
+<!-- ===== Footer reusing the exact header styles ===== -->
+<footer class="site-header">
+  <div class="container header-inner">
+    <small style="color:#fff;opacity:.9">© <span id="year"></span> Ali A. Isse</small>
+    <nav class="nav">
       <a href="/Research.html">Research</a>
       <a href="/Teaching.html">Teaching</a>
       <a href="/CV.html">CV</a>
