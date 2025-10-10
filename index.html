@@ -315,20 +315,15 @@
   </aside>
 </main>
 
-<!-- ===== Footer reusing the exact header styles ===== -->
+<!-- ===== Footer reusing the exact header styles, with custom text ===== -->
 <footer class="site-header">
-  <div class="container header-inner">
-    <small style="color:#fff;opacity:.9">© <span id="year"></span> Ali A. Isse</small>
-    <nav class="nav">
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/CV.html">CV</a>
-      <a href="mailto:ai9431@princeton.edu">Contact</a>
-    </nav>
+  <div class="container header-inner" style="justify-content:space-between;">
+    <small style="color:#fff;opacity:.9">@2025 Alli A. Isse</small>
+    <div style="color:#fff;opacity:.9;font-weight:700;">Knowledge with integrity</div>
   </div>
 </footer>
 
-<!-- Tiny accordion toggler + footer year -->
+<!-- Tiny accordion toggler -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
@@ -338,8 +333,6 @@
         if (panel) panel.classList.toggle('open');
       });
     });
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
   });
 </script>
 </body>
