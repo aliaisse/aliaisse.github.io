@@ -24,10 +24,10 @@
       --pill-bg: var(--card);
       --pill-ink: var(--text);
 
-      /* ===== Accordion bars: now MATCH header/footer navy ===== */
+      /* ===== Accordion bars: EXACT header/footer navy ===== */
       --panel:var(--brand);
       --panel-ink:#ffffff;
-      --stripe:rgba(0,0,0,.1);
+      --stripe:transparent; /* remove any stripe tint */
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
@@ -35,13 +35,13 @@
       --card:#0f1216;
       --border:#1f2937;
 
-      /* keep accordion bars navy in dark mode too */
+      /* keep exact same navy in dark mode */
       --panel:var(--brand);
       --panel-ink:#ffffff;
 
       --pill-bg:#12171d;
       --pill-ink:#e5e7eb;
-      --stripe:rgba(0,0,0,.15);
+      --stripe:transparent;
     }
 
     /* ===== Global text colors ===== */
@@ -101,10 +101,8 @@
       background:var(--panel); color:var(--panel-ink);
       padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
     }
-    .acc__head::after{
-      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
-      background:var(--stripe);
-    }
+    /* remove decorative stripe that lightened the bar */
+    .acc__head::after{ content:none; }
     .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
     .acc__chev{
       border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
