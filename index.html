@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -143,6 +144,21 @@
       font-size:.95rem;                 /* smaller body */
     }
     .acc--footer .pill{ padding:.3rem .55rem; font-size:.9rem; } /* compact pills */
+
+    /* ===== Page footer (matches header style) ===== */
+    .site-footer{
+      background: var(--brand);
+      color:#ffffff;
+      margin-top:2rem;
+    }
+    .site-footer .footer-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; padding:.85rem 0;
+    }
+    .site-footer a{ color:#ffffff; text-decoration:none; opacity:.85; }
+    .site-footer a:hover{ opacity:1; text-decoration:underline; }
+    .site-footer .footer-nav{ display:flex; gap:1rem; flex-wrap:wrap; }
+    .site-footer small{ opacity:.85; }
   </style>
 </head>
 <body>
@@ -440,7 +456,20 @@
   </aside>
 </main>
 
-<!-- Tiny accordion toggler -->
+<!-- ===== Site footer (matches header) ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <small>© <span id="year"></span> Ali A. Isse</small>
+    <nav class="footer-nav">
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
+      <a href="mailto:ai9431@princeton.edu">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Tiny accordion toggler + footer year -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.acc__head').forEach(head => {
@@ -450,6 +479,9 @@
         if (panel) panel.classList.toggle('open');
       });
     });
+    // Footer year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
   });
 </script>
 </body>
