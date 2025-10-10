@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,14 +8,11 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles (matches index.html palette + components) -->
+  <!-- Page-specific styles (match index; no accordion colors here) -->
   <style>
-    /* ===== Brand + theme tokens (keep site palette) ===== */
+    /* ===== Brand + theme tokens ===== */
     :root{
-      --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
-      --accent:#E87722;             /* retained for other uses if needed */
-
-      /* light surfaces */
+      --brand:#0A2A66;              /* site header/nav navy */
       --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
@@ -23,25 +21,14 @@
       /* neutral chips */
       --pill-bg: var(--card);
       --pill-ink: var(--text);
-
-      /* ===== Accordion bars ONLY: dark orange (match index) ===== */
-      --panel:#B74E00;              /* dark orange */
-      --panel-ink:#ffffff;
-      --stripe:rgba(0,0,0,.1);
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
       --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
-
-      /* keep accordion dark orange in dark mode too */
-      --panel:#B74E00;
-      --panel-ink:#ffffff;
-
       --pill-bg:#12171d;
       --pill-ink:#e5e7eb;
-      --stripe:rgba(0,0,0,.15);
     }
 
     /* ===== Global text ===== */
@@ -50,7 +37,7 @@
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
     .name{color:var(--text);}
 
-    /* ===== Neutral pill chips (no accent) ===== */
+    /* ===== Pills ===== */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
@@ -64,7 +51,7 @@
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
 
-    /* ===== Feature cards (match index) ===== */
+    /* ===== Feature cards ===== */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
@@ -81,13 +68,13 @@
     .muted{color:var(--muted)}
     .tiny{font-size:.9rem}
 
-    /* ===== Simple items list (papers) ===== */
+    /* ===== Papers list ===== */
     .item{margin:0 0 .7rem}
     .when{color:var(--muted)}
     .ptitle{font-style:italic;color:inherit;}
     .status{color:var(--muted);font-style:italic}
 
-    /* ===== Accordions (dark orange headers, like index) ===== */
+    /* ===== Accordions (no colors set; JS will copy header color) ===== */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -98,16 +85,11 @@
     }
     .acc__head{
       display:flex;align-items:center;justify-content:space-between;
-      background:var(--panel); color:var(--panel-ink);
       padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
     }
-    .acc__head::after{
-      content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
-      background:var(--stripe);
-    }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:var(--panel-ink);}
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
     .acc__chev{
-      border: solid var(--panel-ink); border-width:0 2px 2px 0; display:inline-block;
+      border-width:0 2px 2px 0; border-style:solid; display:inline-block;
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
@@ -147,7 +129,7 @@
   <section class="content">
     <h2 style="margin:.2rem 0 .8rem 0">Research</h2>
 
-    <!-- ===== Research Interests card (NEW, above accordions) ===== -->
+    <!-- Research Interests card -->
     <div class="feature-grid" style="margin-bottom:.6rem">
       <div class="card" style="grid-column:1 / -1">
         <h3>Research Interests</h3>
@@ -215,13 +197,35 @@
     </div>
   </section>
 
-  <!-- right TOC -->
-
 </main>
 
-<!-- Tiny accordion toggler (same as index) -->
+<!-- Footer identical to header, with your preferred text -->
+<footer class="site-header">
+  <div class="container header-inner" style="justify-content:space-between;">
+    <small style="color:#fff;opacity:.9">@2025 Alli A. Isse</small>
+    <div style="color:#fff;opacity:.9;font-weight:700;">Knowledge with integrity</div>
+  </div>
+</footer>
+
+<!-- Tiny accordion toggler + color sync (copy header color exactly) -->
 <script>
+  function colorAccordions(){
+    const header = document.querySelector('.site-header');
+    if(!header) return;
+    const bg = getComputedStyle(header).backgroundColor;
+    const ink = getComputedStyle(header).color || '#ffffff';
+    document.querySelectorAll('.acc__head').forEach(h=>{
+      h.style.backgroundColor = bg;
+      h.style.color = ink;
+      const chev = h.querySelector('.acc__chev');
+      if (chev) chev.style.borderColor = ink;
+      const title = h.querySelector('.acc__title');
+      if (title) title.style.color = ink;
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    // accordion open/close
     document.querySelectorAll('.acc__head').forEach(head => {
       head.addEventListener('click', () => {
         const id = head.getAttribute('data-acc');
@@ -229,6 +233,15 @@
         if (panel) panel.classList.toggle('open');
       });
     });
+
+    // initial color sync
+    colorAccordions();
+
+    // re-sync on theme toggle
+    const themeSwitch = document.getElementById('themeSwitch');
+    if (themeSwitch) {
+      themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
+    }
   });
 </script>
 
