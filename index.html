@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -115,37 +114,7 @@
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
 
-    /* ===== Footer accordion — neutral white with thin dark-orange border ===== */
-    .acc--footer{
-      background: var(--card);
-      border:1px solid var(--panel);   /* thin dark-orange outline */
-      border-radius:10px;
-      box-shadow:none;
-      margin-top:1rem;
-    }
-    .acc--footer .acc__head{
-      background: var(--card);         /* no color fill */
-      color: var(--text);
-      padding:.7rem .9rem;             /* slightly smaller */
-      border-bottom:1px solid var(--panel); /* hairline under header */
-    }
-    .acc--footer .acc__head::after{ background:transparent; } /* remove stripe */
-    .acc--footer .acc__title{
-      color: inherit;
-      font-size:.95rem;                 /* smaller title */
-      font-weight:800;
-    }
-    .acc--footer .acc__chev{
-      border: solid currentColor;       /* match text color */
-      border-width:0 2px 2px 0;
-    }
-    .acc--footer .acc__body{
-      background: var(--card);
-      font-size:.95rem;                 /* smaller body */
-    }
-    .acc--footer .pill{ padding:.3rem .55rem; font-size:.9rem; } /* compact pills */
-
-    /* ===== Page footer (matches header style) ===== */
+    /* ===== Site footer (matches header; minimal, unobtrusive) ===== */
     .site-footer{
       background: var(--brand);
       color:#ffffff;
@@ -153,12 +122,12 @@
     }
     .site-footer .footer-inner{
       display:flex; align-items:center; justify-content:space-between;
-      gap:1rem; padding:.85rem 0;
+      gap:1rem; padding:.9rem 0;
     }
-    .site-footer a{ color:#ffffff; text-decoration:none; opacity:.85; }
+    .site-footer a{ color:#ffffff; text-decoration:none; opacity:.9; }
     .site-footer a:hover{ opacity:1; text-decoration:underline; }
     .site-footer .footer-nav{ display:flex; gap:1rem; flex-wrap:wrap; }
-    .site-footer small{ opacity:.85; }
+    .site-footer small{ opacity:.9; }
   </style>
 </head>
 <body>
@@ -194,31 +163,13 @@
 
   <!-- center content -->
   <section class="content">
-
-    <!-- Areas of Expertise card (unchanged) -->
-    <div class="feature-grid" style="margin-bottom:.6rem">
-      <div class="card" style="grid-column:1 / -1">
-        <h3>Areas of Expertise</h3>
-        <p class="muted" style="margin:.2rem 0 .6rem 0">
-          Research and teaching spanning strategy, institutions, and policy practice.
-        </p>
-        <div class="pill-group">
-          <span class="pill">Strategic Studies</span>
-          <span class="pill">Nuclear Security</span>
-          <span class="pill">Nonproliferation &amp; Arms Control</span>
-          <span class="pill">Coercive Diplomacy</span>
-          <span class="pill">Foreign Policy &amp; Decision-Making</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Accordions wrapper -->
     <div class="accordion">
 
       <!-- About -->
       <div class="acc open" id="sec-about">
         <div class="acc__head" data-acc="sec-about">
-          <h3 class="acc__title">About me</h3>
+          <h3 class="acc__title">About</h3>
           <i class="acc__chev"></i>
         </div>
 
@@ -274,27 +225,6 @@
         </div>
       </div>
 
-      <!-- Degrees (immediately after About) -->
-      <div class="acc" id="sec-degrees">
-        <div class="acc__head" data-acc="sec-degrees">
-          <h3 class="acc__title">Degrees</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <div class="feature-grid">
-            <div class="card">
-              <p class="muted" style="margin:0">
-                Ph.D. Candidate, Princeton University<br>
-                M.A., Princeton University<br>
-                M.A., The University of Chicago<br>
-                M.S., The Ohio State University<br>
-                B.A., The University of Texas San Antonio
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Research -->
       <div class="acc" id="sec-research">
         <div class="acc__head" data-acc="sec-research">
@@ -305,14 +235,14 @@
           <div class="feature-grid">
             <div class="card">
               <span class="pill">Manuscript</span>
-              <h3>Coercion &amp; Compliance</h3>
+              <h3>Coercion & Compliance</h3>
               <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
             <div class="card">
               <span class="pill">Alliances</span>
-              <h3>Posture &amp; Assurance</h3>
-              <p class="muted">Alignment of U.S.–ally postures in Europe &amp; Asia; escalation management; extended deterrence strategy.</p>
+              <h3>Posture & Assurance</h3>
+              <p class="muted">Alignment of U.S.–ally postures in Europe & Asia; escalation management; extended deterrence strategy.</p>
               <div class="tiny"><a href="/Research.html">View all research →</a></div>
             </div>
           </div>
@@ -329,7 +259,7 @@
           <div class="feature-grid">
             <div class="card">
               <span class="pill">Manuscript · 2025</span>
-              <h3>US–UK Nuclear Partnership</h3>
+              <h3>US-UK Nuclear Partnership</h3>
               <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
             </div>
 
@@ -342,111 +272,55 @@
         </div>
       </div>
 
-      <!-- Professional & Global Experience (reverse-chronological by year) -->
-      <div class="acc" id="sec-experience">
-        <div class="acc__head" data-acc="sec-experience">
-          <h3 class="acc__title">Professional &amp; Global Experience</h3>
+      <!-- Degrees -->
+      <div class="acc" id="sec-degrees">
+        <div class="acc__head" data-acc="sec-degrees">
+          <h3 class="acc__title">Degrees</h3>
           <i class="acc__chev"></i>
         </div>
         <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <p class="muted" style="margin:0">
+                Ph.D. Candidate, Princeton University<br>
+                M.A., Princeton University<br> 
+                M.A., The University of Chicago<br>
+                M.S., The Ohio State University<br>
+                B.A., The University of Texas San Antonio
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <!-- 2025 -->
-          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.2rem 0 .4rem;">2025</div>
-          <div class="feature-grid" style="margin-top:.2rem">
+      <!-- Personal · Trips -->
+      <div class="acc" id="sec-personal">
+        <div class="acc__head" data-acc="sec-personal">
+          <h3 class="acc__title">Personal · Trips</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
             <div class="card">
               <span class="pill">Fellowship</span>
               <h3 style="margin-top:.25rem">Yale — Nuclear Security Program</h3>
               <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
             </div>
             <div class="card">
-              <span class="pill">Archival Research</span>
-              <h3 style="margin-top:.25rem">United Kingdom — Summer Archival Work</h3>
-              <p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p>
-            </div>
-            <div class="card">
               <span class="pill">Conference</span>
-              <h3 style="margin-top:.25rem">Alva Myrdal Conference — Uppsala University, Sweden</h3>
+              <h3 style="margin-top:.25rem">Alva Myrdal Conference — Uppsala, Sweden</h3>
               <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
-            </div>
-          </div>
-
-          <!-- 2024 -->
-          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2024</div>
-          <div class="feature-grid" style="margin-top:.2rem">
-            <div class="card">
-              <span class="pill">Conference</span>
-              <h3 style="margin-top:.25rem">Bridging the Gap — New Era Conference</h3>
-              <p class="muted">Josef Korbel School of International Studies, University of Denver. Panel participation. <strong>September 2024</strong></p>
             </div>
             <div class="card">
               <span class="pill">Policy Trip</span>
               <h3 style="margin-top:.25rem">Accra, Ghana — SPIA International Policy Trip</h3>
-              <p class="muted">Field briefings and meetings with World Bank, ICF, Bank of Ghana, Ministry of Finance, U.S. Embassy Accra, USAID, UNDP, and local organizations. <strong>Winter 2024</strong></p>
+              <p class="muted">Field briefings and meetings with policy stakeholders. <strong>Winter 2024</strong></p>
             </div>
-          </div>
-
-          <!-- 2023 -->
-          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2023</div>
-          <div class="feature-grid" style="margin-top:.2rem">
-            <div class="card">
-              <span class="pill">Summer Program</span>
-              <h3 style="margin-top:.25rem">University of Cambridge — International Law &amp; Law of Armed Conflict</h3>
-              <p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p>
-            </div>
-          </div>
-
-          <!-- 2018 -->
-          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2018</div>
-          <div class="feature-grid" style="margin-top:.2rem">
-            <div class="card">
-              <span class="pill">Policy Trip</span>
-              <h3 style="margin-top:.25rem">Taiwan — Transportation Policy (National Taipei University &amp; Taipei City)</h3>
-              <p class="muted">Site visits and policy briefings on urban mobility and infrastructure. <strong>2018</strong></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div> <!-- end .accordion -->
-
-    <!-- ===== TRUE footer-style accordion (neutral white + thin dark-orange border) ===== -->
-    <div class="acc acc--footer" id="sec-places" style="margin-top:1.25rem;">
-      <div class="acc__head" data-acc="sec-places">
-        <h3 class="acc__title">Places I’ve Lived, Worked, or Studied</h3>
-        <i class="acc__chev"></i>
-      </div>
-      <div class="acc__body">
-        <div class="feature-grid" style="margin-top:.2rem">
-          <!-- Countries -->
-          <div class="card">
-            <h3 style="margin:.1rem 0 .35rem 0">Countries</h3>
-            <div class="pill-group" style="margin-top:.3rem">
-              <span class="pill">Somalia</span>
-              <span class="pill">Kenya</span>
-              <span class="pill">United Kingdom</span>
-              <span class="pill">United States</span>
-            </div>
-          </div>
-
-          <!-- United States (dropdown list of states) -->
-          <div class="card">
-            <h3 style="margin:.1rem 0 .35rem 0">United States — States</h3>
-            <details>
-              <summary style="cursor:pointer;font-weight:800">View states</summary>
-              <div class="pill-group" style="margin-top:.6rem">
-                <span class="pill">Minnesota</span>
-                <span class="pill">Texas</span>
-                <span class="pill">Ohio</span>
-                <span class="pill">Illinois</span>
-                <span class="pill">New Jersey</span>
-                <span class="pill">Connecticut</span>
-              </div>
-            </details>
           </div>
         </div>
       </div>
+
     </div>
-
   </section>
 
   <!-- right TOC -->
@@ -456,7 +330,7 @@
   </aside>
 </main>
 
-<!-- ===== Site footer (matches header) ===== -->
+<!-- ===== Site footer (NEW) ===== -->
 <footer class="site-footer">
   <div class="container footer-inner">
     <small>© <span id="year"></span> Ali A. Isse</small>
@@ -479,7 +353,6 @@
         if (panel) panel.classList.toggle('open');
       });
     });
-    // Footer year
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
   });
