@@ -113,52 +113,6 @@
     .acc.open .acc__chev{ transform:rotate(45deg); }
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
-
-/* ===== New things added now ===== */    
-    /* Brand-colored footer accordion */
-.acc--brand .acc__head{
-  background:var(--brand);
-  color:#ffffff;
-}
-.acc--brand .acc__title{ color:#ffffff; }
-.acc--brand .acc__chev{ border-color:#ffffff; }
-
-/* Small details dropdown styling inside the footer accordion */
-.acc__body details{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:.6rem .8rem;
-}
-.acc__body details + details{ margin-top:.6rem; }
-.acc__body summary{
-  cursor:pointer; font-weight:800;
-  list-style:none; outline:none;
-}
-.acc__body summary::-webkit-details-marker{ display:none; }
-
-    /* === FORCE exact brand match on the footer accordion === */
-:root { --brand: #0A2A66; }  /* ensure brand is the exact hex you want */
-
-/* Make sure the header itself also uses the same variable */
-.site-header { background-color: var(--brand) !important; }
-
-/* Brand accordion header: kill any extra layers and match header exactly */
-.acc.acc--brand .acc__head{
-  background-color: var(--brand) !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  border-color: var(--brand) !important;
-}
-
-/* Remove the translucent bottom stripe that can shift perceived color */
-.acc.acc--brand .acc__head::after{ background: transparent !important; }
-
-/* Keep the chevron pure white so it doesn't tint the edge */
-.acc.acc--brand .acc__chev{
-  border: solid #ffffff !important;
-  border-width: 0 2px 2px 0 !important;
-}
   </style>
 </head>
 <body>
@@ -423,40 +377,3 @@
 </script>
 </body>
 </html>
-<!-- Footer-style: Places I've Lived, Worked, or Studied -->
-<div class="acc acc--brand" id="sec-places">
-  <div class="acc__head" data-acc="sec-places">
-    <h3 class="acc__title">Places I’ve Lived, Worked, or Studied</h3>
-    <i class="acc__chev"></i>
-  </div>
-  <div class="acc__body">
-    <div class="feature-grid" style="margin-top:.2rem">
-      <!-- Countries -->
-      <div class="card">
-        <h3>Countries</h3>
-        <div class="pill-group" style="margin-top:.3rem">
-          <span class="pill">Somalia</span>
-          <span class="pill">Kenya</span>
-          <span class="pill">United Kingdom</span>
-          <span class="pill">United States</span>
-        </div>
-      </div>
-
-      <!-- United States (dropdown list of states) -->
-      <div class="card">
-        <h3>United States — States</h3>
-        <details>
-          <summary>View states</summary>
-          <div class="pill-group" style="margin-top:.6rem">
-            <span class="pill">Minnesota</span>
-            <span class="pill">Texas</span>
-            <span class="pill">Ohio</span>
-            <span class="pill">Illinois</span>
-            <span class="pill">New Jersey</span>
-            <span class="pill">Connecticut</span>
-          </div>
-        </details>
-      </div>
-    </div>
-  </div>
-</div>
