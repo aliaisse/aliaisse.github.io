@@ -136,6 +136,29 @@
   list-style:none; outline:none;
 }
 .acc__body summary::-webkit-details-marker{ display:none; }
+
+    /* === FORCE exact brand match on the footer accordion === */
+:root { --brand: #0A2A66; }  /* ensure brand is the exact hex you want */
+
+/* Make sure the header itself also uses the same variable */
+.site-header { background-color: var(--brand) !important; }
+
+/* Brand accordion header: kill any extra layers and match header exactly */
+.acc.acc--brand .acc__head{
+  background-color: var(--brand) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: var(--brand) !important;
+}
+
+/* Remove the translucent bottom stripe that can shift perceived color */
+.acc.acc--brand .acc__head::after{ background: transparent !important; }
+
+/* Keep the chevron pure white so it doesn't tint the edge */
+.acc.acc--brand .acc__chev{
+  border: solid #ffffff !important;
+  border-width: 0 2px 2px 0 !important;
+}
   </style>
 </head>
 <body>
