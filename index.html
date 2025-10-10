@@ -7,44 +7,32 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page accents & accordion styles -->
+  <!-- Minimal page-local styles (no accordion colors here) -->
   <style>
-    /* ===== Brand + theme tokens (keep site palette) ===== */
     :root{
-      --brand:#0A2A66;              /* header/nav navy (UNCHANGED) */
+      --brand:#0A2A66;   /* site header/nav navy (for other elements if needed) */
       --text:#111111;
       --muted:#4b5563;
       --card:#ffffff;
       --border:#e5e7eb;
-
-      /* chips */
       --pill-bg: var(--card);
       --pill-ink: var(--text);
-
-      /* accordion tokens (we'll hard-lock below) */
-      --panel: var(--brand);
-      --panel-ink:#ffffff;
     }
     [data-theme="dark"], body.dark{
       --text:#ffffff;
       --muted:#cfd8dc;
       --card:#0f1216;
       --border:#1f2937;
-
-      --panel: var(--brand);      /* EXACT same navy in dark */
-      --panel-ink:#ffffff;
-
       --pill-bg:#12171d;
       --pill-ink:#e5e7eb;
     }
 
-    /* ===== Global text colors ===== */
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
     .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
     .name{color:var(--text);}
 
-    /* ===== Neutral pill chips ===== */
+    /* Pills */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{
       display:inline-flex;align-items:center;gap:.4rem;
@@ -57,14 +45,8 @@
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
     }
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-    .pill--accent{ /* keep neutral look */
-      background:var(--pill-bg) !important;
-      border-color:var(--border) !important;
-      color:var(--pill-ink) !important;
-      font-weight:700 !important;
-    }
 
-    /* ===== Cards ===== */
+    /* Cards */
     .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{
@@ -81,7 +63,7 @@
     .muted{color:var(--muted)}
     .badge{ display:none }
 
-    /* ===== Accordions ===== */
+    /* Accordions: no background/color set here to avoid tinting */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{
       border:1px solid var(--border);
@@ -90,25 +72,17 @@
       background:var(--card);
       box-shadow:0 1px 6px rgba(0,0,0,.06);
     }
-
-    /* HARD-LOCK the header color to EXACT header/footer navy */
-    .accordion .acc .acc__head{
+    .acc__head{
       display:flex;align-items:center;justify-content:space-between;
-      background:var(--brand) !important;   /* exact match */
-      color:#ffffff !important;
       padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
-      box-shadow:none !important;           /* no overlays */
-      border:none;                           /* no borders that shift tone */
+      /* background & color will be copied from header via JS */
     }
-    .accordion .acc .acc__head::after{ content:none !important; }  /* remove stripe/overlay */
-
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800; color:#ffffff !important;}
+    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
     .acc__chev{
-      border: solid #ffffff; border-width:0 2px 2px 0; display:inline-block;
+      border-width:0 2px 2px 0; border-style:solid; display:inline-block;
       padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
     }
     .acc.open .acc__chev{ transform:rotate(45deg); }
-
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
   </style>
@@ -370,7 +344,7 @@
   </aside>
 </main>
 
-<!-- Footer reusing the exact header styles, with custom text -->
+<!-- Footer identical to header -->
 <footer class="site-header">
   <div class="container header-inner" style="justify-content:space-between;">
     <small style="color:#fff;opacity:.9">@2025 Alli A. Isse</small>
@@ -378,9 +352,25 @@
   </div>
 </footer>
 
-<!-- Tiny accordion toggler -->
+<!-- Tiny accordion toggler + color sync -->
 <script>
+  function colorAccordions(){
+    const header = document.querySelector('.site-header');
+    if(!header) return;
+    const bg = getComputedStyle(header).backgroundColor;
+    const ink = getComputedStyle(header).color || '#ffffff';
+    document.querySelectorAll('.acc__head').forEach(h=>{
+      h.style.backgroundColor = bg;
+      h.style.color = ink;
+      const chev = h.querySelector('.acc__chev');
+      if (chev) chev.style.borderColor = ink;
+      const title = h.querySelector('.acc__title');
+      if (title) title.style.color = ink;
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    // toggle open/close
     document.querySelectorAll('.acc__head').forEach(head => {
       head.addEventListener('click', () => {
         const id = head.getAttribute('data-acc');
@@ -388,6 +378,25 @@
         if (panel) panel.classList.toggle('open');
       });
     });
+
+    // initial color sync
+    colorAccordions();
+
+    // re-sync when theme changes (if your script toggles body class via checkbox)
+    const themeSwitch = document.getElementById('themeSwitch');
+    if (themeSwitch) {
+      themeSwitch.addEventListener('change', () => {
+        // slight delay in case theme class toggles async
+        setTimeout(colorAccordions, 0);
+      });
+    }
+
+    // also observe header style changes (defensive)
+    const header = document.querySelector('.site-header');
+    if (header && 'ResizeObserver' in window) {
+      const ro = new ResizeObserver(colorAccordions);
+      ro.observe(header);
+    }
   });
 </script>
 </body>
