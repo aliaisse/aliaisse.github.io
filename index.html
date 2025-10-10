@@ -113,6 +113,29 @@
     .acc.open .acc__chev{ transform:rotate(45deg); }
     .acc__body{padding:1rem; display:none}
     .acc.open .acc__body{display:block}
+
+    /* ===== Footer-style accordion only (navy bar + smaller type) ===== */
+    .acc--footer .acc__head{
+      background: var(--brand);
+      color: #ffffff;
+      padding: .7rem .9rem;             /* slightly tighter than others */
+    }
+    .acc--footer .acc__title{
+      color:#ffffff;
+      font-size:.95rem;                  /* smaller title */
+      font-weight:800;
+    }
+    .acc--footer .acc__chev{
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+    }
+    .acc--footer .acc__head::after{
+      background: rgba(255,255,255,.08); /* subtle stripe for the footer bar */
+    }
+    .acc--footer .acc__body{
+      font-size:.95rem;                  /* slightly smaller body text */
+    }
+    .acc--footer .pill{ padding:.3rem .55rem; font-size:.9rem; } /* compact pills */
   </style>
 </head>
 <body>
@@ -228,7 +251,7 @@
         </div>
       </div>
 
-      <!-- Degrees (moved to appear immediately after About) -->
+      <!-- Degrees (immediately after About) -->
       <div class="acc" id="sec-degrees">
         <div class="acc__head" data-acc="sec-degrees">
           <h3 class="acc__title">Degrees</h3>
@@ -296,71 +319,118 @@
         </div>
       </div>
 
-      <!-- Professional & Global Experience -->
       <!-- Professional & Global Experience (reverse-chronological by year) -->
-<div class="acc" id="sec-experience">
-  <div class="acc__head" data-acc="sec-experience">
-    <h3 class="acc__title">Professional &amp; Global Experience</h3>
-    <i class="acc__chev"></i>
-  </div>
-  <div class="acc__body">
+      <div class="acc" id="sec-experience">
+        <div class="acc__head" data-acc="sec-experience">
+          <h3 class="acc__title">Professional &amp; Global Experience</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
 
-    <!-- 2025 -->
-    <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.2rem 0 .4rem;">2025</div>
-    <div class="feature-grid" style="margin-top:.2rem">
-      <div class="card">
-        <span class="pill">Fellowship</span>
-        <h3 style="margin-top:.25rem">Yale — Nuclear Security Program</h3>
-        <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
+          <!-- 2025 -->
+          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.2rem 0 .4rem;">2025</div>
+          <div class="feature-grid" style="margin-top:.2rem">
+            <div class="card">
+              <span class="pill">Fellowship</span>
+              <h3 style="margin-top:.25rem">Yale — Nuclear Security Program</h3>
+              <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Archival Research</span>
+              <h3 style="margin-top:.25rem">United Kingdom — Summer Archival Work</h3>
+              <p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Conference</span>
+              <h3 style="margin-top:.25rem">Alva Myrdal Conference — Uppsala University, Sweden</h3>
+              <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
+            </div>
+          </div>
+
+          <!-- 2024 -->
+          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2024</div>
+          <div class="feature-grid" style="margin-top:.2rem">
+            <div class="card">
+              <span class="pill">Conference</span>
+              <h3 style="margin-top:.25rem">Bridging the Gap — New Era Conference</h3>
+              <p class="muted">Josef Korbel School of International Studies, University of Denver. Panel participation. <strong>September 2024</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Policy Trip</span>
+              <h3 style="margin-top:.25rem">Accra, Ghana — SPIA International Policy Trip</h3>
+              <p class="muted">Field briefings and meetings with World Bank, ICF, Bank of Ghana, Ministry of Finance, U.S. Embassy Accra, USAID, UNDP, and local organizations. <strong>Winter 2024</strong></p>
+            </div>
+          </div>
+
+          <!-- 2023 -->
+          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2023</div>
+          <div class="feature-grid" style="margin-top:.2rem">
+            <div class="card">
+              <span class="pill">Summer Program</span>
+              <h3 style="margin-top:.25rem">University of Cambridge — International Law &amp; Law of Armed Conflict</h3>
+              <p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p>
+            </div>
+          </div>
+
+          <!-- 2018 -->
+          <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2018</div>
+          <div class="feature-grid" style="margin-top:.2rem">
+            <div class="card">
+              <span class="pill">Policy Trip</span>
+              <h3 style="margin-top:.25rem">Taiwan — Transportation Policy (National Taipei University &amp; Taipei City)</h3>
+              <p class="muted">Site visits and policy briefings on urban mobility and infrastructure. <strong>2018</strong></p>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="card">
-        <span class="pill">Archival Research</span>
-        <h3 style="margin-top:.25rem">United Kingdom — Summer Archival Work</h3>
-        <p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p>
+
+      <!-- Footer-style: Places I’ve Lived, Worked, or Studied (navy bar, smaller) -->
+      <div class="acc acc--footer" id="sec-places">
+        <div class="acc__head" data-acc="sec-places">
+          <h3 class="acc__title">Places I’ve Lived, Worked, or Studied</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid" style="margin-top:.2rem">
+            <!-- Countries -->
+            <div class="card">
+              <h3 style="margin:.1rem 0 .35rem 0">Countries</h3>
+              <div class="pill-group" style="margin-top:.3rem">
+                <span class="pill">Somalia</span>
+                <span class="pill">Kenya</span>
+                <span class="pill">United Kingdom</span>
+                <span class="pill">United States</span>
+              </div>
+            </div>
+
+            <!-- United States (dropdown list of states) -->
+            <div class="card">
+              <h3 style="margin:.1rem 0 .35rem 0">United States — States</h3>
+              <details>
+                <summary style="cursor:pointer;font-weight:800">View states</summary>
+                <div class="pill-group" style="margin-top:.6rem">
+                  <span class="pill">Minnesota</span>
+                  <span class="pill">Texas</span>
+                  <span class="pill">Ohio</span>
+                  <span class="pill">Illinois</span>
+                  <span class="pill">New Jersey</span>
+                  <span class="pill">Connecticut</span>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <span class="pill">Conference</span>
-        <h3 style="margin-top:.25rem">Alva Myrdal Conference — Uppsala Unviversity, Sweden</h3>
-        <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
-      </div>
-    </div>
-    <!-- 2024 -->
-    <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2024</div>
-    <div class="feature-grid" style="margin-top:.2rem">
-      <div class="card">
-        <span class="pill">Conference</span>
-        <h3 style="margin-top:.25rem">Bridging the Gap — New Era Conference</h3>
-        <p class="muted">Josef Korbel School of International Studies, University of Denver. Panel Participation <strong>September 2024</strong></p>
-      </div>
-      <div class="card">
-        <span class="pill">Policy Trip</span>
-        <h3 style="margin-top:.25rem">Accra, Ghana — SPIA International Policy Trip</h3>
-        <p class="muted">Field briefings and meetings with World Bank, ICF, Bank of Ghana, Ministray of Finance, U.S. Embassy Accra, USAID, UNDP, and local organizations. <strong>Winter 2024</strong></p>
-      </div>
-    </div>
-    <!-- 2023 -->
-    <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2023</div>
-    <div class="feature-grid" style="margin-top:.2rem">
-      <div class="card">
-        <span class="pill">Summer Program</span>
-        <h3 style="margin-top:.25rem">University of Cambridge — International Law &amp; Law of Armed Conflict</h3>
-        <p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p>
-      </div>
-    </div>
-    <!-- 2018 -->
-    <div class="muted" style="font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem;">2018</div>
-    <div class="feature-grid" style="margin-top:.2rem">
-      <div class="card">
-        <span class="pill">Policy Trip</span>
-        <h3 style="margin-top:.25rem">Taiwan — Transportation Policy, hosted by National Taipei University & the City of Taipei</h3>
-        <p class="muted">Site visits and policy briefings on urban mobility and infrastructure. <strong>2018</strong></p>
-      </div>
-    </div>
-  </div>
-</div>
+
+    </div> <!-- end .accordion -->
   </section>
 
   <!-- right TOC -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
 </main>
 
 <!-- Tiny accordion toggler -->
