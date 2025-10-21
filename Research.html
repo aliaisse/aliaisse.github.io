@@ -17,14 +17,15 @@
       --pill-bg: var(--card);
       --pill-ink: var(--text);
     }
-   [data-theme="dark"], body.dark {
-  --text:#f5f5f5;           /* near-white text */
-  --muted:#cccccc;          /* muted gray text */
-  --card:#2c2c2c;           /* light grayish background for cards */
-  --border:#3a3a3a;         /* medium gray border */
-  --pill-bg:#3a3a3a;        /* darker pill background */
-  --pill-ink:#f5f5f5;       /* white pill text */
-}
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;
+      --muted:#cfd8dc;
+      --card:#0f1216;
+      --border:#1f2937;
+      --pill-bg:#12171d;
+      --pill-ink:#e5e7eb;
+    }
+
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
 
@@ -77,6 +78,7 @@
 <main class="container layout">
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
       <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
