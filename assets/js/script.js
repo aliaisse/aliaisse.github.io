@@ -18,7 +18,7 @@
   function ready(fn){ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn); else fn(); }
 
   ready(() => {
-    /* ===== Theme toggle (single control on right) ===== */
+    /* ===== Theme toggle (single switch) ===== */
     const sw = document.getElementById('themeSwitch');
     setTheme(initialTheme());
     if (sw) {
@@ -40,7 +40,7 @@
       });
     }
 
-    /* ===== Verify CV link and fix if needed ===== */
+    /* ===== Ensure CV links point to an existing file (optional) ===== */
     (async () => {
       const links = Array.from(document.querySelectorAll('a')).filter(a =>
         /\/cv(_aliaisse)?\.pdf/i.test(a.getAttribute('href') || '')
