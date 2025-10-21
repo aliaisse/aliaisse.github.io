@@ -47,7 +47,7 @@ a:hover { text-decoration: underline; }
 .container { max-width: 1100px; margin: 0 auto; }
 
 /* =========================================================
-   HEADER (brand left, menu right)
+   HEADER
    ========================================================= */
 .site-header {
   background: var(--header-bg);
@@ -84,6 +84,69 @@ a:hover { text-decoration: underline; }
 }
 .nav a:hover { color: var(--header-muted); }
 .nav a.active { color: var(--header-muted); }
+
+/* ===== Theme switch (shared) ===== */
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 20px;
+  position: relative;
+  margin-left: .4rem;
+  cursor: pointer;
+}
+.theme-switch input { display: none; } /* hide checkbox */
+
+.switch-slider {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,.55);
+  background: rgba(255,255,255,.12);
+  position: relative;
+  box-sizing: border-box;
+  transition: background .18s ease-in-out, border-color .18s ease-in-out;
+}
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 2.5px;
+  width: 14px; height: 14px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+  transition: transform .18s ease-in-out, background .18s ease-in-out;
+}
+.theme-switch input:checked + .switch-slider { background: rgba(255,255,255,.2); }
+.theme-switch input:checked + .switch-slider::before { transform: translate(18px, -50%); }
+
+/* Keep switch border readable in dark */
+:root[data-theme="dark"] .switch-slider,
+body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
+
+/* =========================================================
+   MOBILE NAV (hamburger)
+   ========================================================= */
+.menu-btn{
+  display:none;
+  align-items:center; justify-content:center;
+  width:40px; height:40px;
+  border:1px solid var(--border);
+  border-radius:10px; background: var(--card); color: var(--text);
+  cursor:pointer; font-size:1.2rem; line-height:1; padding:0;
+}
+.mobile-backdrop{
+  display:none;
+  position:fixed; inset:56px 0 0 0;
+  background:rgba(0,0,0,.25); backdrop-filter:saturate(120%) blur(1px);
+  z-index:900;
+}
+.mobile-backdrop.show{ display:block; }
+
+/* A standalone theme switch that stays visible on mobile header (right side) */
+.theme-switch--standalone { display:none; }
 
 /* =========================================================
    LAYOUT: left profile / center content / right TOC
@@ -147,66 +210,6 @@ a:hover { text-decoration: underline; }
 #tocList a.active { font-weight: 600; text-decoration: underline; }
 
 /* =========================================================
-   THEME SWITCH (toggle)
-   ========================================================= */
-.theme-switch {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 20px;
-  position: relative;
-  margin-left: .4rem;
-  cursor: pointer;
-}
-.theme-switch input { display: none; } /* hide checkbox */
-
-.switch-slider {
-  width: 36px;
-  height: 20px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(255,255,255,.55);
-  background: rgba(255,255,255,.12);
-  position: relative;
-  box-sizing: border-box;
-  transition: background .18s ease-in-out, border-color .18s ease-in-out;
-}
-.switch-slider::before {
-  content: "";
-  position: absolute;
-  top: 50%; left: 2.5px;
-  width: 14px; height: 14px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.15);
-  transition: transform .18s ease-in-out, background .18s ease-in-out;
-}
-.theme-switch input:checked + .switch-slider { background: rgba(255,255,255,.2); }
-.theme-switch input:checked + .switch-slider::before { transform: translate(18px, -50%); }
-
-/* Keep switch border readable in dark */
-:root[data-theme="dark"] .switch-slider,
-body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
-
-/* ===== Mobile nav (hamburger) elements ===== */
-.menu-btn{
-  display:none;
-  align-items:center; justify-content:center;
-  width:40px; height:40px;
-  border:1px solid var(--border);
-  border-radius:10px; background: var(--card); color: var(--text);
-  cursor:pointer; font-size:1.2rem; line-height:1; padding:0;
-}
-.mobile-backdrop{
-  display:none;
-  position:fixed; inset:56px 0 0 0;
-  background:rgba(0,0,0,.25); backdrop-filter:saturate(120%) blur(1px);
-  z-index:900;
-}
-.mobile-backdrop.show{ display:block; }
-
-/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
@@ -214,7 +217,7 @@ body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
   .toc { display: none; }
 }
 
-/* Mobile: brand centered, hamburger left, dropdown menu */
+/* Mobile: brand centered, hamburger left, dropdown menu, standalone switch visible */
 @media (max-width: 760px) {
   .layout { grid-template-columns: 1fr; gap: 1rem; }
   .profile { position: static; }
@@ -232,6 +235,11 @@ body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
     display:inline-flex; position:absolute; left:.5rem; top:50%; transform:translateY(-50%); z-index:1001;
   }
 
+  /* Always-visible theme switch on the right in mobile header */
+  .theme-switch--standalone{
+    display:inline-flex; position:absolute; right:.5rem; top:50%; transform:translateY(-50%);
+  }
+
   /* Turn nav into a dropdown sheet */
   .nav{
     position:fixed; left:0; right:0; top:56px;
@@ -239,13 +247,14 @@ body.dark .switch-slider { border-color: rgba(255,255,255,.6); }
     background:var(--card); border-top:1px solid var(--border);
     padding:1rem 1rem 1.2rem; z-index:1000;
     box-shadow:0 8px 24px rgba(0,0,0,.12);
-    width:auto; /* ensure full width */
+    width:auto;
   }
   .nav.open{ display:flex; }
   .nav a{ padding:.6rem 0; display:block; }
-  .nav .theme-switch{ padding:.6rem 0; }
 
-  /* Don’t force brand/nav to wrap anymore; menu is the sheet */
+  /* Hide the theme switch inside .nav until the menu opens (optional) */
+  .nav .theme-switch{ display:none; }
+  .nav.open .theme-switch{ display:inline-flex; }
 }
 
 /* ===== CSS-only DARK MODE (works even if JS fails) ===== */
