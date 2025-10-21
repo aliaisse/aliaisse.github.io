@@ -1,15 +1,102 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ali A. Isse</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <script src="/assets/script.js" defer></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ali A. Isse</title>
+<style>
+/* ========= THEME TOKENS ========= */
+:root{
+  --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --link:#2563eb;
+  --card:#f9fafb; --border:#e5e7eb;
+  --header-bg:#1f2a44; --header-text:#e5e7eb; --header-muted:#cbd5e1;
+}
+:root[data-theme="dark"], body.dark{
+  --bg:#0f172a; --text:#e5e7eb; --muted:#a1a1aa; --link:#93c5fd;
+  --card:#111827; --border:#1f2937;
+  --header-bg:#111827; --header-text:#e5e7eb; --header-muted:#cbd5e1;
+}
+
+/* ========= BASE ========= */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);transition:background-color .18s,color .18s}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto}
+
+/* ========= HEADER ========= */
+.site-header{background:var(--header-bg);color:var(--header-text);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(0,0,0,.15)}
+.header-inner{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:1rem;padding:.75rem 1rem}
+.brand{color:var(--header-text);font-weight:700;text-decoration:none;white-space:nowrap}
+.header-right{display:inline-flex;align-items:center;gap:.6rem}
+.nav{display:flex;align-items:center;gap:.6rem}
+.nav a{color:var(--header-text);padding:.25rem .45rem;border-radius:6px;font-weight:600;letter-spacing:.02em}
+.nav a:hover{color:var(--header-muted)}
+.nav a.active{color:var(--header-muted)}
+.theme-switch{display:inline-flex;align-items:center;justify-content:center;width:36px;height:20px;cursor:pointer}
+.theme-switch input{display:none}
+.switch-slider{width:36px;height:20px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);position:relative;box-sizing:border-box}
+.switch-slider::before{content:"";position:absolute;top:50%;left:2.5px;width:14px;height:14px;transform:translateY(-50%);border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);transition:transform .18s}
+.theme-switch input:checked + .switch-slider::before{transform:translate(18px,-50%)}
+.menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font-size:1.2rem;line-height:1;cursor:pointer}
+
+/* ========= LAYOUT ========= */
+.layout{display:grid;grid-template-columns:280px 1fr 200px;gap:2rem;padding:1.75rem 1rem 3rem}
+.profile{position:sticky;top:76px;align-self:start}
+.avatar{width:100%;max-width:280px;border-radius:8px;display:block;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.name{font-size:2rem;line-height:1.1;margin:1rem 0 .75rem;white-space:nowrap}
+.buttons{display:flex;flex-wrap:wrap;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:6px;font-size:.9rem}
+.content h1,.content h2,.content h3{margin:.6rem 0 .4rem}
+.content p{margin:0 0 1rem}
+.toc{position:sticky;top:76px;align-self:start;border-left:1px solid var(--border);padding-left:1rem}
+.toc-title{font-weight:700;margin-bottom:.5rem}
+
+/* Pills & Cards */
+.pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--text);font-weight:700;font-size:.92rem;box-shadow:0 1px 0 rgba(0,0,0,.04) inset}
+.feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr}
+@media (min-width:860px){.feature-grid{grid-template-columns:1fr 1fr}}
+.card{border:1px solid var(--border);border-left:none;border-radius:12px;background:var(--card);padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+.muted{color:var(--muted)}
+.year-label{font-weight:800;letter-spacing:.02em;margin:.8rem 0 .4rem}
+
+/* Accordions */
+.accordion{display:grid;gap:1rem;margin:1rem 0}
+.acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card)}
+.acc__head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;font-weight:800;cursor:pointer}
+.acc__title{margin:0;font-size:1.05rem;font-weight:800}
+.acc__chev{border-width:0 2px 2px 0;border-style:solid;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s;color:var(--text);border-color:var(--text)}
+.acc.open .acc__chev{transform:rotate(45deg)}
+.acc__body{padding:1rem;display:none}
+.acc.open .acc__body{display:block}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width:1024px){.layout{grid-template-columns:260px 1fr}.toc{display:none}}
+@media (max-width:760px){
+  .layout{grid-template-columns:1fr;gap:1rem}
+  .profile{position:static}
+  .header-inner{grid-template-columns:40px 1fr 40px;min-height:56px}
+  .menu-btn{display:inline-flex}
+  .brand{justify-self:center;font-size:1.06rem}
+  .header-right{justify-self:end}
+  .nav{
+    position:fixed;left:0;right:0;top:56px;
+    display:none;flex-direction:column;gap:.4rem;
+    background:var(--card);border-top:1px solid var(--border);
+    padding:1rem 1rem 1.2rem;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.12)
+  }
+  .nav.open{display:flex}
+  .nav a{padding:.6rem 0;display:block}
+  .mobile-backdrop{display:none;position:fixed;inset:56px 0 0 0;background:rgba(0,0,0,.25);backdrop-filter:saturate(120%) blur(1px);z-index:1500}
+  .mobile-backdrop.show{display:block}
+}
+</style>
 </head>
 <body>
 
-<!-- Header (hamburger left, brand center on mobile, toggle right) -->
 <header class="site-header">
   <div class="container header-inner">
     <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
@@ -31,7 +118,6 @@
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 
 <main class="container layout">
-  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
@@ -45,9 +131,8 @@
     </div>
   </aside>
 
-  <!-- center content -->
   <section class="content">
-    <!-- Areas of Expertise (neutral card) -->
+    <!-- Areas of Expertise -->
     <div class="feature-grid" style="margin-bottom:.6rem">
       <div class="card" style="grid-column:1 / -1">
         <h3>Areas of Expertise</h3>
@@ -64,10 +149,7 @@
       </div>
     </div>
 
-    <!-- Accordions -->
     <div class="accordion">
-
-      <!-- About -->
       <div class="acc open" id="sec-about">
         <div class="acc__head" data-acc="sec-about">
           <h3 class="acc__title">About</h3><i class="acc__chev"></i>
@@ -89,18 +171,12 @@
             Across projects I use mixed methods—archival research, interviews, formal models, statistical analysis, and experiments.
           </p>
           <div class="pill-group" style="margin-top:.5rem">
-            <span class="pill">Deterrence</span>
-            <span class="pill">Coercion</span>
-            <span class="pill">Nuclear Policy</span>
-            <span class="pill">Nonproliferation</span>
-            <span class="pill">Alliance Politics</span>
-            <span class="pill">Strategic Studies</span>
-            <span class="pill">Methodology</span>
+            <span class="pill">Deterrence</span><span class="pill">Coercion</span><span class="pill">Nuclear Policy</span>
+            <span class="pill">Nonproliferation</span><span class="pill">Alliance Politics</span><span class="pill">Strategic Studies</span><span class="pill">Methodology</span>
           </div>
         </div>
       </div>
 
-      <!-- Degrees -->
       <div class="acc" id="sec-degrees">
         <div class="acc__head" data-acc="sec-degrees">
           <h3 class="acc__title">Degrees</h3><i class="acc__chev"></i>
@@ -120,7 +196,6 @@
         </div>
       </div>
 
-      <!-- Research Spotlights -->
       <div class="acc" id="sec-research">
         <div class="acc__head" data-acc="sec-research">
           <h3 class="acc__title">Research Spotlights</h3><i class="acc__chev"></i>
@@ -143,7 +218,6 @@
         </div>
       </div>
 
-      <!-- Featured -->
       <div class="acc" id="sec-featured">
         <div class="acc__head" data-acc="sec-featured">
           <h3 class="acc__title">Featured Work</h3><i class="acc__chev"></i>
@@ -164,72 +238,38 @@
         </div>
       </div>
 
-      <!-- Professional & Global Experience -->
       <div class="acc" id="sec-experience">
         <div class="acc__head" data-acc="sec-experience">
           <h3 class="acc__title">Professional &amp; Global Experience</h3><i class="acc__chev"></i>
         </div>
         <div class="acc__body">
-          <!-- 2025 -->
           <div class="muted year-label">2025</div>
           <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Fellowship</span>
-              <h3>Yale — Nuclear Security Program</h3>
-              <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
-            </div>
-            <div class="card">
-              <span class="pill">Archival Research</span>
-              <h3>United Kingdom — Summer Archival Work</h3>
-              <p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p>
-            </div>
-            <div class="card">
-              <span class="pill">Conference</span>
-              <h3>Alva Myrdal Conference — Uppsala University</h3>
-              <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
-            </div>
+            <div class="card"><span class="pill">Fellowship</span><h3>Yale — Nuclear Security Program</h3><p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p></div>
+            <div class="card"><span class="pill">Archival Research</span><h3>United Kingdom — Summer Archival Work</h3><p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p></div>
+            <div class="card"><span class="pill">Conference</span><h3>Alva Myrdal Conference — Uppsala University</h3><p class="muted">Panel participation and research presentation. <strong>2025</strong></p></div>
           </div>
 
-          <!-- 2024 -->
           <div class="muted year-label">2024</div>
           <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Conference</span>
-              <h3>Bridging the Gap — New Era Conference</h3>
-              <p class="muted">Josef Korbel School of International Studies, University of Denver. Panel participation. <strong>September 2024</strong></p>
-            </div>
-            <div class="card">
-              <span class="pill">Policy Trip</span>
-              <h3>Accra, Ghana — SPIA International Policy Trip</h3>
-              <p class="muted">Field briefings and meetings with World Bank, ICF, Bank of Ghana, Ministry of Finance, U.S. Embassy Accra, USAID, UNDP, and local organizations. <strong>Winter 2024</strong></p>
-            </div>
+            <div class="card"><span class="pill">Conference</span><h3>Bridging the Gap — New Era Conference</h3><p class="muted">Korbel School, University of Denver. <strong>September 2024</strong></p></div>
+            <div class="card"><span class="pill">Policy Trip</span><h3>Accra, Ghana — SPIA International Policy Trip</h3><p class="muted">Field briefings with World Bank, ICF, Bank of Ghana, Ministry of Finance, U.S. Embassy, USAID, UNDP, and others. <strong>Winter 2024</strong></p></div>
           </div>
 
-          <!-- 2023 -->
           <div class="muted year-label">2023</div>
           <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Summer Program</span>
-              <h3>University of Cambridge — International Law &amp; LOAC</h3>
-              <p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p>
-            </div>
+            <div class="card"><span class="pill">Summer Program</span><h3>University of Cambridge — International Law &amp; LOAC</h3><p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p></div>
           </div>
 
-          <!-- 2018 -->
           <div class="muted year-label">2018</div>
           <div class="feature-grid">
-            <div class="card">
-              <span class="pill">Policy Trip</span>
-              <h3>Taiwan — Transportation Policy</h3>
-              <p class="muted">Site visits and policy briefings on urban mobility and infrastructure. <strong>2018</strong></p>
-            </div>
+            <div class="card"><span class="pill">Policy Trip</span><h3>Taiwan — Transportation Policy</h3><p class="muted">Policy briefings on urban mobility and infrastructure. <strong>2018</strong></p></div>
           </div>
 
-          <!-- 2008 -->
           <div class="muted year-label">2008</div>
           <div class="feature-grid">
             <div class="card">
-              <span class="pill pill--accent">CfBT Scholar · Kenya</span>
+              <span class="pill">CfBT Scholar · Kenya</span>
               <h3>Multimedia University of Kenya <span style="font-weight:400">(formerly KCCT)</span></h3>
               <p class="muted">
                 Early international academic experience in <strong>telecommunications and applied ICT</strong> as a
@@ -238,12 +278,12 @@
               </p>
             </div>
           </div>
-
         </div>
       </div>
+
     </div>
   </section>
-  <!-- right TOC -->
+
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
@@ -256,5 +296,23 @@
   </div>
 </footer>
 
+<script>
+(() => {
+  const KEY = 'pref-theme';
+  function setTheme(mode){const d=mode==='dark',r=document.documentElement,b=document.body;d?(r.setAttribute('data-theme','dark'),b.classList.add('dark')):(r.removeAttribute('data-theme'),b.classList.remove('dark'));try{localStorage.setItem(KEY,d?'dark':'light')}catch{}}
+  function getInitialTheme(){try{const s=localStorage.getItem(KEY);if(s==='dark'||s==='light')return s}catch{}return(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
+  function init(){
+    const sw=document.getElementById('themeSwitch');setTheme(getInitialTheme());if(sw){sw.checked=document.documentElement.getAttribute('data-theme')==='dark';sw.addEventListener('change',()=>setTheme(sw.checked?'dark':'light'))}
+    const btn=document.getElementById('menuToggle'),nav=document.getElementById('primaryNav'),bd=document.getElementById('mobileBackdrop');
+    function openM(){nav.classList.add('open');btn&&btn.setAttribute('aria-expanded','true');bd&&bd.classList.add('show');document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden'}
+    function closeM(){nav.classList.remove('open');btn&&btn.setAttribute('aria-expanded','false');bd&&bd.classList.remove('show');document.documentElement.style.overflow='';document.body.style.overflow=''}
+    function toggleM(){nav.classList.contains('open')?closeM():openM()}
+    if(btn&&nav){btn.addEventListener('click',toggleM);nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));bd&&bd.addEventListener('click',closeM);window.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()})}
+    document.querySelectorAll('.acc__head').forEach(h=>h.addEventListener('click',()=>{const id=h.getAttribute('data-acc');const p=document.getElementById(id);p&&p.classList.toggle('open')}))
+    const toc=document.getElementById('tocList');if(toc){document.querySelectorAll('.content h2, .content h3').forEach(h=>{if(!h.id)h.id=h.textContent.trim().toLowerCase().replace(/\s+/g,'-');const a=document.createElement('a');a.href=`#${h.id}`;a.textContent=h.textContent.trim();toc.appendChild(a)})}
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
+</script>
 </body>
 </html>
