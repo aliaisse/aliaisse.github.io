@@ -2,63 +2,34 @@
   const KEY = 'pref-theme';
 
   function setTheme(mode) {
+    const dark = mode === 'dark';
     const root = document.documentElement;
     const body = document.body;
-    const dark = mode === 'dark';
     if (dark) { root.setAttribute('data-theme','dark'); body.classList.add('dark'); }
     else { root.removeAttribute('data-theme'); body.classList.remove('dark'); }
     try { localStorage.setItem(KEY, dark ? 'dark' : 'light'); } catch {}
   }
-  function initialTheme() {
-    let saved = null;
-    try { saved = localStorage.getItem(KEY); } catch {}
-    if (saved === 'dark' || saved === 'light') return saved;
+
+  function getInitialTheme() {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'dark' || saved === 'light') return saved;
+    } catch {}
     return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
   }
-  function ready(fn){ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn); else fn(); }
+
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn); else fn(); }
 
   ready(() => {
-    /* ===== Theme toggle (single switch) ===== */
+    /* ---- THEME TOGGLE ---- */
     const sw = document.getElementById('themeSwitch');
-    setTheme(initialTheme());
+    setTheme(getInitialTheme());
     if (sw) {
-      const isDark = document.documentElement.getAttribute('data-theme')==='dark' || document.body.classList.contains('dark');
-      sw.checked = isDark;
+      sw.checked = document.documentElement.getAttribute('data-theme') === 'dark';
       sw.addEventListener('change', () => setTheme(sw.checked ? 'dark' : 'light'));
     }
 
-    /* ===== Build right-side TOC (if present) ===== */
-    const toc = document.getElementById('tocList');
-    if (toc) {
-      const headers = document.querySelectorAll('.content h2, .content h3');
-      headers.forEach(h => {
-        if (!h.id) h.id = h.textContent.trim().toLowerCase().replace(/\s+/g,'-');
-        const a = document.createElement('a');
-        a.href = `#${h.id}`;
-        a.textContent = h.textContent.trim();
-        toc.appendChild(a);
-      });
-    }
-
-    /* ===== Ensure CV links point to an existing file (optional) ===== */
-    (async () => {
-      const links = Array.from(document.querySelectorAll('a')).filter(a =>
-        /\/cv(_aliaisse)?\.pdf/i.test(a.getAttribute('href') || '')
-      );
-      if (!links.length) return;
-
-      const candidates = ['/CV_aliaisse.pdf','/cv_aliaisse.pdf','/cv.pdf','/CV.pdf'];
-      let found = null;
-      for (const url of candidates) {
-        try {
-          const res = await fetch(url + '?t=' + Date.now(), { method: 'HEAD', cache: 'no-store' });
-          if (res.ok) { found = url; break; }
-        } catch {}
-      }
-      if (found) links.forEach(a => { a.href = found + '?v=1'; });
-    })();
-
-    /* ===== Mobile menu toggler ===== */
+    /* ---- MOBILE MENU ---- */
     const btn = document.getElementById('menuToggle');
     const nav = document.getElementById('primaryNav');
     const backdrop = document.getElementById('mobileBackdrop');
@@ -81,15 +52,17 @@
     }
     function toggleMenu(){
       if (!nav) return;
-      if (nav.classList.contains('open')) closeMenu();
-      else openMenu();
+      (nav.classList.contains('open') ? closeMenu : openMenu)();
     }
 
     if (btn && nav){
       btn.addEventListener('click', toggleMenu);
+      // Close when a nav link is clicked
       nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      // Backdrop click closes
       if (backdrop) backdrop.addEventListener('click', closeMenu);
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+      // ESC closes
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     }
   });
 })();
