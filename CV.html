@@ -77,111 +77,109 @@
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.08)}
   </style>
 </head>
-<body> 
-<header class="site-header">
-  <div class="container header-inner">
-    <!-- Hamburger (left on mobile) -->
-    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Hamburger (left on mobile) -->
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
 
-    <!-- Brand (center on mobile) -->
-    <a class="brand" href="/">Ali A. Isse</a>
+      <!-- Brand (center on mobile) -->
+      <a class="brand" href="/">Ali A. Isse</a>
 
-    <!-- Theme switch (right on mobile) -->
-    <label class="theme-switch theme-switch--standalone" title="Toggle dark mode">
-      <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
-      <span class="switch-slider"></span>
-    </label>
+      <!-- Theme switch (right on mobile) -->
+      <label class="theme-switch theme-switch--standalone" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
 
-    <!-- Primary nav (shows as dropdown on mobile) -->
-    <nav class="nav" id="primaryNav">
-      <a href="/" class="active">Home</a>
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/CV.html">CV</a>
-    </nav>
-  </div>
-</header>
-<div class="mobile-backdrop" id="mobileBackdrop"></div>
-  
-<main class="container layout">
-  <!-- left profile -->
-  <aside class="profile">
-    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
-    <div class="buttons">
-      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <!-- Primary nav (shows as dropdown on mobile) -->
+      <nav class="nav" id="primaryNav">
+        <a href="/">Home</a>
+        <a href="/Research.html">Research</a>
+        <a href="/Teaching.html">Teaching</a>
+        <a href="/CV.html" class="active">CV</a>
+      </nav>
     </div>
-  </aside>
+  </header>
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
 
-  <!-- center content -->
-  <section class="content">
-    <div class="accordion">
+  <main class="container layout">
+    <!-- left profile -->
+    <aside class="profile">
+      <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+      <div class="buttons">
+        <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      </div>
+    </aside>
 
-      <!-- CV panel -->
-      <div class="acc open" id="sec-cv">
-        <div class="acc__head" data-acc="sec-cv">
-          <h3 class="acc__title">Curriculum Vitae</h3>
-          <i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <p class="cv-summary muted">
-            Current academic CV with publications, teaching, research activities, awards, and service.
-          </p>
-          <div class="cv-actions">
-            <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+    <!-- center content -->
+    <section class="content">
+      <div class="accordion">
+
+        <!-- CV panel -->
+        <div class="acc open" id="sec-cv">
+          <div class="acc__head" data-acc="sec-cv">
+            <h3 class="acc__title">Curriculum Vitae</h3>
+            <i class="acc__chev"></i>
+          </div>
+          <div class="acc__body">
+            <p class="cv-summary muted">
+              Current academic CV with publications, teaching, research activities, awards, and service.
+            </p>
+            <div class="cv-actions">
+              <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+            </div>
           </div>
         </div>
+
       </div>
+    </section>
+  </main>
 
+  <!-- Footer identical to header, with your preferred text -->
+  <footer class="site-header">
+    <div class="container header-inner" style="justify-content:space-between;">
+      <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
     </div>
-  </section>
+  </footer>
 
-</main>
-
-<!-- Footer identical to header, with your preferred text -->
-<footer class="site-header">
-  <div class="container header-inner" style="justify-content:space-between;">
-    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
-  </div>
-</footer>
-
-<!-- Tiny accordion JS + header-color sync -->
-<script>
-  function colorAccordions(){
-    const header = document.querySelector('.site-header');
-    if(!header) return;
-    const bg = getComputedStyle(header).backgroundColor;
-    const ink = getComputedStyle(header).color || '#ffffff';
-    document.querySelectorAll('.acc__head').forEach(h=>{
-      h.style.backgroundColor = bg;
-      h.style.color = ink;
-      const chev = h.querySelector('.acc__chev');
-      if (chev) chev.style.borderColor = ink;
-      const title = h.querySelector('.acc__title');
-      if (title) title.style.color = ink;
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // accordion toggle
-    document.querySelectorAll('.acc__head').forEach(head => {
-      head.addEventListener('click', () => {
-        const id = head.getAttribute('data-acc');
-        const panel = document.getElementById(id);
-        if (panel) panel.classList.toggle('open');
+  <!-- Tiny accordion JS + header-color sync -->
+  <script>
+    function colorAccordions(){
+      const header = document.querySelector('.site-header');
+      if(!header) return;
+      const bg = getComputedStyle(header).backgroundColor;
+      const ink = getComputedStyle(header).color || '#ffffff';
+      document.querySelectorAll('.acc__head').forEach(h=>{
+        h.style.backgroundColor = bg;
+        h.style.color = ink;
+        const chev = h.querySelector('.acc__chev');
+        if (chev) chev.style.borderColor = ink;
+        const title = h.querySelector('.acc__title');
+        if (title) title.style.color = ink;
       });
-    });
-
-    // initial color sync
-    colorAccordions();
-
-    // re-sync on theme toggle
-    const themeSwitch = document.getElementById('themeSwitch');
-    if (themeSwitch) {
-      themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
     }
-  });
-</script>
 
+    document.addEventListener('DOMContentLoaded', () => {
+      // accordion toggle
+      document.querySelectorAll('.acc__head').forEach(head => {
+        head.addEventListener('click', () => {
+          const id = head.getAttribute('data-acc');
+          const panel = document.getElementById(id);
+          if (panel) panel.classList.toggle('open');
+        });
+      });
+
+      // initial color sync
+      colorAccordions();
+
+      // re-sync on theme toggle
+      const themeSwitch = document.getElementById('themeSwitch');
+      if (themeSwitch) {
+        themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
+      }
+    });
+  </script>
 </body>
 </html>
