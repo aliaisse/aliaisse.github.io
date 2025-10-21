@@ -88,28 +88,27 @@
   </style>
 </head>
 <body>
-
-  <header class="site-header">
+<header class="site-header">
   <div class="container header-inner">
     <!-- Hamburger (left on mobile) -->
     <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
 
-    <!-- Brand (center on mobile) -->
+    <!-- Brand (center on mobile, left-ish on desktop) -->
     <a class="brand" href="/">Ali A. Isse</a>
 
-    <!-- Theme switch (right on mobile) -->
-    <label class="theme-switch theme-switch--standalone" title="Toggle dark mode">
-      <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
-      <span class="switch-slider"></span>
-    </label>
-
-    <!-- Primary nav (shows as dropdown on mobile) -->
-    <nav class="nav" id="primaryNav">
-      <a href="/" class="active">Home</a>
-      <a href="/Research.html">Research</a>
-      <a href="/Teaching.html">Teaching</a>
-      <a href="/CV.html">CV</a>
-    </nav>
+    <!-- Right side: theme switch + nav (desktop inline, mobile becomes dropdown) -->
+    <div class="header-right">
+      <label class="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <span class="switch-slider"></span>
+      </label>
+      <nav class="nav" id="primaryNav">
+        <a href="/" class="active">Home</a>
+        <a href="/Research.html">Research</a>
+        <a href="/Teaching.html">Teaching</a>
+        <a href="/CV.html">CV</a>
+      </nav>
+    </div>
   </div>
 </header>
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
