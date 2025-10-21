@@ -9,7 +9,6 @@
   --card:#111827; --border:#1f2937;
   --header-bg:#111827; --header-text:#e5e7eb; --header-muted:#cbd5e1;
 }
-
 /* ========= BASE ========= */
 *{box-sizing:border-box}
 html,body{height:100%}
