@@ -1,99 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ali A. Isse — Working Header</title>
-
-<!-- ===== FULL CSS (inline) ===== -->
-<style>
-/* ========= THEME TOKENS ========= */
-:root{
-  --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --link:#2563eb;
-  --card:#f9fafb; --border:#e5e7eb;
-  --header-bg:#1f2a44; --header-text:#e5e7eb; --header-muted:#cbd5e1;
-}
-:root[data-theme="dark"], body.dark{
-  --bg:#0f172a; --text:#e5e7eb; --muted:#a1a1aa; --link:#93c5fd;
-  --card:#111827; --border:#1f2937;
-  --header-bg:#111827; --header-text:#e5e7eb; --header-muted:#cbd5e1;
-}
-
-/* ========= BASE ========= */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);transition:background-color .18s,color .18s}
-a{color:var(--link);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto}
-
-/* ========= HEADER ========= */
-.site-header{background:var(--header-bg);color:var(--header-text);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(0,0,0,.15)}
-/* Desktop grid: [☰][Brand][Right Group (switch+nav)] */
-.header-inner{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:1rem;padding:.75rem 1rem}
-.brand{color:var(--header-text);font-weight:700;text-decoration:none;white-space:nowrap}
-.header-right{display:inline-flex;align-items:center;gap:.6rem}
-.nav{display:flex;align-items:center;gap:.6rem}
-.nav a{color:var(--header-text);padding:.25rem .45rem;border-radius:6px;font-weight:600;letter-spacing:.02em}
-.nav a:hover{color:var(--header-muted)}
-.nav a.active{color:var(--header-muted)}
-
-/* Theme switch (single) */
-.theme-switch{display:inline-flex;align-items:center;justify-content:center;width:36px;height:20px;cursor:pointer}
-.theme-switch input{display:none}
-.switch-slider{width:36px;height:20px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);position:relative;box-sizing:border-box}
-.switch-slider::before{content:"";position:absolute;top:50%;left:2.5px;width:14px;height:14px;transform:translateY(-50%);border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);transition:transform .18s}
-.theme-switch input:checked + .switch-slider::before{transform:translate(18px,-50%)}
-
-/* Hamburger button (visible on mobile) */
-.menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font-size:1.2rem;line-height:1;cursor:pointer}
-
-/* ========= PAGE LAYOUT (demo content) ========= */
-main{padding:2rem 1rem}
-h1{margin:.2rem 0 .6rem}
-p{margin:.25rem 0 1rem}
-.card{border:1px solid var(--border);background:var(--card);border-radius:10px;padding:1rem;margin:.75rem 0}
-
-/* ========= MOBILE (<=760px) ========= */
-@media (max-width:760px){
-  /* Header becomes [☰][Brand][Switch] */
-  .header-inner{grid-template-columns:40px 1fr 40px;min-height:56px}
-  .menu-btn{display:inline-flex}
-  .brand{justify-self:center;font-size:1.06rem}
-  .header-right{justify-self:end}
-
-  /* Nav becomes a dropdown sheet */
-  .nav{
-    position:fixed;left:0;right:0;top:56px;
-    display:none;flex-direction:column;gap:.4rem;
-    background:var(--card);border-top:1px solid var(--border);
-    padding:1rem 1rem 1.2rem;z-index:2000;box-shadow:0 8px 24px rgba(0,0,0,.12)
-  }
-  .nav.open{display:flex}
-  .nav a{padding:.6rem 0;display:block}
-
-  .mobile-backdrop{
-    display:none;
-    position:fixed; inset:56px 0 0 0;
-    background:rgba(0,0,0,.25); backdrop-filter:saturate(120%) blur(1px);
-    z-index:1500;
-  }
-  .mobile-backdrop.show{display:block}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- Header (hamburger left, brand center on mobile, toggle right) -->
 <header class="site-header">
   <div class="container header-inner">
-    <!-- ☰ (left on mobile) -->
     <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
-
-    <!-- Brand -->
     <a class="brand" href="/">Ali A. Isse</a>
-
-    <!-- Right: theme switch + nav -->
     <div class="header-right">
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
@@ -110,100 +30,233 @@ p{margin:.25rem 0 1rem}
 </header>
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 
-<!-- ===== MAIN (demo content so you can see it working) ===== -->
-<main class="container">
-  <h1>Header demo is working</h1>
-  <div class="card">
-    <p>• Resize your browser below 760px to see the hamburger appear (☰).</p>
-    <p>• Tap ☰ to open the dropdown — you’ll see <strong>Home / Research / Teaching / CV</strong>.</p>
-    <p>• Use the toggle on the top-right to switch dark mode; it <em>persists</em>.</p>
-  </div>
-  <div class="card">
-    <p>This page is self-contained. Once you confirm it works, copy the <strong>header HTML</strong>, the <strong>CSS</strong>, and the <strong>JS</strong> into your site files.</p>
-  </div>
+<main class="container layout">
+  <!-- left profile -->
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
+      <span style="font-size:.9rem;opacity:.9">Ph.D. Candidate · School of Public and International Affairs · Princeton University</span>
+    </div>
+  </aside>
+
+  <!-- center content -->
+  <section class="content">
+    <!-- Areas of Expertise (neutral card) -->
+    <div class="feature-grid" style="margin-bottom:.6rem">
+      <div class="card" style="grid-column:1 / -1">
+        <h3>Areas of Expertise</h3>
+        <p class="muted" style="margin:.2rem 0 .6rem 0">
+          Research and teaching spanning strategy, institutions, and policy practice.
+        </p>
+        <div class="pill-group">
+          <span class="pill">Strategic Studies</span>
+          <span class="pill">Nuclear Security</span>
+          <span class="pill">Nonproliferation &amp; Arms Control</span>
+          <span class="pill">Coercive Diplomacy</span>
+          <span class="pill">Foreign Policy &amp; Decision-Making</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordions -->
+    <div class="accordion">
+
+      <!-- About -->
+      <div class="acc open" id="sec-about">
+        <div class="acc__head" data-acc="sec-about">
+          <h3 class="acc__title">About</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <h3>Ph.D. Candidate, Princeton SPIA</h3>
+          <p>
+            I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a 2025–26
+            Visiting Scholar in Yale University’s Nuclear Security Program at the MacMillan Center. My work sits at the
+            intersection of international security, strategic studies, and the political economy of international organizations,
+            with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.
+          </p>
+          <p>
+            My current project, <em>Strategies of Coercion in the Nuclear Era</em>, asks: When does coercion succeed without war?
+            Which guarantees and institutional commitments move states from brinkmanship to cooperation? What do alliances and
+            international organizations signal in crises?
+          </p>
+          <p>
+            Across projects I use mixed methods—archival research, interviews, formal models, statistical analysis, and experiments.
+          </p>
+          <div class="pill-group" style="margin-top:.5rem">
+            <span class="pill">Deterrence</span>
+            <span class="pill">Coercion</span>
+            <span class="pill">Nuclear Policy</span>
+            <span class="pill">Nonproliferation</span>
+            <span class="pill">Alliance Politics</span>
+            <span class="pill">Strategic Studies</span>
+            <span class="pill">Methodology</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Degrees -->
+      <div class="acc" id="sec-degrees">
+        <div class="acc__head" data-acc="sec-degrees">
+          <h3 class="acc__title">Degrees</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <p class="muted" style="margin:0">
+                Ph.D. Candidate, Princeton University<br />
+                M.A., Princeton University<br />
+                M.A., The University of Chicago<br />
+                M.S., The Ohio State University<br />
+                B.A., The University of Texas San Antonio
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Spotlights -->
+      <div class="acc" id="sec-research">
+        <div class="acc__head" data-acc="sec-research">
+          <h3 class="acc__title">Research Spotlights</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Manuscript</span>
+              <h3>Coercion &amp; Compliance</h3>
+              <p class="muted"><em>Between Coercion and Inducements</em> (NPT/TPNW), <em>Strategies of Coercion</em>, and related works. See full list on the Research page.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
+            </div>
+            <div class="card">
+              <span class="pill">Alliances</span>
+              <h3>Posture &amp; Assurance</h3>
+              <p class="muted">Alignment of U.S.–ally postures in Europe &amp; Asia; escalation management; extended deterrence strategy.</p>
+              <div class="tiny"><a href="/Research.html">View all research →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured -->
+      <div class="acc" id="sec-featured">
+        <div class="acc__head" data-acc="sec-featured">
+          <h3 class="acc__title">Featured Work</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Manuscript · 2025</span>
+              <h3>US–UK Nuclear Partnership</h3>
+              <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
+            </div>
+            <div class="card">
+              <span class="pill">Teaching · Spring 2025</span>
+              <h3>International Organizations</h3>
+              <p class="muted">Discussion sections, office hours, assignments, and exams.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional & Global Experience -->
+      <div class="acc" id="sec-experience">
+        <div class="acc__head" data-acc="sec-experience">
+          <h3 class="acc__title">Professional &amp; Global Experience</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <!-- 2025 -->
+          <div class="muted year-label">2025</div>
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Fellowship</span>
+              <h3>Yale — Nuclear Security Program</h3>
+              <p class="muted">Visiting Scholar year at the MacMillan Center’s Nuclear Security Program. <strong>2025–26</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Archival Research</span>
+              <h3>United Kingdom — Summer Archival Work</h3>
+              <p class="muted">The National Archives (Richmond), LSE Archives, and the Churchill Archives Centre (Cambridge). <strong>Summer 2025</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Conference</span>
+              <h3>Alva Myrdal Conference — Uppsala University</h3>
+              <p class="muted">Panel participation and research presentation. <strong>2025</strong></p>
+            </div>
+          </div>
+
+          <!-- 2024 -->
+          <div class="muted year-label">2024</div>
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Conference</span>
+              <h3>Bridging the Gap — New Era Conference</h3>
+              <p class="muted">Josef Korbel School of International Studies, University of Denver. Panel participation. <strong>September 2024</strong></p>
+            </div>
+            <div class="card">
+              <span class="pill">Policy Trip</span>
+              <h3>Accra, Ghana — SPIA International Policy Trip</h3>
+              <p class="muted">Field briefings and meetings with World Bank, ICF, Bank of Ghana, Ministry of Finance, U.S. Embassy Accra, USAID, UNDP, and local organizations. <strong>Winter 2024</strong></p>
+            </div>
+          </div>
+
+          <!-- 2023 -->
+          <div class="muted year-label">2023</div>
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Summer Program</span>
+              <h3>University of Cambridge — International Law &amp; LOAC</h3>
+              <p class="muted">Intensive coursework on IHL and public international law. <strong>Summer 2023</strong></p>
+            </div>
+          </div>
+
+          <!-- 2018 -->
+          <div class="muted year-label">2018</div>
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill">Policy Trip</span>
+              <h3>Taiwan — Transportation Policy</h3>
+              <p class="muted">Site visits and policy briefings on urban mobility and infrastructure. <strong>2018</strong></p>
+            </div>
+          </div>
+
+          <!-- 2008 -->
+          <div class="muted year-label">2008</div>
+          <div class="feature-grid">
+            <div class="card">
+              <span class="pill pill--accent">CfBT Scholar · Kenya</span>
+              <h3>Multimedia University of Kenya <span style="font-weight:400">(formerly KCCT)</span></h3>
+              <p class="muted">
+                Early international academic experience in <strong>telecommunications and applied ICT</strong> as a
+                <strong>competitively selected CfBT Education Trust scholar</strong> in Nairobi.
+                <em>(Engineering, technology &amp; mathematics)</em>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- right TOC -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
 </main>
 
-<!-- ===== FOOTER (optional) ===== -->
-<footer class="site-header" style="margin-top:2rem;">
-  <div class="container" style="padding: .75rem 1rem; color:var(--header-text);">
-    <small>@2025 Ali A. Isse</small>
+<footer class="site-header">
+  <div class="container header-inner" style="justify-content:space-between;">
+    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
   </div>
 </footer>
 
-<!-- ===== FULL JS (inline) ===== -->
-<script>
-(() => {
-  const KEY = 'pref-theme';
-
-  // ----- THEME -----
-  function setTheme(mode) {
-    const dark = mode === 'dark';
-    const root = document.documentElement;
-    const body = document.body;
-    if (dark) { root.setAttribute('data-theme','dark'); body.classList.add('dark'); }
-    else { root.removeAttribute('data-theme'); body.classList.remove('dark'); }
-    try { localStorage.setItem(KEY, dark ? 'dark' : 'light'); } catch {}
-  }
-  function getInitialTheme() {
-    try {
-      const saved = localStorage.getItem(KEY);
-      if (saved === 'dark' || saved === 'light') return saved;
-    } catch {}
-    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-  }
-
-  function init(){
-    // Theme
-    const sw = document.getElementById('themeSwitch');
-    setTheme(getInitialTheme());
-    if (sw) {
-      sw.checked = document.documentElement.getAttribute('data-theme') === 'dark';
-      sw.addEventListener('change', () => setTheme(sw.checked ? 'dark' : 'light'));
-    }
-
-    // Mobile menu
-    const btn = document.getElementById('menuToggle');
-    const nav = document.getElementById('primaryNav');
-    const backdrop = document.getElementById('mobileBackdrop');
-
-    function openMenu(){
-      if (!nav) return;
-      nav.classList.add('open');
-      if (btn) btn.setAttribute('aria-expanded','true');
-      if (backdrop) backdrop.classList.add('show');
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMenu(){
-      if (!nav) return;
-      nav.classList.remove('open');
-      if (btn) btn.setAttribute('aria-expanded','false');
-      if (backdrop) backdrop.classList.remove('show');
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-    }
-    function toggleMenu(){
-      if (!nav) return;
-      (nav.classList.contains('open') ? closeMenu : openMenu)();
-    }
-
-    if (btn && nav){
-      btn.addEventListener('click', toggleMenu);
-      // Close when a nav link is clicked
-      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-      // Backdrop click closes
-      if (backdrop) backdrop.addEventListener('click', closeMenu);
-      // ESC closes
-      window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-</script>
 </body>
 </html>
