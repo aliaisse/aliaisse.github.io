@@ -6,179 +6,70 @@
   <title>CV — Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
-
-  <!-- Page-specific styles (match index/research/teaching; no accordion colors here) -->
-  <style>
-    :root{
-      --brand:#0A2A66;            /* site header/nav navy */
-      --text:#111111;
-      --muted:#4b5563;
-      --card:#ffffff;
-      --border:#e5e7eb;
-    }
-    [data-theme="dark"], body.dark{
-      --text:#ffffff;
-      --muted:#cfd8dc;
-      --card:#0f1216;
-      --border:#1f2937;
-    }
-
-    /* global text */
-    html, body { color:var(--text); }
-    p, li, a, span, small, time, dd, dt, div { color:inherit; }
-    .name{color:var(--text);}
-    .muted{color:var(--muted)}
-
-    /* neutral card (if you expand later) */
-    .card{
-      border:1px solid var(--border);
-      border-left:none;
-      border-radius:12px;
-      background:var(--card);
-      padding:1rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
-
-    /* accordion (no colors here; JS copies header color) */
-    .accordion{display:grid;gap:1rem;margin:1rem 0}
-    .acc{
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:0 1px 6px rgba(0,0,0,.06);
-    }
-    .acc__head{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
-    }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
-    .acc__chev{
-      border-width:0 2px 2px 0; border-style:solid; display:inline-block;
-      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
-    }
-    .acc.open .acc__chev{ transform:rotate(45deg); }
-    .acc__body{padding:1rem; display:none}
-    .acc.open .acc__body{display:block}
-
-    /* content bits */
-    .cv-summary{margin:0 0 .8rem}
-    .cv-actions{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
-    .btn-primary{
-      display:inline-block; padding:.55rem .9rem; border-radius:10px;
-      font-weight:800; text-decoration:none; border:1px solid var(--border);
-      background:var(--card);
-      color:var(--text);
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.08)}
-  </style>
 </head>
 <body>
- <header class="site-header">
+
+<header class="site-header">
   <div class="container header-inner">
-    <!-- Hamburger (left on mobile) -->
     <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
-
-    <!-- Brand (center on mobile, left-ish on desktop) -->
     <a class="brand" href="/">Ali A. Isse</a>
-
-    <!-- Right side: theme switch + nav (desktop inline, mobile becomes dropdown) -->
     <div class="header-right">
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
         <span class="switch-slider"></span>
       </label>
       <nav class="nav" id="primaryNav">
-        <a href="/" class="active">Home</a>
+        <a href="/">Home</a>
         <a href="/Research.html">Research</a>
         <a href="/Teaching.html">Teaching</a>
-        <a href="/CV.html">CV</a>
+        <a href="/CV.html" class="active">CV</a>
       </nav>
     </div>
   </div>
 </header>
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
-  <main class="container layout">
-    <!-- left profile -->
-    <aside class="profile">
-      <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
-      <div class="buttons">
-        <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </aside>
 
-    <!-- center content -->
-    <section class="content">
-      <div class="accordion">
+<main class="container layout">
+  <!-- left -->
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </aside>
 
-        <!-- CV panel -->
-        <div class="acc open" id="sec-cv">
-          <div class="acc__head" data-acc="sec-cv">
-            <h3 class="acc__title">Curriculum Vitae</h3>
-            <i class="acc__chev"></i>
-          </div>
-          <div class="acc__body">
-            <p class="cv-summary muted">
-              Current academic CV with publications, teaching, research activities, awards, and service.
-            </p>
-            <div class="cv-actions">
-              <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
-            </div>
+  <!-- content -->
+  <section class="content">
+    <div class="accordion">
+      <div class="acc open" id="sec-cv">
+        <div class="acc__head" data-acc="sec-cv">
+          <h3 class="acc__title">Curriculum Vitae</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <p class="muted" style="margin:0 0 .8rem">
+            Current academic CV with publications, teaching, research activities, awards, and service.
+          </p>
+          <div class="cv-actions">
+            <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
           </div>
         </div>
-
       </div>
-    </section>
-  </main>
-
-  <!-- Footer identical to header, with your preferred text -->
-  <footer class="site-header">
-    <div class="container header-inner" style="justify-content:space-between;">
-      <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
     </div>
-  </footer>
+  </section>
 
-  <!-- Tiny accordion JS + header-color sync -->
-  <script>
-    function colorAccordions(){
-      const header = document.querySelector('.site-header');
-      if(!header) return;
-      const bg = getComputedStyle(header).backgroundColor;
-      const ink = getComputedStyle(header).color || '#ffffff';
-      document.querySelectorAll('.acc__head').forEach(h=>{
-        h.style.backgroundColor = bg;
-        h.style.color = ink;
-        const chev = h.querySelector('.acc__chev');
-        if (chev) chev.style.borderColor = ink;
-        const title = h.querySelector('.acc__title');
-        if (title) title.style.color = ink;
-      });
-    }
+  <!-- right toc -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // accordion toggle
-      document.querySelectorAll('.acc__head').forEach(head => {
-        head.addEventListener('click', () => {
-          const id = head.getAttribute('data-acc');
-          const panel = document.getElementById(id);
-          if (panel) panel.classList.toggle('open');
-        });
-      });
+<footer class="site-header">
+  <div class="container header-inner" style="justify-content:space-between;">
+    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
+  </div>
+</footer>
 
-      // initial color sync
-      colorAccordions();
-
-      // re-sync on theme toggle
-      const themeSwitch = document.getElementById('themeSwitch');
-      if (themeSwitch) {
-        themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
-      }
-    });
-  </script>
 </body>
-</html> 
+</html>
