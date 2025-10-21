@@ -91,8 +91,14 @@
 
 <header class="site-header">
   <div class="container header-inner">
+    <!-- Hamburger button (mobile only) -->
+    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
+
+    <!-- Brand (centered on mobile via CSS) -->
     <a class="brand" href="/">Ali A. Isse</a>
-    <nav class="nav">
+
+    <!-- Primary nav -->
+    <nav class="nav" id="primaryNav">
       <a href="/" class="active">Home</a>
       <a href="/Research.html">Research</a>
       <a href="/Teaching.html">Teaching</a>
@@ -104,6 +110,9 @@
     </nav>
   </div>
 </header>
+
+<!-- Backdrop for the mobile sheet -->
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
 
 <main class="container layout">
   <!-- left profile -->
