@@ -1,54 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CV — Ali A. Isse</title>
-<style>
-/* COPY THE ENTIRE <style> FROM INDEX.HTML AND PASTE IT HERE */
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV — Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
 </head>
 <body>
+
 <header class="site-header">
   <div class="container header-inner">
-    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
     <a class="brand" href="/">Ali A. Isse</a>
-    <div class="header-right">
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html" class="active">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
       </label>
-      <nav class="nav" id="primaryNav">
-        <a href="/">Home</a>
-        <a href="/Research.html">Research</a>
-        <a href="/Teaching.html">Teaching</a>
-        <a href="/CV.html" class="active">CV</a>
-      </nav>
-    </div>
+    </nav>
   </div>
 </header>
-<div class="mobile-backdrop" id="mobileBackdrop"></div>
+
 <main class="container layout">
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
     </div>
   </aside>
 
   <section class="content">
-    <div class="accordion">
-      <div class="acc open" id="sec-cv">
-        <div class="acc__head" data-acc="sec-cv"><h3 class="acc__title">Curriculum Vitae</h3><i class="acc__chev"></i></div>
-        <div class="acc__body">
-          <p class="muted" style="margin:0 0 .8rem">
-            Current academic CV with publications, teaching, research activities, awards, and service.
-          </p>
-          <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
-        </div>
-      </div>
-    </div>
+    <h2>Curriculum Vitae</h2>
+    <p>For my full academic record, please see the PDF.</p>
+    <p><a class="btn" href="/cv.pdf" target="_blank" rel="noopener">Open CV</a></p>
   </section>
 
   <aside class="toc">
@@ -57,14 +47,5 @@
   </aside>
 </main>
 
-<footer class="site-header">
-  <div class="container header-inner" style="justify-content:space-between;">
-    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
-  </div>
-</footer>
-
-<script>
-/* COPY THE ENTIRE <script> FROM INDEX.HTML AND PASTE IT HERE */
-</script>
 </body>
 </html>
