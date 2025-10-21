@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-local styles (match index; accordions colored via JS) -->
   <style>
     :root{
       --brand:#0A2A66;
@@ -30,7 +29,7 @@
     html, body { color:var(--text); }
     p, li, a, span, small, time, dd, dt, div { color:inherit; }
 
-    /* Pills + cards (neutral) */
+    /* Neutral chips + cards */
     .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
     .pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border);color:var(--pill-ink);font-weight:700;font-size:.92rem;box-shadow:0 1px 0 rgba(0,0,0,.04) inset;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;}
     .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
@@ -38,20 +37,20 @@
     @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
     .card{border:1px solid var(--border);border-left:none;border-radius:12px;background:var(--card);padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;}
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:inherit;font-weight:800}
     .muted{color:var(--muted)}
 
-    /* List items */
+    /* Papers list (no fixed colors) */
     .item{margin:0 0 .7rem}
     .when{color:var(--muted)}
-    .ptitle{font-style:italic;color:inherit;}
+    .ptitle{font-style:italic;color:inherit}
     .status{color:var(--muted);font-style:italic}
 
-    /* Accordions (colored via JS to match header) */
+    /* Accordions (header colors copied via JS) */
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06);}
     .acc__head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative;}
-    .acc__title{margin:0;font-size:1.05rem;font-weight:800;}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:inherit}
     .acc__chev{border-width:0 2px 2px 0;border-style:solid;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease;}
     .acc.open .acc__chev{transform:rotate(45deg);}
     .acc__body{padding:1rem;display:none}
@@ -77,7 +76,6 @@
 </header>
 
 <main class="container layout">
-  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
@@ -87,13 +85,11 @@
     </div>
   </aside>
 
-  <!-- content -->
   <section class="content">
     <h2 style="margin:.2rem 0 .8rem 0">Research</h2>
 
     <div class="accordion">
 
-      <!-- Publications & Manuscripts -->
       <div class="acc open" id="sec-pubs">
         <div class="acc__head" data-acc="sec-pubs">
           <h3 class="acc__title">Publications &amp; Manuscripts</h3>
@@ -108,7 +104,6 @@
         </div>
       </div>
 
-      <!-- Other Papers -->
       <div class="acc" id="sec-other">
         <div class="acc__head" data-acc="sec-other">
           <h3 class="acc__title">Other Papers</h3>
@@ -120,7 +115,6 @@
         </div>
       </div>
 
-      <!-- Data & Replication -->
       <div class="acc" id="sec-data">
         <div class="acc__head" data-acc="sec-data">
           <h3 class="acc__title">Data &amp; Replication</h3>
@@ -134,14 +128,12 @@
     </div>
   </section>
 
-  <!-- right toc -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
 
-<!-- Accordion color sync (copy header colors) -->
 <script>
   function colorAccordions(){
     const header = document.querySelector('.site-header');
