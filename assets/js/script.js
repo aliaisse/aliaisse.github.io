@@ -18,8 +18,8 @@
   function ready(fn){ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn); else fn(); }
 
   ready(() => {
-    // ===== Theme toggle
-    const sw = document.getElementById('themeSwitch') || document.querySelector('.theme-switch input');
+    /* ===== Theme toggle (single control on right) ===== */
+    const sw = document.getElementById('themeSwitch');
     setTheme(initialTheme());
     if (sw) {
       const isDark = document.documentElement.getAttribute('data-theme')==='dark' || document.body.classList.contains('dark');
@@ -27,7 +27,7 @@
       sw.addEventListener('change', () => setTheme(sw.checked ? 'dark' : 'light'));
     }
 
-    // ===== Build right-side TOC
+    /* ===== Build right-side TOC (if present) ===== */
     const toc = document.getElementById('tocList');
     if (toc) {
       const headers = document.querySelectorAll('.content h2, .content h3');
@@ -40,19 +40,14 @@
       });
     }
 
-    // ===== Verify CV link and fix if needed
+    /* ===== Verify CV link and fix if needed ===== */
     (async () => {
       const links = Array.from(document.querySelectorAll('a')).filter(a =>
         /\/cv(_aliaisse)?\.pdf/i.test(a.getAttribute('href') || '')
       );
       if (!links.length) return;
 
-      const candidates = [
-        '/CV_aliaisse.pdf',
-        '/cv_aliaisse.pdf',
-        '/cv.pdf',
-        '/CV.pdf'
-      ];
+      const candidates = ['/CV_aliaisse.pdf','/cv_aliaisse.pdf','/cv.pdf','/CV.pdf'];
       let found = null;
       for (const url of candidates) {
         try {
@@ -60,12 +55,10 @@
           if (res.ok) { found = url; break; }
         } catch {}
       }
-      if (found) {
-        links.forEach(a => { a.href = found + '?v=1'; });
-      }
+      if (found) links.forEach(a => { a.href = found + '?v=1'; });
     })();
 
-    // ===== Mobile menu toggler (hamburger)
+    /* ===== Mobile menu toggler ===== */
     const btn = document.getElementById('menuToggle');
     const nav = document.getElementById('primaryNav');
     const backdrop = document.getElementById('mobileBackdrop');
@@ -94,11 +87,8 @@
 
     if (btn && nav){
       btn.addEventListener('click', toggleMenu);
-      // Close on link click
       nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-      // Close on backdrop click
       if (backdrop) backdrop.addEventListener('click', closeMenu);
-      // Close on ESC
       window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
     }
   });
