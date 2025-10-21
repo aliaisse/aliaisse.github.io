@@ -6,117 +6,22 @@
   <title>Teaching — Ali A. Isse</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
-
-  <!-- Page-specific styles (match index/research; no accordion colors here) -->
-  <style>
-    /* ---- Brand tokens (align with site) ---- */
-    :root{
-      --brand:#0A2A66;           /* site header/nav navy */
-      --text:#111111;            /* black body text */
-      --muted:#4b5563;
-      --card:#ffffff;
-      --border:#e5e7eb;
-
-      /* Chips (neutral) */
-      --pill-bg: var(--card);
-      --pill-ink: var(--text);
-    }
-    [data-theme="dark"], body.dark{
-      --text:#ffffff;
-      --muted:#cfd8dc;
-      --card:#0f1216;
-      --border:#1f2937;
-
-      --pill-bg:#12171d;
-      --pill-ink:#e5e7eb;
-    }
-
-    /* ---- Global text ---- */
-    html, body { color:var(--text); }
-    p, li, a, span, small, time, dd, dt, div { color:inherit; }
-    .name{color:var(--text);}
-    .content h2{font-weight:800;margin-top:.2rem}
-
-    /* ---- Feature cards (neutral, like index) ---- */
-    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
-    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
-    .card{
-      border:1px solid var(--border);
-      border-left:none;
-      border-radius:12px;
-      background:var(--card);
-      padding:1rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
-    .muted{color:var(--muted)}
-    .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
-    .tiny a:hover{text-decoration:underline}
-
-    /* ---- Neutral pill chips ---- */
-    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 0}
-    .pill{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.35rem .6rem;border-radius:999px;
-      background:var(--pill-bg);
-      border:1px solid var(--border);
-      color:var(--pill-ink);
-      font-weight:700;font-size:.92rem;
-      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
-    }
-    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
-
-    /* ---- Accordion (no colors; JS copies header color) ---- */
-    .accordion{display:grid;gap:1rem;margin:1rem 0}
-    .acc{
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:0 1px 6px rgba(0,0,0,.06);
-    }
-    .acc__head{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:.9rem 1rem; font-weight:800; cursor:pointer; position:relative;
-    }
-    .acc__title{margin:0; font-size:1.05rem; font-weight:800;}
-    .acc__chev{
-      border-width:0 2px 2px 0; border-style:solid; display:inline-block;
-      padding:4px; transform:rotate(-45deg); transition:transform .18s ease;
-    }
-    .acc.open .acc__chev{ transform:rotate(45deg); }
-    .acc__body{padding:1rem; display:none}
-    .acc.open .acc__body{display:block}
-
-    /* ---- Course rows ---- */
-    .course{margin:0 0 1rem}
-    .title{font-weight:800; color:inherit;}
-    .meta{color:var(--muted)}
-    .desc{margin:.3rem 0 0 0}
-  </style>
 </head>
 <body>
+
 <header class="site-header">
   <div class="container header-inner">
-    <!-- Hamburger (left on mobile) -->
     <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
-
-    <!-- Brand (center on mobile, left-ish on desktop) -->
     <a class="brand" href="/">Ali A. Isse</a>
-
-    <!-- Right side: theme switch + nav (desktop inline, mobile becomes dropdown) -->
     <div class="header-right">
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
         <span class="switch-slider"></span>
       </label>
       <nav class="nav" id="primaryNav">
-        <a href="/" class="active">Home</a>
+        <a href="/">Home</a>
         <a href="/Research.html">Research</a>
-        <a href="/Teaching.html">Teaching</a>
+        <a href="/Teaching.html" class="active">Teaching</a>
         <a href="/CV.html">CV</a>
       </nav>
     </div>
@@ -124,145 +29,110 @@
 </header>
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 
-  <main class="container layout">
-    <!-- Left profile column -->
-    <aside class="profile">
-      <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
-      <div class="buttons">
-        <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
-        <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </aside>
-
-    <!-- Center content -->
-    <section class="content">
-      <h2 style="margin:.2rem 0 .8rem 0">Teaching</h2>
-
-      <!-- Teaching Interests card -->
-      <div class="feature-grid" style="margin-bottom:.6rem">
-        <div class="card" style="grid-column:1 / -1">
-          <h3>Teaching Interests</h3>
-          <p class="muted" style="margin:.2rem 0 .6rem 0">
-            I design inclusive, discussion-forward courses that build conceptual clarity and analytic skill.
-            My teaching emphasizes theory-to-evidence translation, policy relevance, and methodological literacy.
-          </p>
-          <div class="pill-group">
-            <span class="pill">International Security</span>
-            <span class="pill">International Relations</span>
-            <span class="pill">Research Methods &amp; Design</span>
-            <span class="pill">Foreign Policy &amp; Decision-Making</span>
-            <span class="pill">International Organizations &amp; Global Governance</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion">
-
-        <!-- Current Teaching -->
-        <div class="acc open" id="sec-teaching">
-          <div class="acc__head" data-acc="sec-teaching">
-            <h3 class="acc__title">Teaching</h3>
-            <i class="acc__chev"></i>
-          </div>
-          <div class="acc__body">
-            <div class="course">
-              <span class="title">International Organizations (Undergraduate)</span>
-              <span class="meta"> — Spring 2025 · ~400 students</span>
-              <div class="desc">
-                Examines the politics, structure, and effectiveness of international organizations in global governance.
-                Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
-                Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
-              </div>
-              <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
-            </div>
-
-            <div class="course">
-              <span class="title">Introduction to Research Design (Undergraduate)</span>
-              <span class="meta"> — Fall 2024 · ~75 students</span>
-              <div class="desc">
-                Introduces undergraduates to the principles of research design and the logic of social inquiry.
-                Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
-                Prepares students to write their junior and senior theses in public and international affairs.
-              </div>
-              <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Selected Previous Teaching -->
-        <div class="acc" id="sec-prev">
-          <div class="acc__head" data-acc="sec-prev">
-            <h3 class="acc__title">Selected Previous Teaching</h3>
-            <i class="acc__chev"></i>
-          </div>
-          <div class="acc__body">
-            <div class="course">
-              <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
-              <span class="meta"> — 2021</span>
-              <div class="desc">
-                Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
-              </div>
-              <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
-            </div>
-
-            <div class="course">
-              <span class="title">Analyzing the City (Undergraduate)</span>
-              <span class="meta"> — Fall 2017</span>
-              <div class="desc">
-                Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer identical to header -->
-  <footer class="site-header">
-    <div class="container header-inner" style="justify-content:space-between;">
-      <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
+<main class="container layout">
+  <!-- left profile -->
+  <aside class="profile">
+    <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <div class="buttons">
+      <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
+      <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
     </div>
-  </footer>
+  </aside>
 
-  <!-- Tiny accordion JS + header-color sync -->
-  <script>
-    function colorAccordions(){
-      const header = document.querySelector('.site-header');
-      if(!header) return;
-      const bg = getComputedStyle(header).backgroundColor;
-      const ink = getComputedStyle(header).color || '#ffffff';
-      document.querySelectorAll('.acc__head').forEach(h=>{
-        h.style.backgroundColor = bg;
-        h.style.color = ink;
-        const chev = h.querySelector('.acc__chev');
-        if (chev) chev.style.borderColor = ink;
-        const title = h.querySelector('.acc__title');
-        if (title) title.style.color = ink;
-      });
-    }
+  <!-- content -->
+  <section class="content">
+    <h2 style="margin:.2rem 0 .8rem 0">Teaching</h2>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // accordion toggles
-      document.querySelectorAll('.acc__head').forEach(head => {
-        head.addEventListener('click', () => {
-          const id = head.getAttribute('data-acc');
-          const panel = document.getElementById(id);
-          if (panel) panel.classList.toggle('open');
-        });
-      });
+    <!-- Teaching Interests -->
+    <div class="feature-grid" style="margin-bottom:.6rem">
+      <div class="card" style="grid-column:1 / -1">
+        <h3>Teaching Interests</h3>
+        <p class="muted" style="margin:.2rem 0 .6rem 0">
+          I design inclusive, discussion-forward courses that build conceptual clarity and analytic skill.
+          My teaching emphasizes theory-to-evidence translation, policy relevance, and methodological literacy.
+        </p>
+        <div class="pill-group">
+          <span class="pill">International Security</span>
+          <span class="pill">International Relations</span>
+          <span class="pill">Research Methods &amp; Design</span>
+          <span class="pill">Foreign Policy &amp; Decision-Making</span>
+          <span class="pill">International Organizations &amp; Global Governance</span>
+        </div>
+      </div>
+    </div>
 
-      // initial color sync
-      colorAccordions();
+    <div class="accordion">
 
-      // re-sync on theme toggle
-      const themeSwitch = document.getElementById('themeSwitch');
-      if (themeSwitch) {
-        themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
-      }
-    });
-  </script>
+      <!-- Current Teaching -->
+      <div class="acc open" id="sec-teaching">
+        <div class="acc__head" data-acc="sec-teaching">
+          <h3 class="acc__title">Teaching</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="course">
+            <span class="title">International Organizations (Undergraduate)</span>
+            <span class="meta"> — Spring 2025 · ~400 students</span>
+            <div class="desc">
+              Examines the politics, structure, and effectiveness of international organizations in global governance.
+              Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
+              Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+
+          <div class="course">
+            <span class="title">Introduction to Research Design (Undergraduate)</span>
+            <span class="meta"> — Fall 2024 · ~75 students</span>
+            <div class="desc">
+              Introduces undergraduates to the principles of research design and the logic of social inquiry.
+              Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
+              Prepares students to write their junior and senior theses in public and international affairs.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected Previous Teaching -->
+      <div class="acc" id="sec-prev">
+        <div class="acc__head" data-acc="sec-prev">
+          <h3 class="acc__title">Selected Previous Teaching</h3><i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="course">
+            <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
+            <span class="meta"> — 2021</span>
+            <div class="desc">
+              Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+
+          <div class="course">
+            <span class="title">Analyzing the City (Undergraduate)</span>
+            <span class="meta"> — Fall 2017</span>
+            <div class="desc">
+              Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- right toc -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
+
+<footer class="site-header">
+  <div class="container header-inner" style="justify-content:space-between;">
+    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
+  </div>
+</footer>
+
 </body>
 </html>
