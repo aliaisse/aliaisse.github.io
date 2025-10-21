@@ -88,7 +88,7 @@
   </style>
 </head>
 <body>
-
+  
 <header class="site-header">
   <div class="container header-inner">
     <!-- Hamburger button (mobile only) -->
@@ -97,19 +97,30 @@
     <!-- Brand (centered on mobile via CSS) -->
     <a class="brand" href="/">Ali A. Isse</a>
 
+    <!-- A standalone theme switch that stays visible on mobile header -->
+    <label class="theme-switch theme-switch--standalone" title="Toggle dark mode">
+      <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+      <span class="switch-slider"></span>
+    </label>
+
     <!-- Primary nav -->
     <nav class="nav" id="primaryNav">
       <a href="/" class="active">Home</a>
       <a href="/Research.html">Research</a>
       <a href="/Teaching.html">Teaching</a>
       <a href="/CV.html">CV</a>
+
+      <!-- (Optional duplicate) Theme switch inside nav (visible when menu is open) -->
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+        <input type="checkbox" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
       </label>
     </nav>
   </div>
 </header>
+
+<!-- Backdrop for the mobile sheet -->
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
 
 <!-- Backdrop for the mobile sheet -->
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
