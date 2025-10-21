@@ -99,24 +99,30 @@
   </style>
 </head>
 <body>
-  <!-- Header (hamburger left, brand centered, toggle right) -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
-      <a class="brand" href="/">Ali A. Isse</a>
-      <label class="theme-switch theme-switch--standalone" title="Toggle dark mode">
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- Hamburger (left on mobile) -->
+    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
+
+    <!-- Brand (center on mobile, left-ish on desktop) -->
+    <a class="brand" href="/">Ali A. Isse</a>
+
+    <!-- Right side: theme switch + nav (desktop inline, mobile becomes dropdown) -->
+    <div class="header-right">
+      <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
       </label>
       <nav class="nav" id="primaryNav">
-        <a href="/">Home</a>
+        <a href="/" class="active">Home</a>
         <a href="/Research.html">Research</a>
-        <a href="/Teaching.html" class="active">Teaching</a>
+        <a href="/Teaching.html">Teaching</a>
         <a href="/CV.html">CV</a>
       </nav>
     </div>
-  </header>
-  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+  </div>
+</header>
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
 
   <main class="container layout">
     <!-- Left profile column -->
