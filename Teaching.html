@@ -7,17 +7,51 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-specific styles -->
+  <!-- Page-local styles (match index; accordions colored via JS) -->
   <style>
-    .course{margin:0 0 .9rem}
-    .title{color:#0A2A66;font-weight:700}
+    :root{
+      --brand:#0A2A66;
+      --text:#111111;
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
+    }
+    [data-theme="dark"], body.dark{
+      --text:#ffffff;
+      --muted:#cfd8dc;
+      --card:#0f1216;
+      --border:#1f2937;
+    }
+
+    html, body { color:var(--text); }
+    p, li, a, span, small, time, dd, dt, div { color:inherit; }
+    .muted{color:var(--muted)}
+
+    .feature-grid{display:grid;gap:1rem;margin-top:.35rem;grid-template-columns:1fr;}
+    @media (min-width: 860px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+    .card{border:1px solid var(--border);border-left:none;border-radius:12px;background:var(--card);padding:1rem;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
+
+    .accordion{display:grid;gap:1rem;margin:1rem 0}
+    .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06);}
+    .acc__head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative;}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;}
+    .acc__chev{border-width:0 2px 2px 0;border-style:solid;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease;}
+    .acc.open .acc__chev{transform:rotate(45deg);}
+    .acc__body{padding:1rem;display:none}
+    .acc.open .acc__body{display:block}
+
+    .course{margin:0 0 1rem}
+    .title{font-weight:800;color:inherit;}
     .meta{color:var(--muted)}
-    .desc{margin:.2rem 0 0 0}
+    .desc{margin:.3rem 0 0 0}
     .tiny a{font-size:.9rem;color:var(--muted);text-decoration:none}
     .tiny a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
+
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/">Ali A. Isse</a>
@@ -26,8 +60,6 @@
       <a href="/Research.html">Research</a>
       <a href="/Teaching.html" class="active">Teaching</a>
       <a href="/CV.html">CV</a>
-
-      <!-- dark/light toggle -->
       <label class="theme-switch" title="Toggle dark mode">
         <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
@@ -37,7 +69,7 @@
 </header>
 
 <main class="container layout">
-  <!-- Left profile column -->
+  <!-- Left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
@@ -47,53 +79,103 @@
     </div>
   </aside>
 
-  <!-- Center content -->
+  <!-- Content -->
   <section class="content">
-    <h2>Teaching</h2>
+    <h2 style="margin:.2rem 0 .8rem 0">Teaching</h2>
 
-    <div class="course">
-      <span class="title">International Organizations (Undergraduate)</span> — Princeton University,
-      <span class="meta">Spring 2025 · ~400 students</span>
-      <div class="desc">
-        Examines the politics, structure, and effectiveness of international organizations in global governance.
-        Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
-        Emphasizes theoretical approaches, political economy perspectives, and the role of institutions in shaping international order.
-      </div>
-      <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
+    <div class="accordion">
 
-    <div class="course">
-      <span class="title">Introduction to Research Design (Undergraduate)</span> — Princeton University,
-      <span class="meta">Fall 2024 · ~75 students</span>
-      <div class="desc">
-        Introduces undergraduates to the principles of research design and the logic of social inquiry.
-        Emphasizes analytical reading, annotated bibliographies, and literature review writing as foundations for independent research.
-        Prepares students to write their junior and senior theses in public and international affairs.
-      </div>
-      <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
+      <!-- Princeton University -->
+      <div class="acc open" id="sec-princeton">
+        <div class="acc__head" data-acc="sec-princeton">
+          <h3 class="acc__title">Princeton University</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="course">
+            <span class="title">International Organizations (Undergraduate)</span>
+            <span class="meta"> — Spring 2025 · ~400 students</span>
+            <div class="desc">
+              Examines the politics, structure, and effectiveness of international organizations in global governance.
+              Analyzes cooperation, power, and legitimacy through case studies of the IMF, World Bank, UN, WTO, NATO, and regional institutions.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/International_Organizations.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
 
-    <div class="course">
-      <span class="title">Mathematics for Social Science (Summer Math Camp)</span> — University of Chicago,
-      <span class="meta">2021</span>
-      <div class="desc">
-        Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
+          <div class="course">
+            <span class="title">Introduction to Research Design (Undergraduate)</span>
+            <span class="meta"> — Fall 2024 · ~75 students</span>
+            <div class="desc">
+              Principles of research design and the logic of social inquiry; emphasizes analytical reading, annotated bibliographies, and literature review writing.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Intro_Research_Design.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+        </div>
       </div>
-      <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
-    </div>
 
-    <div class="course">
-      <span class="title">Analyzing the City (Undergraduate)</span> — The Ohio State University, <span class="meta">Fall 2017</span>
-      <div class="desc">
-        Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+      <!-- Selected Previous Teaching (no institutions named) -->
+      <div class="acc" id="sec-prev">
+        <div class="acc__head" data-acc="sec-prev">
+          <h3 class="acc__title">Selected Previous Teaching</h3>
+          <i class="acc__chev"></i>
+        </div>
+        <div class="acc__body">
+          <div class="course">
+            <span class="title">Mathematics for Social Science (Summer Math Camp)</span>
+            <span class="meta"> — 2021</span>
+            <div class="desc">
+              Short course on calculus fundamentals, matrix algebra, logic, and introductory probability for incoming graduate students.
+            </div>
+            <div class="tiny"><a href="/files/syllabi/Math_Camp.pdf" target="_blank" rel="noopener">syllabus</a></div>
+          </div>
+
+          <div class="course">
+            <span class="title">Analyzing the City (Undergraduate)</span>
+            <span class="meta"> — Fall 2017</span>
+            <div class="desc">
+              Computer-lab instruction in quantitative and spatial analysis of urban systems (ArcGIS, Excel, Stata).
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
+  <!-- right toc -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
+
+<!-- Accordion color sync -->
+<script>
+  function colorAccordions(){
+    const header = document.querySelector('.site-header');
+    if(!header) return;
+    const bg = getComputedStyle(header).backgroundColor;
+    const ink = getComputedStyle(header).color || '#ffffff';
+    document.querySelectorAll('.acc__head').forEach(h=>{
+      h.style.backgroundColor = bg;
+      h.style.color = ink;
+      const chev = h.querySelector('.acc__chev'); if (chev) chev.style.borderColor = ink;
+      const title = h.querySelector('.acc__title'); if (title) title.style.color = ink;
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.acc__head').forEach(head => {
+      head.addEventListener('click', () => {
+        const id = head.getAttribute('data-acc');
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.toggle('open');
+      });
+    });
+    colorAccordions();
+    const themeSwitch = document.getElementById('themeSwitch');
+    if (themeSwitch) themeSwitch.addEventListener('change', () => setTimeout(colorAccordions, 0));
+  });
+</script>
+
 </body>
 </html>
