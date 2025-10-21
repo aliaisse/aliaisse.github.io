@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script src="/assets/script.js" defer></script>
 
-  <!-- Page-local styles (accordions colored via JS) -->
   <style>
     :root{
       --brand:#0A2A66;
@@ -22,13 +21,14 @@
       --card:#0f1216;
       --border:#1f2937;
     }
+
     html, body { color:var(--text); }
     .muted{color:var(--muted)}
 
     .accordion{display:grid;gap:1rem;margin:1rem 0}
     .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 1px 6px rgba(0,0,0,.06);}
     .acc__head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;font-weight:800;cursor:pointer;position:relative;}
-    .acc__title{margin:0;font-size:1.05rem;font-weight:800;}
+    .acc__title{margin:0;font-size:1.05rem;font-weight:800;color:inherit}
     .acc__chev{border-width:0 2px 2px 0;border-style:solid;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s ease;}
     .acc.open .acc__chev{transform:rotate(45deg);}
     .acc__body{padding:1rem;display:none}
@@ -37,7 +37,7 @@
     .btn-primary{
       display:inline-block;padding:.55rem .9rem;border-radius:10px;
       font-weight:800;text-decoration:none;border:1px solid var(--border);
-      background:var(--card);color:var(--text);
+      background:var(--card);color:inherit;
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.08)}
@@ -62,7 +62,6 @@
 </header>
 
 <main class="container layout">
-  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
@@ -72,7 +71,6 @@
     </div>
   </aside>
 
-  <!-- content -->
   <section class="content">
     <h2 style="margin:.2rem 0 .8rem 0">CV</h2>
 
@@ -93,14 +91,12 @@
 
   </section>
 
-  <!-- right toc -->
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <nav id="tocList"></nav>
   </aside>
 </main>
 
-<!-- Accordion color sync -->
 <script>
   function colorAccordions(){
     const header = document.querySelector('.site-header');
