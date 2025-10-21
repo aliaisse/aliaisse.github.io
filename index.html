@@ -1,161 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ali A. Isse</title>
-<style>
-/* ========= THEME TOKENS ========= */
-:root{
-  --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --link:#2563eb;
-  --card:#f9fafb; --border:#e5e7eb;
-  --header-bg:#0A2A66; --header-text:#ffffff;
-  --acc-bg:#f3f4f6; --acc-text:#0A2A66;
-}
-:root[data-theme="dark"], body.dark{
-  --bg:#0f172a; --text:#e5e7eb; --muted:#a1a1aa; --link:#93c5fd;
-  --card:#111827; --border:#1f2937;
-  --header-bg:#1e293b; --header-text:#e5e7eb;
-  --acc-bg:#1e293b; --acc-text:#ffffff;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
 
-/* ========= BASE ========= */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);transition:background-color .18s,color .18s}
-a{color:var(--link);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto}
+  <!-- Page accents -->
+  <style>
+    :root { --accent:#0A2A66; --accent-ink:#0b2252; --pill-bg:#eef2ff; }
+    [data-theme="dark"], body.dark {
+      --accent:#93c5fd; --accent-ink:#e5e7eb; --pill-bg:#0b1730;
+    }
 
-/* ========= HEADER ========= */
-.site-header{background:var(--header-bg);color:var(--header-text);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(0,0,0,.15)}
-.header-inner{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:1rem;padding:.75rem 1rem}
-.brand{color:var(--header-text);font-weight:700;text-decoration:none;white-space:nowrap}
-.header-right{display:inline-flex;align-items:center;gap:.6rem}
-.nav{display:flex;align-items:center;gap:.6rem}
-.nav a{color:var(--header-text);padding:.25rem .45rem;border-radius:6px;font-weight:600;letter-spacing:.02em}
-.nav a:hover{opacity:.8}
-.theme-switch{display:inline-flex;align-items:center;justify-content:center;width:36px;height:20px;cursor:pointer}
-.theme-switch input{display:none}
-.switch-slider{width:36px;height:20px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);position:relative}
-.switch-slider::before{content:"";position:absolute;top:50%;left:2.5px;width:14px;height:14px;transform:translateY(-50%);border-radius:50%;background:#fff;transition:transform .18s}
-.theme-switch input:checked + .switch-slider::before{transform:translate(18px,-50%)}
-.menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:none;color:var(--header-text);font-size:1.5rem;cursor:pointer}
+    .lead{font-size:1.15rem;margin:.5rem 0 1.1rem}
 
-/* ========= ACCORDIONS ========= */
-.accordion{display:grid;gap:1rem;margin:1rem 0}
-.acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);transition:background .2s}
-.acc__head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;font-weight:800;cursor:pointer;background:var(--acc-bg);color:var(--acc-text)}
-.acc__chev{border-width:0 2px 2px 0;border-style:solid;display:inline-block;padding:4px;transform:rotate(-45deg);transition:transform .18s;border-color:var(--acc-text)}
-.acc.open .acc__chev{transform:rotate(45deg)}
-.acc__body{padding:1rem;display:none;background:var(--card)}
-.acc.open .acc__body{display:block}
+    /* Fancy pill chips */
+    .pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin:.35rem 0 1.25rem}
+    .pill{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.35rem .6rem;border-radius:999px;
+      background:linear-gradient(180deg, var(--pill-bg), transparent);
+      border:1px solid var(--border);
+      color:var(--accent-ink);
+      font-weight:600;font-size:.92rem;
+      box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .pill:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.06)}
+    .pill--accent{
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+      color:var(--accent-ink);
+    }
 
-/* ========= LAYOUT ========= */
-.layout{display:grid;grid-template-columns:280px 1fr;gap:2rem;padding:1.75rem 1rem 3rem}
-.profile{position:sticky;top:76px;align-self:start}
-.avatar{width:100%;max-width:280px;border-radius:8px;display:block;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-.name{font-size:2rem;line-height:1.1;margin:1rem 0 .75rem;white-space:nowrap}
-.buttons{display:flex;flex-wrap:wrap;gap:.5rem}
-.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:6px;font-size:.9rem}
-.card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem;color:var(--text);font-weight:800}
-
-/* ========= MOBILE ========= */
-@media (max-width:760px){
-  .layout{grid-template-columns:1fr;gap:1rem}
-  .profile{position:static}
-  .header-inner{grid-template-columns:40px 1fr 40px;min-height:56px}
-  .menu-btn{display:inline-flex}
-  .brand{justify-self:center;font-size:1.06rem}
-  .header-right{justify-self:end}
-  .nav{
-    position:fixed;left:0;right:0;top:56px;
-    display:none;flex-direction:column;
-    background:var(--card);border-top:1px solid var(--border);
-    padding:1rem 1rem 1.2rem;z-index:2000;
-    box-shadow:0 8px 24px rgba(0,0,0,.15);
-  }
-  .nav.open{display:flex}
-  .nav a{color:var(--text);padding:.7rem 0;font-weight:700}
-  .mobile-backdrop{display:none;position:fixed;inset:56px 0 0 0;background:rgba(0,0,0,.3);backdrop-filter:blur(3px);z-index:1500}
-  .mobile-backdrop.show{display:block}
-}
-</style>
+    /* Feature cards */
+    .feature-grid{
+      display:grid;gap:1rem;margin-top:.35rem;
+      grid-template-columns:1fr; 
+    }
+    @media (min-width: 860px){
+      .feature-grid{grid-template-columns:1fr 1fr;}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-left:5px solid var(--accent);
+      border-radius:12px;
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 4%, var(--card)), var(--card));
+      padding:1rem 1rem 1rem 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .card h3{margin:.1rem 0 .35rem 0;font-size:1.05rem}
+    .muted{color:var(--muted)}
+    .badge{
+      display:inline-block;padding:.18rem .45rem;border-radius:6px;
+      font-size:.8rem;font-weight:700;letter-spacing:.02em;
+      color:var(--accent-ink);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+      border:1px solid color-mix(in oklab, var(--accent) 28%, var(--border));
+      margin-bottom:.35rem;
+    }
+  </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
     <a class="brand" href="/">Ali A. Isse</a>
-    <div class="header-right">
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/Research.html">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
       </label>
-      <nav class="nav" id="primaryNav">
-        <a href="/" class="active">Home</a>
-        <a href="/Research.html">Research</a>
-        <a href="/Teaching.html">Teaching</a>
-        <a href="/CV.html">CV</a>
-      </nav>
-    </div>
+    </nav>
   </div>
 </header>
-<div class="mobile-backdrop" id="mobileBackdrop"></div>
 
 <main class="container layout">
+  <!-- left profile -->
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
     <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
       <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="https://x.com/issemehdi" target="_blank" rel="noopener">Twitter</a>
+      <a class="btn" href="https://www.linkedin.com/in/mehdi-i-28a95683/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0009-0548-6234" target="_blank" rel="noopener">ORCID</a>
     </div>
   </aside>
 
+  <!-- center content -->
   <section class="content">
-    <div class="accordion">
-      <div class="acc open" id="sec-about">
-        <div class="acc__head" data-acc="sec-about">
-          <h3 class="acc__title">About</h3><i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <p>I am a Ph.D. Candidate at Princeton University’s School of Public and International Affairs and a Visiting Scholar at Yale University’s Nuclear Security Program. My work explores nuclear deterrence, coercive diplomacy, and the politics of nonproliferation.</p>
-        </div>
+    <h2>Welcome</h2>
+    <p class="lead">Ph.D. Candidate, Princeton SPIA. Research on nuclear deterrence, coercive diplomacy, nonproliferation, and alliance politics.</p>
+
+    <div class="pill-group">
+      <span class="pill">Deterrence</span>
+      <span class="pill">Coercion</span>
+      <span class="pill">Nuclear Policy</span>
+      <span class="pill">Alliance Politics</span>
+      <span class="pill">Strategic Studies</span>
+      <span class="pill">Methodology</span>
+    </div>
+
+    <h2>Featured</h2>
+    <div class="feature-grid">
+
+      <div class="card">
+        <span class="pill">Manuscript · 2025</span>
+        <h3>Anglo-American Nuclear Partnership</h3>
+        <p class="muted">Cooperation, integration, and strategic interdependence in the UK–US nuclear relationship.</p>
       </div>
 
-      <div class="acc" id="sec-degrees">
-        <div class="acc__head" data-acc="sec-degrees">
-          <h3 class="acc__title">Degrees</h3><i class="acc__chev"></i>
-        </div>
-        <div class="acc__body">
-          <p>M.A., Princeton University<br/>M.A., The University of Chicago<br/>M.S., The Ohio State University<br/>B.A., The University of Texas San Antonio</p>
-        </div>
+      <div class="card">
+        <span class="pill">Teaching · Spring 2025</span>
+        <h3>International Organizations</h3>
+        <p class="muted">Discussion sections, office hours, assignments, and Exams.</p>
       </div>
+
     </div>
   </section>
-</main>
 
-<script>
-(() => {
-  const KEY='pref-theme';
-  function setTheme(m){const d=m==='dark',r=document.documentElement,b=document.body;d?(r.setAttribute('data-theme','dark'),b.classList.add('dark')):(r.removeAttribute('data-theme'),b.classList.remove('dark'));try{localStorage.setItem(KEY,d?'dark':'light')}catch{}}
-  function getInitial(){try{const s=localStorage.getItem(KEY);if(s==='dark'||s==='light')return s}catch{}return(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
-  function init(){
-    const sw=document.getElementById('themeSwitch');setTheme(getInitial());
-    if(sw){sw.checked=document.documentElement.getAttribute('data-theme')==='dark';sw.addEventListener('change',()=>setTheme(sw.checked?'dark':'light'))}
-    const btn=document.getElementById('menuToggle'),nav=document.getElementById('primaryNav'),bd=document.getElementById('mobileBackdrop');
-    function openM(){nav.classList.add('open');btn.setAttribute('aria-expanded','true');bd.classList.add('show')}
-    function closeM(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');bd.classList.remove('show')}
-    btn.addEventListener('click',()=>nav.classList.contains('open')?closeM():openM());
-    bd.addEventListener('click',closeM);
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));
-    document.querySelectorAll('.acc__head').forEach(h=>h.addEventListener('click',()=>{const p=document.getElementById(h.dataset.acc);p&&p.classList.toggle('open')}));
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-})();
-</script>
+  <!-- right TOC -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocList"></nav>
+  </aside>
+</main>
 
 </body>
 </html>
