@@ -94,7 +94,7 @@
 
     if (btn && nav){
       btn.addEventListener('click', toggleMenu);
-      // Close when a nav link is clicked (single-page feel)
+      // Close on link click
       nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
       // Close on backdrop click
       if (backdrop) backdrop.addEventListener('click', closeMenu);
