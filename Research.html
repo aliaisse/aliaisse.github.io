@@ -1,38 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Research — Ali A. Isse</title>
-<!-- Same CSS as index: copy/paste from the <style> block in index.html -->
-<style>
-/* COPY THE ENTIRE <style> FROM INDEX.HTML AND PASTE IT HERE */
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — Ali A. Isse</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/script.js" defer></script>
+  <style>
+    .item{margin:0 0 .6rem}
+    .when{color:var(--muted)}
+    .ptitle{color:#0A2A66;font-style:italic}
+    .section-title{color:#0A2A66;font-weight:700;margin:1rem 0 .4rem}
+    .status{color:var(--muted);font-style:italic}
+  </style>
 </head>
 <body>
-<!-- Same header as index -->
+
 <header class="site-header">
   <div class="container header-inner">
-    <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">☰</button>
     <a class="brand" href="/">Ali A. Isse</a>
-    <div class="header-right">
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/Research.html" class="active">Research</a>
+      <a href="/Teaching.html">Teaching</a>
+      <a href="/CV.html">CV</a>
       <label class="theme-switch" title="Toggle dark mode">
-        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode" />
+        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
         <span class="switch-slider"></span>
       </label>
-      <nav class="nav" id="primaryNav">
-        <a href="/">Home</a>
-        <a href="/Research.html" class="active">Research</a>
-        <a href="/Teaching.html">Teaching</a>
-        <a href="/CV.html">CV</a>
-      </nav>
-    </div>
+    </nav>
   </div>
 </header>
-<div class="mobile-backdrop" id="mobileBackdrop"></div>
+
 <main class="container layout">
   <aside class="profile">
     <img src="/images/profile.jpg" alt="Ali A. Isse headshot" class="avatar" />
+    <h1 class="name">Ali A.<br/>Isse</h1>
     <div class="buttons">
       <a class="btn" href="mailto:ai9431@princeton.edu">Email</a>
       <a class="btn" href="/cv.pdf" target="_blank" rel="noopener">CV</a>
@@ -40,47 +43,28 @@
   </aside>
 
   <section class="content">
-    <h2 style="margin:.2rem 0 .8rem 0">Research</h2>
+    <h2>Research</h2>
 
-    <div class="feature-grid" style="margin-bottom:.6rem">
-      <div class="card" style="grid-column:1 / -1">
-        <h3>Research Interests</h3>
-        <p class="muted" style="margin:.2rem 0 .6rem 0">
-          International security, strategic studies, and the political economy of international organizations,
-          with emphasis on deterrence, coercive diplomacy, nonproliferation, and alliance politics.
-        </p>
-        <div class="pill-group">
-          <span class="pill">Deterrence</span><span class="pill">Coercion</span><span class="pill">Nuclear Policy</span>
-          <span class="pill">Nonproliferation</span><span class="pill">Alliance Politics</span><span class="pill">Escalation Management</span><span class="pill">IOs &amp; UN</span>
-        </div>
-      </div>
-    </div>
+    <div class="section-title">Publications & manuscripts</div>
 
-    <div class="accordion">
-      <div class="acc open" id="sec-pubs">
-        <div class="acc__head" data-acc="sec-pubs"><h3 class="acc__title">Publications &amp; Manuscripts</h3><i class="acc__chev"></i></div>
-        <div class="acc__body">
-          <div class="item"><span class="muted">2025.</span> Isse, A. <em>Anglo-American Nuclear Partnership: Cooperation, Integration, and Strategic Interdependence</em>. <span class="muted"><em>Manuscript.</em></span></div>
-          <div class="item"><span class="muted">2025.</span> Isse, A. <em>Authoritarian Calculus and the Risk of Nuclear Use: Executive Power and Brinkmanship in North Korea and Iran</em>. <span class="muted"><em>Manuscript.</em></span></div>
-          <div class="item"><span class="muted">2025.</span> Isse, A. <em>From Coercion to Cooperation: Reversing Nuclear Programs Through Guarantees</em>. <span class="muted"><em>Manuscript.</em></span></div>
-          <div class="item"><span class="muted">2024.</span> Isse, A. <em>Between Coercion and Inducements: Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW</em>. <span class="muted"><em>Under review.</em></span></div>
-          <div class="item"><span class="muted">2024.</span> Isse, A. <em>The Strategies of Coercion in the Nuclear Era: From Diplomacy to War</em>. <span class="muted"><em>Forthcoming.</em></span></div>
-        </div>
-      </div>
+    <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">Anglo-American Nuclear Partnership: Cooperation, Integration, and Strategic Interdependence</span>. <span class="status">Manuscript.</span></div>
 
-      <div class="acc" id="sec-other">
-        <div class="acc__head" data-acc="sec-other"><h3 class="acc__title">Other Papers</h3><i class="acc__chev"></i></div>
-        <div class="acc__body">
-          <div class="item"><span class="muted">2021.</span> Isse, A. <em>Statebuilding in Somalia: The Role of International Actors and Actions</em>. University of Chicago.</div>
-          <div class="item"><span class="muted">2018.</span> Isse, A. <em>Spatial Integration of Immigrants: A Case Study of East African Immigrants in Columbus, Ohio</em>. The Ohio State University.</div>
-        </div>
-      </div>
+    <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">Authoritarian Calculus and the Risk of Nuclear Use: Executive Power and Brinkmanship in North Korea and Iran</span>. <span class="status">Manuscript.</span></div>
 
-      <div class="acc" id="sec-data">
-        <div class="acc__head" data-acc="sec-data"><h3 class="acc__title">Data &amp; Replication</h3><i class="acc__chev"></i></div>
-        <div class="acc__body"><div class="item">Available on request.</div></div>
-      </div>
-    </div>
+    <div class="item"><span class="when">2025.</span> Isse, A. <span class="ptitle">From Coercion to Cooperation: Reversing Nuclear Programs Through Guarantees</span>. <span class="status">Manuscript.</span></div>
+
+    <div class="item"><span class="when">2024.</span> Isse, A. <span class="ptitle">Between Coercion and Inducements: Ensuring Compliance in Nuclear Disarmament under the NPT and TPNW</span>. <span class="status">Under review.</span></div>
+
+    <div class="item"><span class="when">2024.</span> Isse, A. <span class="ptitle">The Strategies of Coercion in the Nuclear Era: From Diplomacy to War</span>. <span class="status">Forthcoming.</span></div>
+
+    <div class="section-title">Other papers</div>
+
+    <div class="item"><span class="when">2021.</span> Isse, A. <span class="ptitle">Statebuilding in Somalia: The Role of International Actors and Actions</span>. University of Chicago.</div>
+
+    <div class="item"><span class="when">2018.</span> Isse, A. <span class="ptitle">Spatial Integration of Immigrants: A Case Study of East African Immigrants in Columbus, Ohio</span>. The Ohio State University.</div>
+
+    <h3>Data & replication</h3>
+    <p>Available on request</p>
   </section>
 
   <aside class="toc">
@@ -88,15 +72,5 @@
     <nav id="tocList"></nav>
   </aside>
 </main>
-
-<footer class="site-header">
-  <div class="container header-inner" style="justify-content:space-between;">
-    <small style="color:#fff;opacity:.9">@2025 Ali A. Isse . Mehdi</small>
-  </div>
-</footer>
-<!-- Same JS as index: copy/paste from the <script> block in index.html -->
-<script>
-/* COPY THE ENTIRE <script> FROM INDEX.HTML AND PASTE IT HERE */
-</script>
 </body>
 </html>
